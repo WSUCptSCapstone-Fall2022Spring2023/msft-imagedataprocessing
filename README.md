@@ -1,1 +1,1 @@
- Sprint 1 Video link - https://studio.youtube.com/video/g8PSH7x_Ehk/edit
+ Sprint 1 Video link - https://www.youtube.com/watch?v=g8PSH7x_Ehk
