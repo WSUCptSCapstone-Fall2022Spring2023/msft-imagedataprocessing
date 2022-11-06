@@ -30,6 +30,37 @@ int img_height = int (cam_height * scale_ratio);
 
 //capture = np.zeros((img_height, img_width, 4), dtype=np.uint8)
 
-raspicam::RaspiCam Camera; //Camera object
 
+int takePicture()
+{
+    raspicam::RaspiCam Camera; //Camera object
 
+    //ofstream picFileStream;
+
+    //picFileStream.open("Test_picture");
+
+    if ( !Camera.open()) 
+    {
+        cerr<<"Error opening camera"<<endl;return -1;
+    }
+
+    sleep(3);
+
+    Camera.grab();
+    //allocate memory
+    unsigned char *data=new unsigned char[  Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB )];
+
+    Camera.retrieve ( data,raspicam::RASPICAM_FORMAT_RGB );
+
+    ofstream outFile ( "raspicam_image.ppm",std::ios::binary );
+
+    outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
+
+    //picFileStream.close();
+
+    outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB ) );
+
+    delete data;
+
+    return 0;
+}
