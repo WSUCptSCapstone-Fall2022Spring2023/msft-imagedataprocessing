@@ -8,39 +8,50 @@ AGICam allows for farmers to collect and track data/images about the condition o
 
 ### Additional information about the project
 
-TODO: Write a compelling/creative/informative project description / summary
+Originating from Pullman WA, Washington State University Phenomics Lab developed an Auridino-based IOT camera system known as AGIcam. This camera is tasked with monitoring crop conditions in remote fields. AgroDevs is a team of 3 WSU computer science students tasked with evaluating and improving data transfer and compression as well as evaluating edge computing and minimal power consumption solutions. Improving these aspects will allow for AGIcam to provide a better user experience and reduce overhead for farms using the sensor. Our team is working directly with Dr. Sankaran to meet these goals and advance the prosperity of  AGIcam. At the current stage of this project we are difrectly moving towards minimal power consmpution by rewriting our python implementation to C++ while providing extensive configurability  allowing for our product to be easier to use and draw less power giving it a longer lifespan.
 
 ## Installation
 
 ### Prerequisites
 
-TODO: List what a user needs to have installed before running the installation instructions below (e.g., git, which versions of Ruby/Rails)
+- gcc
+- python
+- pip
+- picam-native
+- openssl
+- pymongo
+- wittypi
 
 ### Add-ons
 
-TODO: List which add-ons are included in the project, and the purpose each add-on serves in your app.
+- picam-native allows for us to take pictures through our raspberrypi
+- pymongo allows for us to connect to our mongo cluster
+- wittypi allows for use to run our camera at specific times from a configuration file
 
 ### Installation Steps
 
-TODO: Describe the installation process (making sure you mention `bundle install`).
-Instructions need to be such that a user can just copy/paste the commands to get things set up and running. 
+- Clone this repository
+- Enter into the `New Code` directory
+
+Run the following commands.
+- `mkdir build`
+- `cd build`
+- `cmake ..`
+- `make`
+- `./executable`
 
 
 ## Functionality
 
-TODO: Write usage instructions. Structuring it as a walkthrough can help structure this section,
-and showcase your features.
-
+- Allows for users to update a configuration file which controls the capture cycle of our camera
+- Uploads pictures to Mongo Database with important data from the cameras
 
 ## Known Problems
 
-TODO: Describe any known issues, bugs, odd behaviors or code smells. 
-Provide steps to reproduce the problem and/or name a file or a function where the problem lives.
-
+- Currently only the RGB camera is taking pictures
+- Mongo C/C++ Drivers cannot compile on raspbian
 
 ## Contributing
-
-TODO: Leave the steps below if you want others to contribute to your project.
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
@@ -50,11 +61,10 @@ TODO: Leave the steps below if you want others to contribute to your project.
 
 ## Additional Documentation
 
-TODO: Provide links to additional documentation that may exist in the repo, e.g.,
-  * Sprint reports
-  * User links
+[Project Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/Documentation/Project%20documents%20combined%20.docx)
+[Sprint 1 Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/sprint_report_1.md)
+[Sprint 1 Video](https://www.youtube.com/watch?v=g8PSH7x_Ehk)
+
 
 ## License
-
-If you haven't already, add a file called `LICENSE.txt` with the text of the appropriate license.
-We recommend using the MIT license: <https://choosealicense.com/licenses/mit/>
+MIT License. See `LICENSE.txt`
