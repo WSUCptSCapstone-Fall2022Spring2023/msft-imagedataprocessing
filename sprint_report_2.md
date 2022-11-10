@@ -45,16 +45,17 @@ Please review the following code files, which were actively developed during thi
  
 ## Retrospective Summary
 Here's what went well:
-  * Item 1
-  * Item 2
-  * Item x
+  * Quickly transitioning when problems arose
+  * Client communication
+  * Database setup
+  * Device setup and remote access
  
 Here's what we'd like to improve:
-   * Item 1
-   * Item 2
-   * Item x
+   * Team availability
+   * Code workflow
+   * Team communication
   
 Here are changes we plan to implement in the next sprint:
-   * Item 1
-   * Item 2
-   * Item x
+   * Shift meetings to be more implementation based allowing for us to work together better when writing code
+   * Planning each week of each sprint instead of solely sprint to improve speed of project
+   * Defined expectations for each team member
