@@ -1,0 +1,15 @@
+#Turn on Raspberry Pi at 7:30, off at 8:00
+#Turn on at 10:30, off at 11:00
+#Turn on at 13:30, off at 14:00
+#Turn on at 16:30, off at 17:00
+
+BEGIN	2022-11-06 07:30:00	#Starts at 07:30
+END	2025-11-30 23:59:59
+ON	M30
+OFF	H2 M30			#Off until 10:30
+ON	M30
+OFF	H2 M30			#Off until 13:30
+ON	M30
+OFF	H2 M30			#Off until 16:30
+ON	M30
+OFF	H14 M30			#Off until 7:30
