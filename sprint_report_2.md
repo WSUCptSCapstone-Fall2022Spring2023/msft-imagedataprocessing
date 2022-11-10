@@ -1,15 +1,13 @@
 # Sprint x Report (8/26/21 - 9/24/2021)
 
 ## What's New (User Facing)
- * Feature 1 or Bug Fix 1
- * Feature 2 or Bug Fix 2
- * Feature n or Bug Fix n
+ * Nothing is new on the user facing side of things
 
 ## Work Summary (Developer Facing)
-Provide a one paragraph synposis of what your team accomplished this sprint. Don't repeat the "What's New" list of features. Instead, help the instructor understand how you went about the work described there, any barriers you overcame, and any significant learnings for your team.
+This spring we were able to navigate through a plethora of problems with creating software on our target software (Raspibian). We have successfully moved from using directory to store our output to using a simple uploader that propogates all images to our MongoDB cluster. Configuration of camera capturing is still in progress but has been worked on. One of the main issues we ran into with compiling software ontop of Raspibian was that its a unique target and not all softwares support compiling ontop of it. Initially the plan for the Mongo Uploader was to have it written in C++ which requires the compilation of MongoC and MongoCxx drivers. However this was not possible as once we got the very last stage of linking MongoC to our device we got a device not supported error. Possibly we could do some sort of lying to the compiler to get this to work but instead we switched from using the MongoC/Cxx drivers to using the Mongo Java Drivers. 
 
 ## Unfinished Work
-If applicable, explain the work you did not finish in this sprint. For issues/user stories in the current sprint that have not been closed, (a) any progress toward completion of the issues has been clearly tracked (by checking the checkboxes of  acceptance criteria), (b) a comment has been added to the issue to explain why the issue could not be completed (e.g., "we ran out of time" or "we did not anticipate it would be so much work"), and (c) the issue is added to a subsequent sprint, so that it can be addressed later.
+Our team was not able to complete camera capture and camera scheduling this sprint as our team had significant outside responsibilities which led to a lack of time to complete these features. Instead both of these features have been researched extensively and will be easily completed at the start of Sprint 3.
 
 ## Completed Issues/User Stories
 Here are links to the issues that we completed in this sprint:
