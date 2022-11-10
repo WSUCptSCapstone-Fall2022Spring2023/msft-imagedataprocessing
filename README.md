@@ -17,29 +17,16 @@ Originating from Pullman WA, Washington State University Phenomics Lab developed
 - gcc
 - python
 - pip
-- picam-native
 - openssl
-- pymongo
+- java
 - wittypi
 
 ### Add-ons
-
-- picam-native allows for us to take pictures through our raspberrypi
-- pymongo allows for us to connect to our mongo cluster
 - wittypi allows for use to run our camera at specific times from a configuration file
 
 ### Installation Steps
 
-- Clone this repository
-- Enter into the `New Code` directory
-
-Run the following commands.
-- `mkdir build`
-- `cd build`
-- `cmake ..`
-- `make`
-- `./executable`
-
+`Currently this project is not buildable.`
 
 ## Functionality
 
@@ -48,8 +35,7 @@ Run the following commands.
 
 ## Known Problems
 
-- Currently only the RGB camera is taking pictures
-- Mongo C/C++ Drivers cannot compile on raspbian
+- Project is incomplete.
 
 ## Contributing
 
@@ -62,6 +48,7 @@ Run the following commands.
 ## Additional Documentation
 
 [Project Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/Documentation/Project%20documents%20combined%20.docx)
+[Sprint 2 Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/sprint_report_2.md)
 [Sprint 1 Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/sprint_report_1.md)
 [Sprint 1 Video](https://www.youtube.com/watch?v=g8PSH7x_Ehk)
 
