@@ -38,7 +38,7 @@ Jordan Muehlbauer
 2. Subsystem Decomposition \
    2.1 Subsystem Name**
 7. **System Evolution								13**
-8. **Glossary										13-14**
+8. **Glossary									13-14**
 9. **References									15-16**
 
 
@@ -415,7 +415,15 @@ Description: The data will be organized in a way that the user can easily interp
 Software evolution is important when developing efficient systems. Currently, AGIcam is built on top of Python. Studies have shown that because python is an interpreted language it draws upon a ton of energy compared to low-level compiled languages<sup>[9]</sup>. This is something to take into account because if we were to switch our current system to a language like C or C++ we would see a significant power reduction. As for our hardware currently, we are building AGIcam with a RaspberryPI which is a microprocessor. Another option we could look into for reducing our energy footprint would be to switch to a microcontroller that uses less energy but does not contain intensive computational abilities. The hardware change would be substantial and would require lots of research for guaranteeing that our sensors would work with this new board. Our software changes though would provide a much larger and easily implementable change to our solution. Currently, an issue our clients are having with this project is ensuring that the signal can reach remote regions of their farms. Solutions for this issue can range anywhere from using old TV whitespace to implementing a relay-based local network. This is something that we will have to consider going forward as we bring down energy costs because even if we are able to bring costs down we will still need to be able to extract our data for the client.
 
 
-# **VIII.**        **Glossary**
+PROTOTYPE DESCRIPTION:
+In sprint two, we tried multiple libraries to make the camera raspberry pi, but we were not successful with the way it was working. We came up with a way for the raspberry pi to take a picture by using the terminal. 
+We want the system to capture multiple images at once and after capturing the images 
+we made sure that they are saved with a specific name, the name of the image consists of the day, month, year, and picture number.
+We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
+
+
+
+# **VIII.** **Glossary**
 
 **E**
 
