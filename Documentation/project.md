@@ -3,7 +3,7 @@
 Agricultural IOT camera system
 
 
-![alt_text](images/image1.png "image_tooltip")
+![alt_text](Images/microsoft-logo.png "Microsoft Logo")
 
 
 
@@ -287,6 +287,8 @@ data collection and user interface allowing for a more modular software design. 
 use a LTE connection for our sensors, the modular design will allow for a change in connection type without having to change data collection.
 
 The following is a very simplified view of the system architecture:
+	
+![alt_text](Images/camera-user-diagram.jpg "Camera to user diagram")
 
 
 ##  VI.2. Subsystem Decomposition
@@ -297,7 +299,7 @@ interface. The rationale of this is to decrease the amount of time the user has 
 evaluating data. All data collection should be completed automatically by the sensor once placed in the field. 
 All evaluation of the data should be done on the user interface which can be accessed from the desktop app
 
-![alt_text](images/image3.jpg "image_tooltip")
+![alt_text](Images/component-diagram.jpg "Subsystem decomposition")
 
 ### VI.1.1. Sensor Module
 
@@ -413,6 +415,23 @@ Description: The data will be organized in a way that the user can easily interp
 # VII. System Evolution
 
 Software evolution is important when developing efficient systems. Currently, AGIcam is built on top of Python. Studies have shown that because python is an interpreted language it draws upon a ton of energy compared to low-level compiled languages<sup>[9]</sup>. This is something to take into account because if we were to switch our current system to a language like C or C++ we would see a significant power reduction. As for our hardware currently, we are building AGIcam with a RaspberryPI which is a microprocessor. Another option we could look into for reducing our energy footprint would be to switch to a microcontroller that uses less energy but does not contain intensive computational abilities. The hardware change would be substantial and would require lots of research for guaranteeing that our sensors would work with this new board. Our software changes though would provide a much larger and easily implementable change to our solution. Currently, an issue our clients are having with this project is ensuring that the signal can reach remote regions of their farms. Solutions for this issue can range anywhere from using old TV whitespace to implementing a relay-based local network. This is something that we will have to consider going forward as we bring down energy costs because even if we are able to bring costs down we will still need to be able to extract our data for the client.
+	
+# **IV.** **Alpha Prototype Demonstration**
+
+During the demostration Jordan demostrated what we have completed so far on the project. We explained the issues we had during Sprint 1, how we fixed them by switching libraries, and how this took up some time so we haven't gotten quite as far as we planned originally. The demo included showing the source code for AGICamCapture and AGICamUpload subsystems, running each subsystem, and showing the images stored in the Mongo database. They did not have any questions and seemed happy with what we had so far.
+
+What was mainly discused was features they want to make sure are implemented by next semester. The features are as follows: image compression, remote configuration of the sensor, adding a weather sensor, calculating the vegitation index, fix up the current UI they have, and automated crop segmetation. We said that this semester we will add calculating the vegitation index and remote configuration of the sensor and that we should be able to finish the rest of the features over break and during next semester. Overall, the demo went very well.
+
+# X. Future Work
+
+The major tasks left for us developers for the second semster of the project are as follows.
+- Create linking layer between web server and our AWS mongo database
+	- Currently we are not doing any front-end querying of our database. We will be linking the updated database system with the original
+	webserver provided to us by the client.
+- Expanding post processor to capture vegitiation index and collect more advance data on captured images.
+	- Currently our post processor will be combining the images and collecting basic plot data. Going forward we want to be able to provide crop vegitation 	information to our clients and to be able to give them advances statistics on sensor images.
+
+Our plans to complete these tasks is simple. We will focus directly first on post-processing as that is the most import aspect. Being able to collect the correct information. We will aim to complete this in the first sprint of the semster. Following this we will handle the linking to the webserver in the 2nd sprint. Leaving the final sprint for completing tests and fufilling our acceptance criteria of this project.
 
 
 # VIII. Prototype Description:
@@ -422,8 +441,8 @@ we made sure that they are saved with a specific name, the name of the image con
 We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
 
 
+# **XI.**        **Glossary**
 
-# **VIII.** **Glossary**
 
 **E**
 
@@ -488,7 +507,7 @@ processor to execute.<sup>[11]</sup>
 Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
 
 
-#  **IX.**        **References**
+#  **XII.**        **References**
 
 
 [1]	C. Costa, U. Schurr, F. Loreto, P. Menesatti, and S. Carpentier, “Plant Phenotyping Research Trends, a Science Mapping Approach,” _Front. Plant Sci._, [Online]. Available: https://www.frontiersin.org/articles/10.3389/fpls.2018.01933/full#:~:text=A%20more%20recent%20and%20comprehensive,complex%20trait%20assessment%20(Li%20et
