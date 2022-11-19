@@ -38,7 +38,7 @@ Jordan Muehlbauer
 2. Subsystem Decomposition \
    2.1 Subsystem Name**
 7. **System Evolution								13**
-8. **Glossary										13-14**
+8. **Glossary									13-14**
 9. **References									15-16**
 
 
@@ -433,7 +433,16 @@ The major tasks left for us developers for the second semster of the project are
 
 Our plans to complete these tasks is simple. We will focus directly first on post-processing as that is the most import aspect. Being able to collect the correct information. We will aim to complete this in the first sprint of the semster. Following this we will handle the linking to the webserver in the 2nd sprint. Leaving the final sprint for completing tests and fufilling our acceptance criteria of this project.
 
+
+# VIII. Prototype Description:
+In sprint two, we tried multiple libraries to make the camera raspberry pi, but we were not successful with the way it was working. We came up with a way for the raspberry pi to take a picture by using the terminal. 
+We want the system to capture multiple images at once and after capturing the images 
+we made sure that they are saved with a specific name, the name of the image consists of the day, month, year, and picture number.
+We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
+
+
 # **XI.**        **Glossary**
+
 
 **E**
 
