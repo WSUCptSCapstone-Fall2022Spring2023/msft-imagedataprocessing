@@ -3,7 +3,7 @@
 Agricultural IOT camera system
 
 
-![alt_text](images/image1.png "image_tooltip")
+![alt_text](Images/microsoft-logo.png "Microsoft Logo")
 
 
 
@@ -287,6 +287,8 @@ data collection and user interface allowing for a more modular software design. 
 use a LTE connection for our sensors, the modular design will allow for a change in connection type without having to change data collection.
 
 The following is a very simplified view of the system architecture:
+	
+![alt_text](Images/camera-user-diagram.jpg "Camera to user diagram")
 
 
 ##  VI.2. Subsystem Decomposition
@@ -297,7 +299,7 @@ interface. The rationale of this is to decrease the amount of time the user has 
 evaluating data. All data collection should be completed automatically by the sensor once placed in the field. 
 All evaluation of the data should be done on the user interface which can be accessed from the desktop app
 
-![alt_text](images/image3.jpg "image_tooltip")
+![alt_text](Images/component-diagram.jpg "Subsystem decomposition")
 
 ### VI.1.1. Sensor Module
 
@@ -420,7 +422,18 @@ During the demostration Jordan demostrated what we have completed so far on the 
 
 What was mainly discused was features they want to make sure are implemented by next semester. The features are as follows: image compression, remote configuration of the sensor, adding a weather sensor, calculating the vegitation index, fix up the current UI they have, and automated crop segmetation. We said that this semester we will add calculating the vegitation index and remote configuration of the sensor and that we should be able to finish the rest of the features over break and during next semester. Overall, the demo went very well.
 
-# **VIII.**        **Glossary**
+# X. Future Work
+
+The major tasks left for us developers for the second semster of the project are as follows.
+- Create linking layer between web server and our AWS mongo database
+	- Currently we are not doing any front-end querying of our database. We will be linking the updated database system with the original
+	webserver provided to us by the client.
+- Expanding post processor to capture vegitiation index and collect more advance data on captured images.
+	- Currently our post processor will be combining the images and collecting basic plot data. Going forward we want to be able to provide crop vegitation 	information to our clients and to be able to give them advances statistics on sensor images.
+
+Our plans to complete these tasks is simple. We will focus directly first on post-processing as that is the most import aspect. Being able to collect the correct information. We will aim to complete this in the first sprint of the semster. Following this we will handle the linking to the webserver in the 2nd sprint. Leaving the final sprint for completing tests and fufilling our acceptance criteria of this project.
+
+# **XI.**        **Glossary**
 
 **E**
 
@@ -485,7 +498,7 @@ processor to execute.<sup>[11]</sup>
 Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
 
 
-#  **IX.**        **References**
+#  **XII.**        **References**
 
 
 [1]	C. Costa, U. Schurr, F. Loreto, P. Menesatti, and S. Carpentier, “Plant Phenotyping Research Trends, a Science Mapping Approach,” _Front. Plant Sci._, [Online]. Available: https://www.frontiersin.org/articles/10.3389/fpls.2018.01933/full#:~:text=A%20more%20recent%20and%20comprehensive,complex%20trait%20assessment%20(Li%20et
