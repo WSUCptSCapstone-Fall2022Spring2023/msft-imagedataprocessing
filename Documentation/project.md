@@ -414,8 +414,18 @@ Description: The data will be organized in a way that the user can easily interp
 
 Software evolution is important when developing efficient systems. Currently, AGIcam is built on top of Python. Studies have shown that because python is an interpreted language it draws upon a ton of energy compared to low-level compiled languages<sup>[9]</sup>. This is something to take into account because if we were to switch our current system to a language like C or C++ we would see a significant power reduction. As for our hardware currently, we are building AGIcam with a RaspberryPI which is a microprocessor. Another option we could look into for reducing our energy footprint would be to switch to a microcontroller that uses less energy but does not contain intensive computational abilities. The hardware change would be substantial and would require lots of research for guaranteeing that our sensors would work with this new board. Our software changes though would provide a much larger and easily implementable change to our solution. Currently, an issue our clients are having with this project is ensuring that the signal can reach remote regions of their farms. Solutions for this issue can range anywhere from using old TV whitespace to implementing a relay-based local network. This is something that we will have to consider going forward as we bring down energy costs because even if we are able to bring costs down we will still need to be able to extract our data for the client.
 
+# VIII. Future Work
 
-# **VIII.**        **Glossary**
+The major tasks left for us developers for the second semster of the project are as follows.
+- Create linking layer between web server and our AWS mongo database
+	- Currently we are not doing any front-end querying of our database. We will be linking the updated database system with the original
+	webserver provided to us by the client.
+- Expanding post processor to capture vegitiation index and collect more advance data on captured images.
+	- Currently our post processor will be combining the images and collecting basic plot data. Going forward we want to be able to provide crop vegitation 	information to our clients and to be able to give them advances statistics on sensor images.
+
+Our plans to complete these tasks is simple. We will focus directly first on post-processing as that is the most import aspect. Being able to collect the correct information. We will aim to complete this in the first sprint of the semster. Following this we will handle the linking to the webserver in the 2nd sprint. Leaving the final sprint for completing tests and fufilling our acceptance criteria of this project.
+
+# **IX.**        **Glossary**
 
 **E**
 
@@ -480,7 +490,7 @@ processor to execute.<sup>[11]</sup>
 Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
 
 
-#  **IX.**        **References**
+#  **X.**        **References**
 
 
 [1]	C. Costa, U. Schurr, F. Loreto, P. Menesatti, and S. Carpentier, “Plant Phenotyping Research Trends, a Science Mapping Approach,” _Front. Plant Sci._, [Online]. Available: https://www.frontiersin.org/articles/10.3389/fpls.2018.01933/full#:~:text=A%20more%20recent%20and%20comprehensive,complex%20trait%20assessment%20(Li%20et
