@@ -3,7 +3,7 @@
 Agricultural IOT camera system
 
 
-![alt_text](images/image1.png "image_tooltip")
+![alt_text](Images/microsoft-logo.png "Microsoft Logo")
 
 
 
@@ -287,6 +287,8 @@ data collection and user interface allowing for a more modular software design. 
 use a LTE connection for our sensors, the modular design will allow for a change in connection type without having to change data collection.
 
 The following is a very simplified view of the system architecture:
+	
+![alt_text](Images/camera-user-diagram.jpg "Camera to user diagram")
 
 
 ##  VI.2. Subsystem Decomposition
@@ -297,7 +299,7 @@ interface. The rationale of this is to decrease the amount of time the user has 
 evaluating data. All data collection should be completed automatically by the sensor once placed in the field. 
 All evaluation of the data should be done on the user interface which can be accessed from the desktop app
 
-![alt_text](images/image3.jpg "image_tooltip")
+![alt_text](Images/component-diagram.jpg "Subsystem decomposition")
 
 ### VI.1.1. Sensor Module
 
