@@ -29,6 +29,12 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) {
         // First argument is going to be the location of uploaded images as an absolute path
+        if(args.length < 4)
+        {
+            System.out.println("Invalid Arguments for AGICamUpload. Please provide [images folder] [connection string] [username] [password]");
+            return;
+        }
+
         String location = args[0];
 
         // Validate that the location is real
@@ -37,8 +43,15 @@ public class Main {
             throw new UnsupportedOperationException("We cannot upload data that is not stored");
         }
 
+        // Get the connection string passed in
+        String argConnection = args[1];
+
+        // Replace the username and password
+        argConnection = argConnection.replace("<username>", args[2]);
+        argConnection = argConnection.replace("<password>", args[3]);
+
         // Connect to MongoDatabase
-        ConnectionString connectionString = new ConnectionString("mongodb+srv://agicam:QCZgJ97ledg5cXbf@agicam-store.dsxer1a.mongodb.net/?retryWrites=true&w=majority");
+        ConnectionString connectionString = new ConnectionString(argConnection);
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .serverApi(ServerApi.builder()

@@ -5,10 +5,10 @@
 # If you want to run your commands after boot, you can place them here.
 #
 
-NOW=$(date)
+NOW=`date +"%D %T"`
 
 FILE=/home/pi/Desktop/msft-imagedataprocessing/WittyPi/WittyPi_log.txt
 
 
 
-printf "System powered on at %s\n" "$now" >> "$FILE"
+printf "System powered on at %s\n" "$NOW" >> "$FILE"

@@ -1,0 +1,6 @@
+#Turn off at 3:00AM, Turn on at 4:00AM
+
+BEGIN	2022-11-30 04:00:00
+END	2025-11-30 03:00:00
+ON	H23			#On until 3AM
+OFF	H1			#Off until 4AM
