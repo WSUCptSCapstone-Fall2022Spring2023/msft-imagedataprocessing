@@ -10,10 +10,14 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import static com.mongodb.client.model.Filters.eq;
 
 public class ConfigureRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // First argument should be the location of file to write configuration too.
         // Second argument should be camera #
         // Third argument should be connection string
@@ -67,8 +71,8 @@ public class ConfigureRunner {
         return doc;
     }
 
-    private static void updateConfig(String configLocation, Document doc)
-    {
-        // TODO: Implement updating WPI file.
+    private static void updateConfig(String configLocation, Document doc) throws IOException {
+        File localConfig = new File(configLocation); // find the local file
+        FileWriter writer = new FileWriter(localConfig);
     }
 }
