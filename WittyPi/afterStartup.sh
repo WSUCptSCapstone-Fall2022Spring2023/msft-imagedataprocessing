@@ -9,6 +9,13 @@ NOW=`date +"%D %T"`
 
 FILE=/home/pi/Desktop/msft-imagedataprocessing/WittyPi/WittyPi_log.txt
 
-
-
 printf "System powered on at %s\n" "$NOW" >> "$FILE"
+
+#Capture picture
+/home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 1 5 &
+
+#Wait until pictures are taken
+wait
+
+#Upload to database
+java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamUpload/build/libs/AGICamUpload-1.0-SNAPSHOT.jar /home/pi/AGICamImages 'mongodb+srv://<username>:<password>@agicam-store.dsxer1a.mongodb.net/?retryWrites=true&w=majority' agicam QCZgJ97ledg5cXbf
