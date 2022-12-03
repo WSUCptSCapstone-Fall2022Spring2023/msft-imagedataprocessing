@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 import static com.mongodb.client.model.Filters.eq;
 
 public class ConfigureRunner {
@@ -74,5 +75,18 @@ public class ConfigureRunner {
     private static void updateConfig(String configLocation, Document doc) throws IOException {
         File localConfig = new File(configLocation); // find the local file
         FileWriter writer = new FileWriter(localConfig);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date date = new Date();
+
+        String B = "BEGIN";
+        String E = "END";
+        String Date = formatter.format(date);
+
+        writer.write(B + " " + Date + System.lineSeparator());
+        writer.write(E + " " + Date + System.lineSeparator());
+
+        writer.close();
+
+
     }
 }
