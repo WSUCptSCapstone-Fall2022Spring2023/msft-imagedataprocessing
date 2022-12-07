@@ -84,9 +84,13 @@ data to a central control hub. This hub then stores the data and allows the farm
 The idea behind this is to save farm resources by minimizing time spent by the farmer in the field.
 
 # II. Team Members - Bios and Project Roles
+- Zachary Hall: 
 
 # III. Project Description and Clarification
 ## 1. Introduction
+
+Originating from Pullman WA, Washington State University Phenomics lab developed an Auridino based IOT camera system known as AGIcam. This camera is tasked with monitoring the crop conditions in remote fields. AgroDevs is a team of 3 WSU computer science students tasked with evaluating and improving data transfer and compression as well as evaluating edge computing and minimal power consumption solutions. Improving these aspects will allow for AGIcam to provide a better user experience and reduce overhead for farms using the sensor. Our team is working directly with Dr. Sankaran to meet these goals and advance the prosperity
+of AGIcam.
 
 ## 2. Background and Related Work
 
@@ -150,9 +154,7 @@ part of the project is optimized, we will have the option of improving image pro
 The data transfer process will eventually be updated from physically transferring SD cards to a network-based system. 
 Edge computing would then allow for improved data transfer efficiency. This could involve having the sensor nodes 
 take care of the image processing step, or having the sensor nodes transfer their data to an intermediate node that 
-takes care of image processing and combining data into a CSV file which is transferred to the centralized hub. 
-
-Outside of edge computing other efficient data transfer algorithms will be explored once current hardware is better understood.
+takes care of image processing and combining data into a CSV file which is transferred to the centralized hub. Outside of edge computing other efficient data transfer algorithms will be explored once current hardware is better understood.
 
 Once the data transfer process is optimized and finalized we will have the option of exploring image processing using machine learning. While what we will be able to contribute in the given time scale will be limited, we hope to leave the client with at least a minimal machine-learning model that can be used as a skeleton for future image-processing work.
 
@@ -177,6 +179,22 @@ Sindhuja is being tested with AGIcam, and our improvements will affect the yield
 # IV. Project Requirements and Specifications
 
 ## 1. Introduction
+
+This project intends to allow farmers to remotely monitor their crops. It will achieve this
+by allowing the farmer to record data at user-specified intervals from sensors scattered
+throughout their farm. The data will then be sent by the sensors to a central control hub. This
+hub then stores the data and allows the farmer to access the data. The idea behind this is to
+save farm resources by minimizing time spent by the farmer in the field.
+
+This document is split into two sections: system requirements specification and system
+evolution. System requirements specification section describes what is required of the system
+based on the stakeholders use cases. This section is further broken down into the subsections
+use cases (representing stakeholders’ use cases), functional requirements (what is required of
+the system to implement the use cases), and non-functional requirements
+(constraints/requirements on the design of the system beyond functionality). The following
+section is system evolution that describes how the system will evolve throughout development.
+The final sections are the glossary and references which should be self explanatory.
+
 
 ## 2. System Requirements Specification
 
@@ -209,66 +227,65 @@ Below lists the functional requirements for each of the system's parts.  These p
 #### 2.2.1 Sensor's Processor
 
 1. **Take RBG and NoIR pictures**
-    1. The processor should be able to take pictures from both cameras, at the same time, at user-specified intervals
-    2. Maps to the user being able to collect data
-    3. Priority Level: 0
+    i. The processor should be able to take pictures from both cameras, at the same time, at user-specified intervals
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 0
 2. **Combine data from different cameras and sensors**
-    1. The processor should be able to combine the RBG and NoIR images that were taken at the same time, associate the image with a timestamp, and combine other data taken at the sensor at the same time. This could include weather data.
-    2. Maps to the user being able to collect data
-    3. Priority Level: 0
+    i. The processor should be able to combine the RBG and NoIR images that were taken at the same time, associate the image with a timestamp, and combine other data taken at the sensor at the same time. This could include weather data.
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 0
 3. **Compress the data**
-    1. The processor should be able to compress the combined data for it to be sent to the central hub
-    2. Maps to the user being able to collect data
-    3. Priority Level: 1
+    i. The processor should be able to compress the combined data for it to be sent to the central hub
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 1
 4. **Send the data to the central hub**
-    1. The processor should be able to send the compressed data to the central hub
-    2. Maps to the user being able to collect data
-    3. Priority Level: 0
+    i. The processor should be able to send the compressed data to the central hub
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 0
 
 
 #### 2.2.2. Central hub/User Interface
 
 1. **Allow users to request data**
-    1. The system should allow users to request data from the database
-    2. Maps to the user being able to see data
-    3. Priority Level: 0
+    i. The system should allow users to request data from the database
+    ii. Maps to the user being able to see data
+    iii. Priority Level: 0
 2. **Display the requested data in a way that is organized and easy to interpret**
-    1. The system should display the data in a way that is easy to understand. It should group data by sensor number and timestamp.
-    2. Maps to the user being able to see data
-    3. Priority Level: 0
+    i. The system should display the data in a way that is easy to understand. It should group data by sensor number and timestamp.
+    ii. Maps to the user being able to see data
+    iii. Priority Level: 0
 3. **Receive data**
-    1. The system should be able to receive data from multiple nodes
-    2. Maps to the user being able to collect data
-    3. Priority Level: 0 \
-
+    i. The system should be able to receive data from multiple nodes
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 0
 4. **Decompress data**
-    1. The system should be able to decompress received data
-    2. Maps to the user being able to collect data
-    3. Priority Level: 1
+    i. The system should be able to decompress received data
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 1
 5. **Store data in the database**
-    1. The system should be able to store collected data in a database
-    2. Maps to the user being able to collect data
-    3. Priority Level: 0
+    i. The system should be able to store collected data in a database
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 0
 6. **Retrieve requested data**
-    1. The system should be able to retrieve data from the database
-    2. Maps to the user being able to see data
-    3. Priority Level: 0
+    i. The system should be able to retrieve data from the database
+    ii. Maps to the user being able to see data
+    iii. Priority Level: 0
 7. **Set sensor time intervals**
-    1. The system should allow the user to adjust the time intervals on a specified sensor, or globally across all sensors
-8. Maps to the user being able to collect data
-9. Priority Level: 2
+    i. The system should allow the user to adjust the time intervals on a specified sensor, or globally across all sensors
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 2
 
 
 #### 2.2.3. Database
 
 1. **Store data from sensors**
-    1. The database should store the data received from the central hub
-    2. Maps to the user being able to collect data
-    3. Priority Level: 0
+    i. The database should store the data received from the central hub
+    ii. Maps to the user being able to collect data
+    iii. Priority Level: 0
 2. **Make data searchable**
-    1. The database should be searchable by user-specified queries
-    2. Maps to the user being able to see data
-    3. Priority Level: 0
+    i. The database should be searchable by user-specified queries
+    ii. Maps to the user being able to see data
+    iii. Priority Level: 0
 
 
 ### 2.3. Non-Functional Requirements
@@ -312,7 +329,25 @@ Software evolution is important when developing efficient systems. Currently, AG
 # V. Project Solution Approach
 
 ## 1. Introduction  
+
+Solution design documentation is important for when engineers are creating products because it
+allows for them to have a rough set of ideas leading them through design. Future developers
+and possible investors of this project would benefit from reading this document because it will
+help them understand the realistic implementation of our device. By using this document not
+only will developers have an idea of how components interact with one another they will better
+be able to describe and document components during their implementation.
+
 ## 2. System Overview  
+
+The current design of the project that is being improved is broken down into three
+components. the sensor module, database, and user interface are the main components that
+are being improved in the system. In the sensor modules, the data is collected from all the
+sensors in the system that are being used to detect water levels and water vapor, and it is
+compressed before it is uploaded into the data analysis program. A database is used to store
+the data that is provided by the sensor module and to process that data so that it can be
+displayed in the user interface. The user interface for the data will be used to display the data
+and allow the user to edit it, analyze it and make changes to it.
+
 ## 3. Architecture Design  
 
 ### 3.1. Overview
@@ -453,20 +488,116 @@ Description: The data will be organized in a way that the user can easily interp
 	
 ## 4. Data design
 
+Our product has two inputs that are collected during a snapshot. NOIR camera data and RGB
+camera data. AGICamera’s will be installed in an environment and will work within a network to
+provide overview of the current state of their farm to end-users. This is how our documents in
+our database will be formatted. It is important to note that the compressed data will be stored in
+binary form and will need to be decompressed when used on the front-end.
+	
+AGICam Snapshot Design:
+Fields: Camera ID, Snapshot timestamp, Compressed NOIR data, Compressed RGB data
+Primary key: (Camera ID, Snapshot timestamp)
+	
+Internally on the end-user side of things they will be querying our database on ranges of
+Camera ID and latest snapshot. It will be possible for users to view specific regions of their farm
+as well as viewing the entirety of snapshots across their farm at once.
+	
+This data will be uploaded from our devices to our cloud SQL server where it can be queried by
+the end user through our interface. Currently our end-clients have their own interface to use this
+data with but in the case where we supply an end-user interface we will determine what local
+data structures will be needed to visually process this data.
+
+
 ## 5. User Interface Design
 	
 # VI. Testing and Acceptance Plan  
 ## 1. Introduction  
 ## 2. Testing Strategy  
+
+We will perform testing on each component of the sensor module and the module as a whole. Overall, our testing strategy is to use black box unit testing for individual functions/classes, continuous development integration testing, and system testing further broken down into functional, performance, and acceptance testing. Each of these types of testing will have their own strategies as follows:
+
+Unit: When a team member is assigned a function or class to work on, they will start by making unit tests using CppUTest. They will make tests cases for normal input, null input, and edge input. If a test is failed, the team member will resolve the problem before pushing their code to the repo. This will ensure that the individual functions and classes in the repo function correctly. Upon a successful test they will push their code to the repo. The unit tests will be pushed to the repo as well to be used as regression tests later in development.
+
+Integration: Integration testing will be preformed at minimum each time a feature is finished. To do this, we will use continuous integration testing. Each time a team member finishes and unit tests a feature it will be pulled into the main branch. When this is competed, they will perform integration testing to assure the added component works. If a component doesn’t work, they will fix the issue.
+
+System Testing: Systems testing will be preformed once we are approaching release and completion of the product. A very important part of this will be running the code on the sensor’s environment. There will be three categories of tests: functional, performance, and user acceptance. 
+-	Functional: This testing will involve making sure large components of the system are working correctly and integrate well with each other. For example, testing if a picture taken from a sensor is being properly stored in the database. They will involve making sure data is being collected, stored, and display in the right way. 
+-	Performance: Most of this testing will involve testing how the system behaves when power is lost and when connection is lost. This will most likely require field visits, however, we can probably achieve a lot of the testing by unplugging hardware components.
+-	User acceptance: This testing will be done by presenting prototypes to the client. Anytime we implement a major set of features and functionality we will show them what we have done and ask for feedback.
+
 ## 3. Test Plans  
+	
+To ensure that every aspect of our code works flawlessly, we use six distinct methods of testing. Unit, integration, system, functional, performance, and user acceptability testing are the six categories.
+Unit: The primary goal of unit testing is to test flaws and unexpected behavior in the program. 
+Integration: a kind of testing where software elements are conceptually integrated and tested together. This level of testing's objective is to find issues with how various software components interact when they are combined.
+System: this is the testing phase that certifies the finished, fully integrated software product. A system test's objective is to evaluate the complete system requirements.
+Functional: The goal of functional tests is to evaluate each software application function by providing the right input and comparing the results to the functional requirements
+Performance: Performance testing's objectives involve assessing the output of the application, its processing speed, data transfer rate, network bandwidth usage, the number of concurrent users at their maximum, memory usage, workload efficiency, and command reaction times.
+User Acceptance: this type of testing is done by the end-user or customer to confirm that the software system is satisfactory before the software program is moved to the production environment.
+
 ### 3.1. Unit Testing  
+	
+To test different units in the code, we have decided to use CppUTest, a xUnit test framework for C/C++ that allows you to try and test-drive your programs. We chose to use CppUTest since this framework is strong, feature-rich, and actively developed, making it perfect for our project. It also has a C integration layer, which makes it straightforward to utilize with our platform C++ code. The key design ideas of CppUTest are simple design and usage, portable across both old and new systems, and built for test-driven developers with test-driven development.
+	
 ### 3.2. Integration Testing  
+
+We will be using continuous integration testing. Each time a pull to main is made the team member making the pull will test to make sure that code is functioning properly and that the main branch is as clean as possible. What will be very important about these tests is that they will be done on the sensor module itself. This way we can assure the code will function when running on the sensor module.
+	
+On top of this, the sensor module will have to major integration tests. The first will be testing the data collection is being done properly and the second being testing the data manipulation is done properly. This will help ensure that the sensor is functioning properly. 
+	
 ### 3.3. System Testing  
+	
+System Testing for AGIcam will consist of functional, performance, and user acceptance testing. These three forms of tests will ensure that our product is working performantly and fulfilling the goals of our client. System testing is an end of project objective and will be completed upon the approach of a release for AGIcam.
+	
 #### 3.3.1. Functional Testing  
+	
+These will be the sequence of tests for our AGIcam and cloud database interaction
+1. Validate that images are capturable through AGIcam.
+
+2. Validate images are able to be combined from their two different modes RGB and NoIR and compressed for processing to our cloud storage
+
+3. Validate loseless uploading sequence to our cloud datastore
+
+4. Test configurability through updates queued in cloud database being retrieved by AGIcam devices.
+
+These will be the sequence of tests for our front-end application and cloud database interaction
+1. Test the requestability of images and data from database through user application.
+
+2. Valiate that data recieved from the database is decompressible through user application so it can be displayed in full form.
+
+3. Validate storing a configuration update from user application into database which will update our sensors configurations upon next communication.
+
+4. Validate data recieved from database in a with a required format is returned accurately.
+
+We will first conduct our AGIcam and cloud database interaction tests to ensure the back-end of our application is working. We will do this by creating live enviornments and going through our functional tests for this section validating that each works as anticipated. These tests will be done after our unit and integration tests are complete.
+
+Following this we will conduct our front-end application and cloud database interaction tests to ensure that what the user interacts with is functional. We will create a live enviornment and ensure that our tests pass.
+	
 #### 3.3.2. Performance Testing  
+	
+AGIcam will be performance tested by testing that our system is reliable and easily used. We will test the following components during these tests.
+
+1. Data-perservance through power-off. This will make sure that even if our device runs out of power that it will have its data once it regains power
+
+2. Loseless uploading tests. This test will make sure that even if we lose connection during an upload period images will be uploaded upon the next attempted upload even if they are not from that capture session
+
+3. Effective user informing upon downtime. This test will ensure that through our user application the user will be aware of issues with the sensor such as un-uploaded captures from a camera so the user will be able to understand what is happening in the field.
+
+These tests will be completed in this order and will be done before the release of AGIcam. These should be completed after functional testing.
+
+	
 #### 3.3.3. User Acceptance Testing  
+	
+For our user-acceptance testing we will go to our clients Dr. Sindhuja and Andrew Nelson to showcase AGIcam's newest updates and performance. We will attempt to do this around 1-2 months before the deadline for this project. This will allow for us to complete any changes that they will want to our product. To start this meeting we will go over our initial requirements document and then give a live-demo of our product and how they can use it. This live demo will be the main form of our user-acceptance testing and we will showcase the completion and fufillment of all functional and performance tests. Which will show the end-user the completion of the functional and non-functional requirements outlined in the document we preseneted to them. From there we will answer any questions and give them both time to test and explore how the product fills their own needs and return to us with any complaints or updates.
+	
 ## 4. Environment Requirements  
 
+Specify both the necessary and desired properties of the test environment. The specification should contain the physical characteristics of the facilities, including the hardware, communications and system software, the mode of usage (for example, stand-alone), and any other software or supplies needed to support the test. Identify special test tools needed. 
+	
+Ideally, we would be able to test code on the sensor module down to the scale of unit tests, however, we only have one sensor and we can’t all use it at the same time. To solve this, we will only be doing integration testing on the sensor. Unit testing will be done individually by team members on their own machines.
+
+When a team member pulls into the main branch, they will also pull main into the sensor’s test branch. This branch will then be pulled into the sensor. There, they will preform the required integration testing. They will document the tests done and results of the test in a test report. If there are issues, they will try to resolve them. The code and results will then be pushed back into the test branch which will merged back to main. This will ensure that code within main remains functional on the sensor.
+	
 # VII. Alpha Prototype
 ## 1. Introduction  
 	
