@@ -167,7 +167,7 @@ optimization the code in.
 
 ## V.1.  	Use Cases 
 
-![alt_text]([images/image2.jpg](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/feature/doc-images/Documentation/Images/usecase.png) "image_tooltip")
+![alt_text](Images/usecase.png "image_tooltip")
 
 ## V.2. Functional Requirements
 
