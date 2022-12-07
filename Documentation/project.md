@@ -25,11 +25,51 @@ Jordan Muehlbauer
 
 
 
-1. **Introduction**									<div style="text-align: right">3<div/>
-2. **Background and Related Work						<div style="text-align: right">3-4<div/>
-3. **Project Overview								4-5**
-4. **Client and Stakeholder Identification and Preferences		5**
-5. **System Requirements							5-9 \
+1. **Introduction**									
+2. Team Members - Bios and Project Roles  
+3. Description and Clarification  
+	i. Introduction  
+	ii. Background and Related Work  
+	iii. Project Overview  
+	iv. Client and Stakeholder Identification and Preferences  
+4. Requirements and Specifications
+	i. Introduction  
+	ii. System Requirements Specification  
+		a. Use Cases  
+		b. Functional Requirements  
+		c. Non-Functional Rquirements  
+	iii. System Evolution  
+5. Solution Approach
+	i. Introduction  
+	ii. System Overview  
+	iii. Architecture Design  
+		a. Overview  
+		b. Subsystem Decomposition  
+		**ADD SUBSYSTEM BREAKDOWN**  
+	iv. Data design  
+	v. User Interface Design  
+6. Testing and Acceptance Plan  
+	i. Introduction  
+	ii. Testing Strategy  
+	iii. Test Plans  
+		a. Unit Testing  
+		b. Integration Testing  
+		c. System Testing  
+			1. Functional Testing  
+			2. Performance Testing  
+			3. User Acceptance Testing  
+	iv. Environment Requirements  
+7. Alpha Prototype
+	i. Introduction  
+	ii. Alpha Prototype Description  
+		a. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
+	iii. Alpha Prototype Demonstration  
+	iv. Future Work  
+8. Glossary  
+9. References  
+10. Appendices  
+
+	5. **System Requirements							5-9 \
 1. Use cases \
 2. Functional Requirements  \
 3. Non-Functional Requirements **
