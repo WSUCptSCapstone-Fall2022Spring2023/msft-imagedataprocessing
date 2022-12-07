@@ -20,67 +20,54 @@ Jordan Muehlbauer
 
 **Table of Contents**
 
-
-
-
-
-
-1. **Introduction**									
-2. Team Members - Bios and Project Roles  
-3. Description and Clarification  
-	i. Introduction  
-	ii. Background and Related Work  
-	iii. Project Overview  
-	iv. Client and Stakeholder Identification and Preferences  
-4. Requirements and Specifications
-	i. Introduction  
-	ii. System Requirements Specification  
-		a. Use Cases  
-		b. Functional Requirements  
-		c. Non-Functional Rquirements  
-	iii. System Evolution  
-5. Solution Approach
-	i. Introduction  
-	ii. System Overview  
-	iii. Architecture Design  
-		a. Overview  
-		b. Subsystem Decomposition  
-		**ADD SUBSYSTEM BREAKDOWN**  
-	iv. Data design  
-	v. User Interface Design  
-6. Testing and Acceptance Plan  
-	i. Introduction  
-	ii. Testing Strategy  
-	iii. Test Plans  
-		a. Unit Testing  
-		b. Integration Testing  
-		c. System Testing  
-			1. Functional Testing  
-			2. Performance Testing  
-			3. User Acceptance Testing  
-	iv. Environment Requirements  
-7. Alpha Prototype
-	i. Introduction  
-	ii. Alpha Prototype Description  
-		a. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
-	iii. Alpha Prototype Demonstration  
-	iv. Future Work  
-8. Glossary  
-9. References  
-10. Appendices  
-
-	5. **System Requirements							5-9 \
-1. Use cases \
-2. Functional Requirements  \
-3. Non-Functional Requirements **
-6. **Architecture Design								9-13 \
-1. Overview  \
-2. Subsystem Decomposition \
-   2.1 Subsystem Name**
-7. **System Evolution								13**
-8. **Glossary										13-14**
-9. **References									15-16**
-
+I. **Introduction**									
+II. Team Members - Bios and Project Roles  
+III. Project Description and Clarification  
+	1. Introduction  
+	2. Background and Related Work  
+	3. Project Overview  
+	4. Client and Stakeholder Identification and Preferences  
+IV. Project Requirements and Specifications
+	1. Introduction  
+	2. System Requirements Specification  
+		2.1. Use Cases  
+		2.2. Functional Requirements  
+			2.2.1. Sensor's Processor  
+			2.2.2.  Central hub/User Interface  
+			2.2.3. Database
+		2.3. Non-Functional Rquirements  
+	3. System Evolution  
+V. Project Solution Approach
+	1. Introduction  
+	2. System Overview  
+	3. Architecture Design  
+		3.1. Overview  
+		3.2. Subsystem Decomposition  
+			3.2.1. Sensor Module  
+			3.2.2. Database  
+			3.2.3. User Interface  
+	4. Data design  
+	5. User Interface Design  
+VI. Testing and Acceptance Plan  
+	1. Introduction  
+	2. Testing Strategy  
+	3. Test Plans  
+		3.1. Unit Testing  
+		3.2. Integration Testing  
+		3.3. System Testing  
+			3.3.1. Functional Testing  
+			3.3.2. Performance Testing  
+			3.3.3. User Acceptance Testing  
+	4. Environment Requirements  
+VII. Alpha Prototype
+	1. Introduction  
+	2. Alpha Prototype Description  
+		2.1. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
+	3. Alpha Prototype Demonstration  
+	4. Future Work  
+VII. Glossary  
+IV. References  
+V. Appendices  
 
 # I. Introduction
 
@@ -96,8 +83,12 @@ record data at user-specified intervals from sensors scattered throughout their 
 data to a central control hub. This hub then stores the data and allows the farmer to access the data. 
 The idea behind this is to save farm resources by minimizing time spent by the farmer in the field.
 
+# II. Team Members - Bios and Project Roles
 
-# II. Background and Related Work
+# III. Project Description and Clarification
+## 1. Introduction
+
+## 2. Background and Related Work
 
 Plant phenotyping is the process of assessing the “growth, development, tolerance, resistance, architecture, physiology,
 ecology, yield, and the basic measurement of individual quantitative parameters” [1] of plant life. It is key in farmers’ 
@@ -147,7 +138,7 @@ a lot of the processing locally before burdening the network with unnecessary da
 The provided recourse [3] may be outdated compared to where the project currently is. The current state of data transfer 
 is unknown, but we believe it has evolved past physically transferring SD cards.
 
-# III. Project Overview
+## 3. Project Overview
 
 Currently, the client wants us to improve data transfer algorithms in order to improve the battery life of the sensor. 
 Our main goal is to decrease power consumption as much as possible. Sensor battery life is currently limited to five 
@@ -166,7 +157,7 @@ Outside of edge computing other efficient data transfer algorithms will be explo
 Once the data transfer process is optimized and finalized we will have the option of exploring image processing using machine learning. While what we will be able to contribute in the given time scale will be limited, we hope to leave the client with at least a minimal machine-learning model that can be used as a skeleton for future image-processing work.
 
 
-#  IV. Client and Stakeholder Identification and Preferences 
+##  4. Client and Stakeholder Identification and Preferences 
 
 Washington State University Phenomics lab developed an Aurdino-based IOT camera system known as AGIcam that monitors 
 crop conditions in remote fields. The main goal of  AgroDevs is to improve the functionality of the system that is 
@@ -183,10 +174,12 @@ AGIcam is a federally funded program that targets aspects like food security, cr
 The AGIcam is currently being tested on  Andrew Nelson, Nelson Farm, these farms under the supervision of Sankaran, 
 Sindhuja is being tested with AGIcam, and our improvements will affect the yield and the user interface.
 
+# IV. Project Requirements and Specifications
 
-# V. System Requirements Specification
+## 1. Introduction
 
- 	
+## 2. System Requirements Specification
+
 The client wants us to improve data transfer algorithms in order to improve the battery life of the sensor. 
 Our main goal is to decrease power consumption as much as possible. The system currently uses a Raspberry Pi 
 camera module to capture images in specified intervals for image processing, the module is working properly but it’s 
@@ -205,15 +198,15 @@ visualization tools, the current data visualization and Data/image compression/d
 which is not the best match for the system, the team has to optimization the code and decide which language to 
 optimization the code in.
 
-## V.1.  	Use Cases 
+### 2.1.  	Use Cases 
 
 ![alt_text](Images/usecase.png "image_tooltip")
 
-## V.2. Functional Requirements
+### 2.2. Functional Requirements
 
 Below lists the functional requirements for each of the system's parts.  These parts include the sensors’ processor, central hub/user interface, and database.
 
-### V.2.1. Sensors’ Processor
+#### 2.2.1 Sensor's Processor
 
 1. **Take RBG and NoIR pictures**
     1. The processor should be able to take pictures from both cameras, at the same time, at user-specified intervals
@@ -233,7 +226,7 @@ Below lists the functional requirements for each of the system's parts.  These p
     3. Priority Level: 0
 
 
-### V.2.2. Central hub/User Interface
+#### 2.2.2. Central hub/User Interface
 
 1. **Allow users to request data**
     1. The system should allow users to request data from the database
@@ -266,7 +259,7 @@ Below lists the functional requirements for each of the system's parts.  These p
 9. Priority Level: 2
 
 
-### V.2.2. Database
+#### 2.2.3. Database
 
 1. **Store data from sensors**
     1. The database should store the data received from the central hub
@@ -278,7 +271,7 @@ Below lists the functional requirements for each of the system's parts.  These p
     3. Priority Level: 0
 
 
-## **V.3.**   	**Non-Functional Requirements**
+### 2.3. Non-Functional Requirements
 
 **Economically Extensible**
 
@@ -312,10 +305,17 @@ Data should flow to our control system automatically and should not require phys
 each node for data to be collected.
 
 
-# VI. Architecture Design
+## 3. System Evolution  
 
+Software evolution is important when developing efficient systems. Currently, AGIcam is built on top of Python. Studies have shown that because python is an interpreted language it draws upon a ton of energy compared to low-level compiled languages<sup>[9]</sup>. This is something to take into account because if we were to switch our current system to a language like C or C++ we would see a significant power reduction. As for our hardware currently, we are building AGIcam with a RaspberryPI which is a microprocessor. Another option we could look into for reducing our energy footprint would be to switch to a microcontroller that uses less energy but does not contain intensive computational abilities. The hardware change would be substantial and would require lots of research for guaranteeing that our sensors would work with this new board. Our software changes though would provide a much larger and easily implementable change to our solution. Currently, an issue our clients are having with this project is ensuring that the signal can reach remote regions of their farms. Solutions for this issue can range anywhere from using old TV whitespace to implementing a relay-based local network. This is something that we will have to consider going forward as we bring down energy costs because even if we are able to bring costs down we will still need to be able to extract our data for the client.
 
-## VI.1. Overview
+# V. Project Solution Approach
+
+## 1. Introduction  
+## 2. System Overview  
+## 3. Architecture Design  
+
+### 3.1. Overview
 
 There are three main components to the system. They are the sensor module, the database, and the user interface. 
 The sensor module is responsible for capturing data, formatting the data, and sending it to the database. 
@@ -331,7 +331,7 @@ The following is a very simplified view of the system architecture:
 ![alt_text](Images/camera-user-diagram.jpg "Camera to user diagram")
 
 
-##  VI.2. Subsystem Decomposition
+###  3.2. Subsystem Decomposition
 
 The system will be broken down into three subsystems: sensor module, database, and user
 
@@ -341,7 +341,7 @@ All evaluation of the data should be done on the user interface which can be acc
 
 ![alt_text](Images/component-diagram.jpg "Subsystem decomposition")
 
-### VI.1.1. Sensor Module
+#### 3.2.1. Sensor Module
 
 The sensor module is responsible for collecting, compressing, and uploading the data into the database. 
 It controls the timing of the cameras and the collection of timestamp data. Within the subsystem, there are 
@@ -378,7 +378,7 @@ the data collection module.
 1. Ability to store data
 
 
-### **VI.1.2.**    **Database**
+#### 3.2.2. Database
 
 
 
@@ -418,7 +418,7 @@ Service provided to: User Interface
 Description: It will give the user interface access to the data. Most frequent searches will be optimized (indexed). 
 For example, day and time searches will use indexing.
 
-### VI.1.3. User Interface
+#### 3.2.3. User Interface
 
 1. **Description**
 
@@ -450,20 +450,42 @@ Description: The user will be able to view the data. There will be buttons on th
 Service provided to User
 
 Description: The data will be organized in a way that the user can easily interpret the data. This will involve having a clear, organized, and appealing user interface.
+	
+## 4. Data design
 
+## 5. User Interface Design
+	
+# VI. Testing and Acceptance Plan  
+## 1. Introduction  
+## 2. Testing Strategy  
+## 3. Test Plans  
+### 3.1. Unit Testing  
+### 3.2. Integration Testing  
+### 3.3. System Testing  
+#### 3.3.1. Functional Testing  
+#### 3.3.2. Performance Testing  
+#### 3.3.3. User Acceptance Testing  
+## 4. Environment Requirements  
 
-# VII. System Evolution
-
-Software evolution is important when developing efficient systems. Currently, AGIcam is built on top of Python. Studies have shown that because python is an interpreted language it draws upon a ton of energy compared to low-level compiled languages<sup>[9]</sup>. This is something to take into account because if we were to switch our current system to a language like C or C++ we would see a significant power reduction. As for our hardware currently, we are building AGIcam with a RaspberryPI which is a microprocessor. Another option we could look into for reducing our energy footprint would be to switch to a microcontroller that uses less energy but does not contain intensive computational abilities. The hardware change would be substantial and would require lots of research for guaranteeing that our sensors would work with this new board. Our software changes though would provide a much larger and easily implementable change to our solution. Currently, an issue our clients are having with this project is ensuring that the signal can reach remote regions of their farms. Solutions for this issue can range anywhere from using old TV whitespace to implementing a relay-based local network. This is something that we will have to consider going forward as we bring down energy costs because even if we are able to bring costs down we will still need to be able to extract our data for the client.
-
-# **IV.** **Alpha Prototype Demonstration**
-
+# VII. Alpha Prototype
+## 1. Introduction  
+	
+## 2. Alpha Prototype Description  
+	
+In sprint two, we tried multiple libraries to make the camera raspberry pi, but we were not successful with the way it was working. We came up with a way for the raspberry pi to take a picture by using the terminal. 
+We want the system to capture multiple images at once and after capturing the images 
+we made sure that they are saved with a specific name, the name of the image consists of the day, month, year, and picture number.
+We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
+	
+### 2.1. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
+### 3. Alpha Prototype Demonstration  
+	
 During the demostration Jordan demostrated what we have completed so far on the project. We explained the issues we had during Sprint 1, how we fixed them by switching libraries, and how this took up some time so we haven't gotten quite as far as we planned originally. The demo included showing the source code for AGICamCapture and AGICamUpload subsystems, running each subsystem, and showing the images stored in the Mongo database. They did not have any questions and seemed happy with what we had so far.
 
 What was mainly discused was features they want to make sure are implemented by next semester. The features are as follows: image compression, remote configuration of the sensor, adding a weather sensor, calculating the vegitation index, fix up the current UI they have, and automated crop segmetation. We said that this semester we will add calculating the vegitation index and remote configuration of the sensor and that we should be able to finish the rest of the features over break and during next semester. Overall, the demo went very well.
 
-# X. Future Work
-
+### 4. Future Work  
+	
 The major tasks left for us developers for the second semster of the project are as follows.
 - Create linking layer between web server and our AWS mongo database
 	- Currently we are not doing any front-end querying of our database. We will be linking the updated database system with the original
@@ -472,15 +494,8 @@ The major tasks left for us developers for the second semster of the project are
 	- Currently our post processor will be combining the images and collecting basic plot data. Going forward we want to be able to provide crop vegitation 	information to our clients and to be able to give them advances statistics on sensor images.
 
 Our plans to complete these tasks is simple. We will focus directly first on post-processing as that is the most import aspect. Being able to collect the correct information. We will aim to complete this in the first sprint of the semster. Following this we will handle the linking to the webserver in the 2nd sprint. Leaving the final sprint for completing tests and fufilling our acceptance criteria of this project.
-
-
-# VIII. Prototype Description:
-In sprint two, we tried multiple libraries to make the camera raspberry pi, but we were not successful with the way it was working. We came up with a way for the raspberry pi to take a picture by using the terminal. 
-We want the system to capture multiple images at once and after capturing the images 
-we made sure that they are saved with a specific name, the name of the image consists of the day, month, year, and picture number.
-We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
-
-# **IX.**        **Glossary**
+	
+# VIII. Glossary
 
 **E**
 
@@ -545,7 +560,7 @@ processor to execute.<sup>[11]</sup>
 Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
 
 
-#  **X.**        **References**
+# IV. References
 
 
 [1]	C. Costa, U. Schurr, F. Loreto, P. Menesatti, and S. Carpentier, “Plant Phenotyping Research Trends, a Science Mapping Approach,” _Front. Plant Sci._, [Online]. Available: https://www.frontiersin.org/articles/10.3389/fpls.2018.01933/full#:~:text=A%20more%20recent%20and%20comprehensive,complex%20trait%20assessment%20(Li%20et
@@ -586,3 +601,5 @@ Local network - Collection of devices connected together in one physical locatio
 
 
 <sup>[13]</sup>	“What is a lan? Local Area Network,” _Cisco_, 16-Sep-2022. [Online]. Available: https://www.cisco.com/c/en/us/products/switches/what-is-a-lan-local-area-network.html. [Accessed: 28-Sep-2022]. 
+	
+# V. Appendices 
