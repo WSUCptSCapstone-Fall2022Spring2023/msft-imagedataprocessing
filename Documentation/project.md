@@ -545,7 +545,9 @@ To test different units in the code, we have decided to use CppUTest, a xUnit te
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-
+| Capture Test | | | | | |
+| Upload Test | | | | | |
+| WittyPi Config | | | | | |
 	
 ### 3.2. Integration Testing  
 
@@ -555,6 +557,7 @@ On top of this, the sensor module will have to major integration tests. The firs
 
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Capture & Upload | | | | | |
 	
 ### 3.3. System Testing  
 	
@@ -586,6 +589,7 @@ Following this we will conduct our front-end application and cloud database inte
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| RGB and NoIR Image | | | | | |
 	
 #### 3.3.2. Performance Testing  
 	
