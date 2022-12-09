@@ -539,11 +539,18 @@ User Acceptance: this type of testing is done by the end-user or customer to con
 	
 To test different units in the code, we have decided to use CppUTest, a xUnit test framework for C/C++ that allows you to try and test-drive your programs. We chose to use CppUTest since this framework is strong, feature-rich, and actively developed, making it perfect for our project. It also has a C integration layer, which makes it straightforward to utilize with our platform C++ code. The key design ideas of CppUTest are simple design and usage, portable across both old and new systems, and built for test-driven developers with test-driven development.
 	
+| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+
+	
 ### 3.2. Integration Testing  
 
 We will be using continuous integration testing. Each time a pull to main is made the team member making the pull will test to make sure that code is functioning properly and that the main branch is as clean as possible. What will be very important about these tests is that they will be done on the sensor module itself. This way we can assure the code will function when running on the sensor module.
 	
 On top of this, the sensor module will have to major integration tests. The first will be testing the data collection is being done properly and the second being testing the data manipulation is done properly. This will help ensure that the sensor is functioning properly. 
+
+| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
 	
 ### 3.3. System Testing  
 	
@@ -573,6 +580,9 @@ We will first conduct our AGIcam and cloud database interaction tests to ensure 
 
 Following this we will conduct our front-end application and cloud database interaction tests to ensure that what the user interacts with is functional. We will create a live enviornment and ensure that our tests pass.
 	
+| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+	
 #### 3.3.2. Performance Testing  
 	
 AGIcam will be performance tested by testing that our system is reliable and easily used. We will test the following components during these tests.
@@ -589,6 +599,9 @@ These tests will be completed in this order and will be done before the release 
 #### 3.3.3. User Acceptance Testing  
 	
 For our user-acceptance testing we will go to our clients Dr. Sindhuja and Andrew Nelson to showcase AGIcam's newest updates and performance. We will attempt to do this around 1-2 months before the deadline for this project. This will allow for us to complete any changes that they will want to our product. To start this meeting we will go over our initial requirements document and then give a live-demo of our product and how they can use it. This live demo will be the main form of our user-acceptance testing and we will showcase the completion and fufillment of all functional and performance tests. Which will show the end-user the completion of the functional and non-functional requirements outlined in the document we preseneted to them. From there we will answer any questions and give them both time to test and explore how the product fills their own needs and return to us with any complaints or updates.
+	
+| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
 	
 ## 4. Environment Requirements  
 
