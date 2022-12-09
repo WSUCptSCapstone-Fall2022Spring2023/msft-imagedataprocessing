@@ -1,62 +1,56 @@
-# Sprint x Report (8/26/21 - 9/24/2021)
+# Sprint 3 Report (11/10/22 - 12/9/2022)
 
 ## What's New (User Facing)
- * Feature 1 or Bug Fix 1
- * Feature 2 or Bug Fix 2
- * Feature n or Bug Fix n
+* Nothing. No UI updates or integration started yet.
 
 ## Work Summary (Developer Facing)
-Provide a one paragraph synposis of what your team accomplished this sprint. Don't repeat the "What's New" list of features. Instead, help the instructor understand how you went about the work described there, any barriers you overcame, and any significant learnings for your team.
+Together as a team over this last sprint we pulled together the loose parts from sprint 2 and put them together into a system. We were able to get all finalize all three major components within our embedded device to work together to create a alpha prototype. The hardest thing we ran into was dealing with duplicate id's within our database and Zach took it upon himself to fix that and create a more unique naming system. Remote configuration was the main thing we worked upon this sprint and it came together really well. The entire team was able to get involved and together we created a system that works for our project.
 
 ## Unfinished Work
-If applicable, explain the work you did not finish in this sprint. For issues/user stories in the current sprint that have not been closed, (a) any progress toward completion of the issues has been clearly tracked (by checking the checkboxes of  acceptance criteria), (b) a comment has been added to the issue to explain why the issue could not be completed (e.g., "we ran out of time" or "we did not anticipate it would be so much work"), and (c) the issue is added to a subsequent sprint, so that it can be addressed later.
+
+We were unable to create our camera initialization executable or start on our post processor because we ran out of time with busy scedules while the semester winded down. Both of the issues were flagged to be pushed back to the start of semester two. However for both of these tasks we have started the planning and will be able to utilize that for the start of semester two.
 
 ## Completed Issues/User Stories
 Here are links to the issues that we completed in this sprint:
 
- * URL of issue 1
- * URL of issue 2
- * URL of issue n
-
- Reminders (Remove this section when you save the file):
-  * Each issue should be assigned to a milestone
-  * Each completed issue should be assigned to a pull request
-  * Each completed pull request should include a link to a "Before and After" video
-  * All team members who contributed to the issue should be assigned to it on GitHub
-  * Each issue should be assigned story points using a label
-  * Story points contribution of each team member should be indicated in a comment
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/59
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/58
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/57
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/51
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/49
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/48
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/45
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/44
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/43
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/39
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/35
  
  ## Incomplete Issues/User Stories
  Here are links to issues we worked on but did not complete in this sprint:
  
- * URL of issue 1 <<One sentence explanation of why issue was not completed>>
- * URL of issue 2 <<One sentence explanation of why issue was not completed>>
- * URL of issue n <<One sentence explanation of why issue was not completed>>
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/55 - We ran out of time.
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/50 - We ran out of time.
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/47 - We ran out of time.
  
- Examples of explanations (Remove this section when you save the file):
-  * "We ran into a complication we did not anticipate (explain briefly)." 
-  * "We decided that the feature did not add sufficient value for us to work on it in this sprint (explain briefly)."
-  * "We could not reproduce the bug" (explain briefly).
-  * "We did not get to this issue because..." (explain briefly)
 
 ## Code Files for Review
 Please review the following code files, which were actively developed during this sprint, for quality:
- * [Name of code file 1](https://github.com/your_repo/file_extension)
- * [Name of code file 2](https://github.com/your_repo/file_extension)
- * [Name of code file 3](https://github.com/your_repo/file_extension)
+ * [capture.cpp](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/AGICamCapture/capture.cpp)
+ * [Main.java](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/AGICamUpload/src/main/java/org/agicam/Main.java)
+ * [ConfigureRunner.java](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/AGICamConfigure/src/main/java/org/agicam/ConfigureRunner.java)
+ * 
  
 ## Retrospective Summary
 Here's what went well:
-  * Item 1
-  * Item 2
-  * Item x
+  * Team work and collaboration
+  * Efficiency of production from team members
+  * Integration of different components within project
  
 Here's what we'd like to improve:
-   * Item 1
-   * Item 2
-   * Item x
+   * Testing suite
+   * CI/CD and Repository orginzation
+   * Usability
   
 Here are changes we plan to implement in the next sprint:
-   * Item 1
-   * Item 2
-   * Item x
+   * Start working on tasks sooner so we have longer time to test
+   * Maintain a current weekly planning schedule
