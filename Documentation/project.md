@@ -86,6 +86,10 @@ The idea behind this is to save farm resources by minimizing time spent by the f
 # II. Team Members - Bios and Project Roles
 - Zachary Hall: 
 
+ - Jordan Muehlbauer is a computer science student attending Washington State University. His prior projects and experience include orchastrating large game servers, doing website development and contributing to embedded operating systems. He is well versed in system design, Java, C++ and Python. For this project he has been responsible for creating the database, creating the capture and upload executable and providing support for database interaction to other team members while working on their parts.
+
+
+
 # III. Project Description and Clarification
 ## 1. Introduction
 
