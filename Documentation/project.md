@@ -66,8 +66,8 @@ VII. Alpha Prototype
 	3. Alpha Prototype Demonstration  
 	4. Future Work  
 VII. Glossary  
-IV. References  
-V. Appendices  
+IX. References  
+X. Appendices  
 
 # I. Introduction
 
@@ -611,6 +611,7 @@ These tests will be completed in this order and will be done before the release 
 For our user-acceptance testing we will go to our clients Dr. Sindhuja and Andrew Nelson to showcase AGIcam's newest updates and performance. We will attempt to do this around 1-2 months before the deadline for this project. This will allow for us to complete any changes that they will want to our product. To start this meeting we will go over our initial requirements document and then give a live-demo of our product and how they can use it. This live demo will be the main form of our user-acceptance testing and we will showcase the completion and fufillment of all functional and performance tests. Which will show the end-user the completion of the functional and non-functional requirements outlined in the document we preseneted to them. From there we will answer any questions and give them both time to test and explore how the product fills their own needs and return to us with any complaints or updates.
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
 | Extended battery life | Were client is satified with expected result of running cpp and Java code instead of Python inorder to extend battery life. Also, if they were statified with running minimal functions on the sensor. | Them stating they were happy/satified with the theoretical result. | They stated they were happy. | Pass | Client is present. |
 	
 ## 4. Environment Requirements  
