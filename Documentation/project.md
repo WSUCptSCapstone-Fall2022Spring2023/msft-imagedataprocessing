@@ -757,5 +757,5 @@ Local network - Collection of devices connected together in one physical locatio
 
 ![alt_text](Images/Images format.png "Image Format")
 
-![alt_text](Images/Remote Configuration.png "Remote Configuration")
+![alt_text](Images/Remote%20Configuration.png "Remote Configuration")
 	
