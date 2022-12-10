@@ -546,6 +546,9 @@ To test different units in the code, we have decided to use CppUTest, a xUnit te
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| CaptureTest | Camera captures pictures | The capture.cpp program should capture a specified number of pictures and store them in the specified folder. | The specified number of pictures where in the specified folder. | Pass | Number of pictures to be taken, specified folder for pictures to be stored in. |
+| UploadTest | Test that upload to the database is working. | All pictures stored in a specified folder are uploaded to the database. Afterwords the folder is empty. | Pictures where in database and folder was empty. | Pass | Login string for database, path to where pictures are stored, login name, login password |
+| WittyPi Config Schedule | WittyPi schedule is adjusted based on information in the database. | The WittyPi schedule script is writen and formated correctly. | Format was correct and times were correct. | Pass | Location of cofiguration folder, login string for database, camera number |
 
 	
 ### 3.2. Integration Testing  
@@ -556,6 +559,7 @@ On top of this, the sensor module will have to major integration tests. The firs
 
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| CaptureUploadTest | ------------- | --------------- | --------------- | ----------- | ----------------- |
 	
 ### 3.3. System Testing  
 	
@@ -587,6 +591,7 @@ Following this we will conduct our front-end application and cloud database inte
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Extended Battery Life | ------------- | --------------- | --------------- | ----------- | ----------------- |
 	
 #### 3.3.2. Performance Testing  
 	
@@ -709,7 +714,7 @@ processor to execute.<sup>[11]</sup>
 Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
 
 
-# IV. References
+# IX. References
 
 
 [1]	C. Costa, U. Schurr, F. Loreto, P. Menesatti, and S. Carpentier, “Plant Phenotyping Research Trends, a Science Mapping Approach,” _Front. Plant Sci._, [Online]. Available: https://www.frontiersin.org/articles/10.3389/fpls.2018.01933/full#:~:text=A%20more%20recent%20and%20comprehensive,complex%20trait%20assessment%20(Li%20et
@@ -751,4 +756,4 @@ Local network - Collection of devices connected together in one physical locatio
 
 <sup>[13]</sup>	“What is a lan? Local Area Network,” _Cisco_, 16-Sep-2022. [Online]. Available: https://www.cisco.com/c/en/us/products/switches/what-is-a-lan-local-area-network.html. [Accessed: 28-Sep-2022]. 
 	
-# V. Appendices 
+# X. Appendices 
