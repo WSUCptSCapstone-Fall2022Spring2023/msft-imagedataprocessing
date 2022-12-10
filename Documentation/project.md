@@ -1,4 +1,4 @@
-## AGIcam Image Data Processing
+# AGIcam Image Data Processing
 
 Agricultural IOT camera system
 
@@ -18,16 +18,16 @@ Jordan Muehlbauer
 
 
 
-**Table of Contents**
+# Table of Contents
 
-I. **Introduction**									
-II. Team Members - Bios and Project Roles  
-III. Project Description and Clarification  
+**I. Introduction**  
+**II. Team Members - Bios and Project Roles**  
+**III. Project Description and Clarification**  
 	1. Introduction  
 	2. Background and Related Work  
 	3. Project Overview  
 	4. Client and Stakeholder Identification and Preferences  
-IV. Project Requirements and Specifications
+**IV. Project Requirements and Specifications**  
 	1. Introduction  
 	2. System Requirements Specification  
 		2.1. Use Cases  
@@ -37,7 +37,7 @@ IV. Project Requirements and Specifications
 			2.2.3. Database
 		2.3. Non-Functional Rquirements  
 	3. System Evolution  
-V. Project Solution Approach
+**V. Project Solution Approach**  
 	1. Introduction  
 	2. System Overview  
 	3. Architecture Design  
@@ -48,7 +48,7 @@ V. Project Solution Approach
 			3.2.3. User Interface  
 	4. Data design  
 	5. User Interface Design  
-VI. Testing and Acceptance Plan  
+**VI. Testing and Acceptance Plan**  
 	1. Introduction  
 	2. Testing Strategy  
 	3. Test Plans  
@@ -59,15 +59,17 @@ VI. Testing and Acceptance Plan
 			3.3.2. Performance Testing  
 			3.3.3. User Acceptance Testing  
 	4. Environment Requirements  
-VII. Alpha Prototype
+**VII. Alpha Prototype**  
 	1. Introduction  
 	2. Alpha Prototype Description  
-		2.1. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
+		2.1. AGICamUpload  
+		2.2 AGICamCapture  
+		2.3 AGICamConfigure  
 	3. Alpha Prototype Demonstration  
 	4. Future Work  
-VII. Glossary  
-IV. References  
-V. Appendices  
+**VII. Glossary**  
+**IX. References**  
+**X. Appendices**  
 
 # I. Introduction
 
@@ -515,8 +517,14 @@ data structures will be needed to visually process this data.
 
 ## 5. User Interface Design
 	
+A very simple user interface will be created next semster. All of the work done this revolved around the sensor and database. These subsystem took priority over the user interface.
+	
 # VI. Testing and Acceptance Plan  
+	
 ## 1. Introduction  
+
+This section covers the plans for testing and acceptance. This includes testing strategy, test plans (further broken down into unit, integration, and system testing), and environment requirements. Ideally, unit and integration testing will be automated, however, at the project's current state they have not been. This will be one of the main tasks of next semester. Testing will be an important aspect to this project, because we want to leave our client with a product that will last beond the final semester.
+	
 ## 2. Testing Strategy  
 
 We will perform testing on each component of the sensor module and the module as a whole. Overall, our testing strategy is to use black box unit testing for individual functions/classes, continuous development integration testing, and system testing further broken down into functional, performance, and acceptance testing. Each of these types of testing will have their own strategies as follows:
@@ -542,10 +550,13 @@ User Acceptance: this type of testing is done by the end-user or customer to con
 
 ### 3.1. Unit Testing  
 	
-To test different units in the code, we have decided to use CppUTest, a xUnit test framework for C/C++ that allows you to try and test-drive your programs. We chose to use CppUTest since this framework is strong, feature-rich, and actively developed, making it perfect for our project. It also has a C integration layer, which makes it straightforward to utilize with our platform C++ code. The key design ideas of CppUTest are simple design and usage, portable across both old and new systems, and built for test-driven developers with test-driven development.
+To test different units in the code, we have decided to use CppUTest, a xUnit test framework for C/C++ that allows you to try and test-drive your programs. We chose to use CppUTest since this framework is strong, feature-rich, and actively developed, making it perfect for our project. It also has a C integration layer, which makes it straightforward to utilize with our platform C++ code. The key design ideas of CppUTest are simple design and usage, portable across both old and new systems, and built for test-driven developers with test-driven development. Ideally, these tests will be automated, however, this was not completed as of sprint 3.
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| CaptureTest | Camera captures pictures | The capture.cpp program should capture a specified number of pictures and store them in the specified folder. | The specified number of pictures where in the specified folder. | Pass | Number of pictures to be taken, specified folder for pictures to be stored in. |
+| UploadTest | Test that upload to the database is working. | All pictures stored in a specified folder are uploaded to the database. Afterwords the folder is empty. | Pictures where in database and folder was empty. | Pass | Login string for database, path to where pictures are stored, login name, login password |
+| WittyPiConfigScheduleTest | WittyPi schedule is adjusted based on information in the database. | The WittyPi schedule script is writen and formated correctly. | Format was correct and times were correct. | Pass | Location of cofiguration folder, login string for database, camera number |
 
 	
 ### 3.2. Integration Testing  
@@ -556,6 +567,7 @@ On top of this, the sensor module will have to major integration tests. The firs
 
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| CaptureUploadTest | Tests the afterStartup WittyPi script and that AGICamCapture and AGICamUpload subsystems work together. | New pictures should be added to the database. | New pictures were taken and added to the database using the afterStartup script. | Pass | None. All required information should be in the afterStartup script. |
 	
 ### 3.3. System Testing  
 	
@@ -585,8 +597,6 @@ We will first conduct our AGIcam and cloud database interaction tests to ensure 
 
 Following this we will conduct our front-end application and cloud database interaction tests to ensure that what the user interacts with is functional. We will create a live enviornment and ensure that our tests pass.
 	
-| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
-| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
 	
 #### 3.3.2. Performance Testing  
 	
@@ -600,6 +610,9 @@ AGIcam will be performance tested by testing that our system is reliable and eas
 
 These tests will be completed in this order and will be done before the release of AGIcam. These should be completed after functional testing.
 
+| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Extended Battery Life | If battery life has been improved when compaired to old Python script. | Sensor running the new code should be working longer than sensor running old code. | Unknown | Unknown | Two sensors. We only have one sensor so this test was not done. |
 	
 #### 3.3.3. User Acceptance Testing  
 	
@@ -607,6 +620,7 @@ For our user-acceptance testing we will go to our clients Dr. Sindhuja and Andre
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Extended battery life | Were client is satified with expected result of running cpp and Java code instead of Python inorder to extend battery life. Also, if they were statified with running minimal functions on the sensor. | Them stating they were happy/satified with the theoretical result. | They stated they were happy. | Pass | Client is present. |
 	
 ## 4. Environment Requirements  
 
@@ -617,7 +631,10 @@ Ideally, we would be able to test code on the sensor module down to the scale of
 When a team member pulls into the main branch, they will also pull main into the sensor’s test branch. This branch will then be pulled into the sensor. There, they will preform the required integration testing. They will document the tests done and results of the test in a test report. If there are issues, they will try to resolve them. The code and results will then be pushed back into the test branch which will merged back to main. This will ensure that code within main remains functional on the sensor.
 	
 # VII. Alpha Prototype
+	
 ## 1. Introduction  
+	
+This section covers the plan for the client demo of the project and the results of that demo. The main plan was to show them the different subsystems on the sensor, how they work indivisually, and how they work together. Also, to do some acceptance testing with them. Overall, the demo went very well and they seemed happy with our progress so far.
 	
 ## 2. Alpha Prototype Description  
 	
@@ -626,7 +643,31 @@ We want the system to capture multiple images at once and after capturing the im
 we made sure that they are saved with a specific name, the name of the image consists of the day, month, year, and picture number.
 We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
 	
-### 2.1. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
+### 2.1. AGICamUpload  
+	
+	1. Fucntions implemented
+	- Main: This funciton takes the location of images that are going to be uploaded, MongoDB conection string, MongoDB username and password. It then uploads the pictures stored in the given location to the database.
+	2. Preliminary tests
+	- UploadTest unit test: Passed
+	- CaptureUploadTest integration test: Passed
+	
+### 2.2 AGICamCapture  
+	
+	1. Functions implemented
+	- Main: This fucntion takes the path where pictures are going to be stored, camera number, and number of pictures to take. It then takes these pictures.
+	- currentDateTime: This function outputs a string containing the current data and time. This information is used in naming the pictures.
+	2. Preliminary tests
+	- CaptureTest unit test: Passed
+	- CaptureUploadTest integration test: Passed
+	
+### 2.3 AGICamConfigure  
+	
+	1. Functions implemented
+	- Main: This function takes location of the WittyPi file to configure, camera number, and MongoDB conection string. It then gets the configuration information from the database. If this information doesn't exist, then it uses default values. It then calls updataConfig.
+	-UpdateConfig: This function takes the location of the WittyPi schedualer file to be updated and a document containing the desired configuration. It then updates the WittyPi schedule to the desired values.
+	2. Preliminary tests
+	- WittyPiConfigScheduleTest unit test: Passed
+	
 ## 3. Alpha Prototype Demonstration  
 	
 During the demostration Jordan demostrated what we have completed so far on the project. We explained the issues we had during Sprint 1, how we fixed them by switching libraries, and how this took up some time so we haven't gotten quite as far as we planned originally. The demo included showing the source code for AGICamCapture and AGICamUpload subsystems, running each subsystem, and showing the images stored in the Mongo database. They did not have any questions and seemed happy with what we had so far.
@@ -646,10 +687,23 @@ Our plans to complete these tasks is simple. We will focus directly first on pos
 	
 # VIII. Glossary
 
+**C**
+
+Compiled language - Programming language where the source code is directly converted into machine code for the 
+processor to execute.<sup>[11]</sup>
+
 **E**
 
-
 Edge computing – Handling some computation and processing on the client to avoid unnecessary data transfers [4].
+
+**I**
+
+Interpreted language - Programming language where the source code is not directly translated by the target machine. 
+The interpreted reads the code and executes it on the target device<sup>[11]</sup>
+	
+**L**
+
+Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
 
 **N**
 
@@ -657,31 +711,7 @@ Normalized difference vegetation index (NDVI) – Calculated from near-infrared 
 Healthy vegetation absorbs most of the visible light and reflects most near-infrared light. Unhealthy vegetation does the opposite [7].
 
 NoIR image/camera – A camera without an infrared filter allows for images to be produced in a dark environment [6].
-
-**O**
-
-
-OpenCV – An open-source machine learning software library [8].
-
-**P**
-
-
-Plant phenotyping – The analysis of plant life based on physical/easily observed traits [1].
-
-
-Picamera – Python library that provides a pure Python interface to the Raspberry Pi camera module [5]. 
-
-**R**
-
-
-RGB image/camera – Visible light spectrum image. An RGB camera produces these images.
-
-**V**
-
-
-Vegetation index (VI) – A calculated single value that is used to show the amount of plant material in an image [7].
-
-
+	
 **M**
 
 Microprocessor - A miniature electronic device that contains the arithmetic, logic, and control circuitry necessary to 
@@ -690,26 +720,29 @@ perform the functions of a digital computers central processing unit<sup>[10]</s
 Micro controller - Chip optimized to control electronic devices. It is used in a single integrated circuit which is 
 dedicated to performing a particular task and executing one specific application<sup>[10]</sup>
 
+**O**
+
+OpenCV – An open-source machine learning software library [8].
+
+**P**
+
+Plant phenotyping – The analysis of plant life based on physical/easily observed traits [1].
+
+Picamera – Python library that provides a pure Python interface to the Raspberry Pi camera module [5]. 
+
+**R**
+
+RGB image/camera – Visible light spectrum image. An RGB camera produces these images.
+	
 **T**
 
 TV white space - unused TV channels between the active ones in the VHF and UHF spectrum.<sup>[12]</sup>
 
-**I**
+**V**
 
-Interpreted language - Programming language where the source code is not directly translated by the target machine. 
-The interpreted reads the code and executes it on the target device<sup>[11]</sup>
+Vegetation index (VI) – A calculated single value that is used to show the amount of plant material in an image [7].
 
-**C**
-
-Compiled language - Programming language where the source code is directly converted into machine code for the 
-processor to execute.<sup>[11]</sup>
-
-**L**
-
-Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
-
-
-# IV. References
+# IX. References
 
 
 [1]	C. Costa, U. Schurr, F. Loreto, P. Menesatti, and S. Carpentier, “Plant Phenotyping Research Trends, a Science Mapping Approach,” _Front. Plant Sci._, [Online]. Available: https://www.frontiersin.org/articles/10.3389/fpls.2018.01933/full#:~:text=A%20more%20recent%20and%20comprehensive,complex%20trait%20assessment%20(Li%20et
@@ -751,7 +784,8 @@ Local network - Collection of devices connected together in one physical locatio
 
 <sup>[13]</sup>	“What is a lan? Local Area Network,” _Cisco_, 16-Sep-2022. [Online]. Available: https://www.cisco.com/c/en/us/products/switches/what-is-a-lan-local-area-network.html. [Accessed: 28-Sep-2022]. 
 	
-# V. Appendices 
+
+# X. Appendices 
 
 ![alt_text](Images/Image%20capture%20.png "Image Capture")
 
@@ -765,3 +799,4 @@ Local network - Collection of devices connected together in one physical locatio
 
 ![alt_text](Images/Remote%20Configuration.png "Remote Configuration")
 	
+
