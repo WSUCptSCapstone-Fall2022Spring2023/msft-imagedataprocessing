@@ -784,4 +784,19 @@ Vegetation index (VI) – A calculated single value that is used to show the amo
 
 <sup>[13]</sup>	“What is a lan? Local Area Network,” _Cisco_, 16-Sep-2022. [Online]. Available: https://www.cisco.com/c/en/us/products/switches/what-is-a-lan-local-area-network.html. [Accessed: 28-Sep-2022]. 
 	
+
 # X. Appendices 
+
+![alt_text](Images/Image%20capture%20.png "Image Capture")
+
+
+
+![alt_text](Images/Images%20format.png "Image Format")
+
+
+
+
+
+![alt_text](Images/Remote%20Configuration.png "Remote Configuration")
+	
+
