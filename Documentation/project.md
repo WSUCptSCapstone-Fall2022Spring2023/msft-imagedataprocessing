@@ -559,7 +559,7 @@ On top of this, the sensor module will have to major integration tests. The firs
 
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| CaptureUploadTest | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| CaptureUploadTest | Tests the afterStartup WittyPi script and that AGICamCapture and AGICamUpload subsystems work together. | New pictures should be added to the database. | New pictures were taken and added to the database using the afterStartup script. | Pass | None. All required information should be in the afterStartup script. |
 	
 ### 3.3. System Testing  
 	
@@ -589,9 +589,6 @@ We will first conduct our AGIcam and cloud database interaction tests to ensure 
 
 Following this we will conduct our front-end application and cloud database interaction tests to ensure that what the user interacts with is functional. We will create a live enviornment and ensure that our tests pass.
 	
-| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
-| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Extended Battery Life | ------------- | --------------- | --------------- | ----------- | ----------------- |
 	
 #### 3.3.2. Performance Testing  
 	
@@ -605,13 +602,16 @@ AGIcam will be performance tested by testing that our system is reliable and eas
 
 These tests will be completed in this order and will be done before the release of AGIcam. These should be completed after functional testing.
 
+| Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Extended Battery Life | If battery life has been improved when compaired to old Python script. | Sensor running the new code should be working longer than sensor running old code. | Unknown | Unknown | Two sensors. We only have one sensor so this test was not done. |
 	
 #### 3.3.3. User Acceptance Testing  
 	
 For our user-acceptance testing we will go to our clients Dr. Sindhuja and Andrew Nelson to showcase AGIcam's newest updates and performance. We will attempt to do this around 1-2 months before the deadline for this project. This will allow for us to complete any changes that they will want to our product. To start this meeting we will go over our initial requirements document and then give a live-demo of our product and how they can use it. This live demo will be the main form of our user-acceptance testing and we will showcase the completion and fufillment of all functional and performance tests. Which will show the end-user the completion of the functional and non-functional requirements outlined in the document we preseneted to them. From there we will answer any questions and give them both time to test and explore how the product fills their own needs and return to us with any complaints or updates.
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
-| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Extended battery life | Were client is satified with expected result of running cpp and Java code instead of Python inorder to extend battery life. Also, if they were statified with running minimal functions on the sensor. | Them stating they were happy/satified with the theoretical result. | They stated they were happy. | Pass | Client is present. |
 	
 ## 4. Environment Requirements  
 
