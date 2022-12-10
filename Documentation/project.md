@@ -644,13 +644,15 @@ we made sure that they are saved with a specific name, the name of the image con
 We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
 	
 ### 2.1. AGICamUpload  
+	
 	1. Fucntions implemented
 	- Main: This funciton takes the location of images that are going to be uploaded, MongoDB conection string, MongoDB username and password. It then uploads the pictures stored in the given location to the database.
 	2. Preliminary tests
 	- UploadTest unit test: Passed
 	- CaptureUploadTest integration test: Passed
 	
-### 2.2 AGICamCapture
+### 2.2 AGICamCapture  
+	
 	1. Functions implemented
 	- Main: This fucntion takes the path where pictures are going to be stored, camera number, and number of pictures to take. It then takes these pictures.
 	- currentDateTime: This function outputs a string containing the current data and time. This information is used in naming the pictures.
@@ -658,7 +660,8 @@ We made sure that they are saved in a specific way because we want to put them i
 	- CaptureTest unit test: Passed
 	- CaptureUploadTest integration test: Passed
 	
-### 2.3 AGICamConfigure
+### 2.3 AGICamConfigure  
+	
 	1. Functions implemented
 	- Main: This function takes location of the WittyPi file to configure, camera number, and MongoDB conection string. It then gets the configuration information from the database. If this information doesn't exist, then it uses default values. It then calls updataConfig.
 	-UpdateConfig: This function takes the location of the WittyPi schedualer file to be updated and a document containing the desired configuration. It then updates the WittyPi schedule to the desired values.
