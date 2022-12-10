@@ -755,6 +755,11 @@ Local network - Collection of devices connected together in one physical locatio
 
 ![alt_text](Images/Image%20capture%20.png "Image Capture")
 
+
+![alt_text](/Images/Images%20format.png "Image Format")
+	
+	
+
 ![alt_text](/Images/Images%20format.png "Image Format")
 
 
