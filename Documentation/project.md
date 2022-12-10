@@ -87,6 +87,7 @@ The idea behind this is to save farm resources by minimizing time spent by the f
 - Zachary Hall: 
 
  - Jordan Muehlbauer is a computer science student attending Washington State University. His prior projects and experience include orchastrating large game servers, doing website development and contributing to embedded operating systems. He is well versed in system design, Java, C++ and Python. For this project he has been responsible for creating the database, creating the capture and upload executable and providing support for database interaction to other team members while working on their parts.
+- Abhilash Ambati is a computer science student attending Washington State University. His prior project and experiences include web development, sms spam filter and data minning. He is well versed in c++, python and HTML.For this project he has been responsible for convertinf the code from python to c++ and helped capturing multiple images and completed part of Remote Configuration.
 
 
 
@@ -545,9 +546,7 @@ To test different units in the code, we have decided to use CppUTest, a xUnit te
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Capture Test | | | | | |
-| Upload Test | | | | | |
-| WittyPi Config | | | | | |
+
 	
 ### 3.2. Integration Testing  
 
@@ -557,7 +556,6 @@ On top of this, the sensor module will have to major integration tests. The firs
 
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Capture & Upload | | | | | |
 	
 ### 3.3. System Testing  
 	
@@ -589,7 +587,6 @@ Following this we will conduct our front-end application and cloud database inte
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| RGB and NoIR Image | | | | | |
 	
 #### 3.3.2. Performance Testing  
 	
