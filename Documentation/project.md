@@ -752,3 +752,10 @@ Local network - Collection of devices connected together in one physical locatio
 <sup>[13]</sup>	“What is a lan? Local Area Network,” _Cisco_, 16-Sep-2022. [Online]. Available: https://www.cisco.com/c/en/us/products/switches/what-is-a-lan-local-area-network.html. [Accessed: 28-Sep-2022]. 
 	
 # V. Appendices 
+
+![alt_text](Images/Image capture .png "Image Capture")
+
+![alt_text](Images/Images format.png "Image Format")
+
+![alt_text](Images/Remote Configuration.png "Remote Configuration")
+	
