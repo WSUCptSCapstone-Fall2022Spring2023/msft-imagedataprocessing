@@ -515,6 +515,8 @@ data structures will be needed to visually process this data.
 
 ## 5. User Interface Design
 	
+A very simple user interface will be created next semster. All of the work done this revolved around the sensor and database. These subsystem took priority over the user interface.
+	
 # VI. Testing and Acceptance Plan  
 	
 ## 1. Introduction  
