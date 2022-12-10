@@ -661,10 +661,23 @@ Our plans to complete these tasks is simple. We will focus directly first on pos
 	
 # VIII. Glossary
 
+**C**
+
+Compiled language - Programming language where the source code is directly converted into machine code for the 
+processor to execute.<sup>[11]</sup>
+
 **E**
 
-
 Edge computing – Handling some computation and processing on the client to avoid unnecessary data transfers [4].
+
+**I**
+
+Interpreted language - Programming language where the source code is not directly translated by the target machine. 
+The interpreted reads the code and executes it on the target device<sup>[11]</sup>
+	
+**L**
+
+Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
 
 **N**
 
@@ -672,31 +685,7 @@ Normalized difference vegetation index (NDVI) – Calculated from near-infrared 
 Healthy vegetation absorbs most of the visible light and reflects most near-infrared light. Unhealthy vegetation does the opposite [7].
 
 NoIR image/camera – A camera without an infrared filter allows for images to be produced in a dark environment [6].
-
-**O**
-
-
-OpenCV – An open-source machine learning software library [8].
-
-**P**
-
-
-Plant phenotyping – The analysis of plant life based on physical/easily observed traits [1].
-
-
-Picamera – Python library that provides a pure Python interface to the Raspberry Pi camera module [5]. 
-
-**R**
-
-
-RGB image/camera – Visible light spectrum image. An RGB camera produces these images.
-
-**V**
-
-
-Vegetation index (VI) – A calculated single value that is used to show the amount of plant material in an image [7].
-
-
+	
 **M**
 
 Microprocessor - A miniature electronic device that contains the arithmetic, logic, and control circuitry necessary to 
@@ -705,24 +694,27 @@ perform the functions of a digital computers central processing unit<sup>[10]</s
 Micro controller - Chip optimized to control electronic devices. It is used in a single integrated circuit which is 
 dedicated to performing a particular task and executing one specific application<sup>[10]</sup>
 
+**O**
+
+OpenCV – An open-source machine learning software library [8].
+
+**P**
+
+Plant phenotyping – The analysis of plant life based on physical/easily observed traits [1].
+
+Picamera – Python library that provides a pure Python interface to the Raspberry Pi camera module [5]. 
+
+**R**
+
+RGB image/camera – Visible light spectrum image. An RGB camera produces these images.
+	
 **T**
 
 TV white space - unused TV channels between the active ones in the VHF and UHF spectrum.<sup>[12]</sup>
 
-**I**
+**V**
 
-Interpreted language - Programming language where the source code is not directly translated by the target machine. 
-The interpreted reads the code and executes it on the target device<sup>[11]</sup>
-
-**C**
-
-Compiled language - Programming language where the source code is directly converted into machine code for the 
-processor to execute.<sup>[11]</sup>
-
-**L**
-
-Local network - Collection of devices connected together in one physical location.<sup>[13]</sup>
-
+Vegetation index (VI) – A calculated single value that is used to show the amount of plant material in an image [7].
 
 # IX. References
 
