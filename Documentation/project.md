@@ -62,7 +62,9 @@ Jordan Muehlbauer
 **VII. Alpha Prototype**  
 	1. Introduction  
 	2. Alpha Prototype Description  
-		2.1. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
+		2.1. AGICamUpload  
+		2.2 AGICamCapture  
+		2.3 AGICamConfigure  
 	3. Alpha Prototype Demonstration  
 	4. Future Work  
 **VII. Glossary**  
@@ -554,7 +556,7 @@ To test different units in the code, we have decided to use CppUTest, a xUnit te
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
 | CaptureTest | Camera captures pictures | The capture.cpp program should capture a specified number of pictures and store them in the specified folder. | The specified number of pictures where in the specified folder. | Pass | Number of pictures to be taken, specified folder for pictures to be stored in. |
 | UploadTest | Test that upload to the database is working. | All pictures stored in a specified folder are uploaded to the database. Afterwords the folder is empty. | Pictures where in database and folder was empty. | Pass | Login string for database, path to where pictures are stored, login name, login password |
-| WittyPi Config Schedule | WittyPi schedule is adjusted based on information in the database. | The WittyPi schedule script is writen and formated correctly. | Format was correct and times were correct. | Pass | Location of cofiguration folder, login string for database, camera number |
+| WittyPiConfigScheduleTest | WittyPi schedule is adjusted based on information in the database. | The WittyPi schedule script is writen and formated correctly. | Format was correct and times were correct. | Pass | Location of cofiguration folder, login string for database, camera number |
 
 	
 ### 3.2. Integration Testing  
@@ -641,7 +643,28 @@ We want the system to capture multiple images at once and after capturing the im
 we made sure that they are saved with a specific name, the name of the image consists of the day, month, year, and picture number.
 We made sure that they are saved in a specific way because we want to put them into the database. The database we used is MongoDB, once the system completes the process of capturing the images, we will instruct the system to push them into the database. Once the images are uploaded into the database then we delete the images that were saved in the system and these images are saved into a folder in the database. 
 	
-### 2.1. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
+### 2.1. AGICamUpload  
+	1. Fucntions implemented
+	- Main: This funciton takes the location of images that are going to be uploaded, MongoDB conection string, MongoDB username and password. It then uploads the pictures stored in the given location to the database.
+	2. Preliminary tests
+	- UploadTest unit test: Passed
+	- CaptureUploadTest integration test: Passed
+	
+### 2.2 AGICamCapture
+	1. Functions implemented
+	- Main: This fucntion takes the path where pictures are going to be stored, camera number, and number of pictures to take. It then takes these pictures.
+	- currentDateTime: This function outputs a string containing the current data and time. This information is used in naming the pictures.
+	2. Preliminary tests
+	- CaptureTest unit test: Passed
+	- CaptureUploadTest integration test: Passed
+	
+### 2.3 AGICamConfigure
+	1. Functions implemented
+	- Main: This function takes location of the WittyPi file to configure, camera number, and MongoDB conection string. It then gets the configuration information from the database. If this information doesn't exist, then it uses default values. It then calls updataConfig.
+	-UpdateConfig: This function takes the location of the WittyPi schedualer file to be updated and a document containing the desired configuration. It then updates the WittyPi schedule to the desired values.
+	2. Preliminary tests
+	- WittyPiConfigScheduleTest unit test: Passed
+	
 ## 3. Alpha Prototype Demonstration  
 	
 During the demostration Jordan demostrated what we have completed so far on the project. We explained the issues we had during Sprint 1, how we fixed them by switching libraries, and how this took up some time so we haven't gotten quite as far as we planned originally. The demo included showing the source code for AGICamCapture and AGICamUpload subsystems, running each subsystem, and showing the images stored in the Mongo database. They did not have any questions and seemed happy with what we had so far.
