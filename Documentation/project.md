@@ -516,7 +516,11 @@ data structures will be needed to visually process this data.
 ## 5. User Interface Design
 	
 # VI. Testing and Acceptance Plan  
+	
 ## 1. Introduction  
+
+This section covers the plans for testing and acceptance. This includes testing strategy, test plans (further broken down into unit, integration, and system testing), and environment requirements. Ideally, unit and integration testing will be automated, however, at the project's current state they have not been. This will be one of the main tasks of next semester. Testing will be an important aspect to this project, because we want to leave our client with a product that will last beond the final semester.
+	
 ## 2. Testing Strategy  
 
 We will perform testing on each component of the sensor module and the module as a whole. Overall, our testing strategy is to use black box unit testing for individual functions/classes, continuous development integration testing, and system testing further broken down into functional, performance, and acceptance testing. Each of these types of testing will have their own strategies as follows:
@@ -542,7 +546,7 @@ User Acceptance: this type of testing is done by the end-user or customer to con
 
 ### 3.1. Unit Testing  
 	
-To test different units in the code, we have decided to use CppUTest, a xUnit test framework for C/C++ that allows you to try and test-drive your programs. We chose to use CppUTest since this framework is strong, feature-rich, and actively developed, making it perfect for our project. It also has a C integration layer, which makes it straightforward to utilize with our platform C++ code. The key design ideas of CppUTest are simple design and usage, portable across both old and new systems, and built for test-driven developers with test-driven development.
+To test different units in the code, we have decided to use CppUTest, a xUnit test framework for C/C++ that allows you to try and test-drive your programs. We chose to use CppUTest since this framework is strong, feature-rich, and actively developed, making it perfect for our project. It also has a C integration layer, which makes it straightforward to utilize with our platform C++ code. The key design ideas of CppUTest are simple design and usage, portable across both old and new systems, and built for test-driven developers with test-driven development. Ideally, these tests will be automated, however, this was not completed as of sprint 3.
 	
 | Test Name | Aspect Tested | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
@@ -623,7 +627,10 @@ Ideally, we would be able to test code on the sensor module down to the scale of
 When a team member pulls into the main branch, they will also pull main into the sensor’s test branch. This branch will then be pulled into the sensor. There, they will preform the required integration testing. They will document the tests done and results of the test in a test report. If there are issues, they will try to resolve them. The code and results will then be pushed back into the test branch which will merged back to main. This will ensure that code within main remains functional on the sensor.
 	
 # VII. Alpha Prototype
+	
 ## 1. Introduction  
+	
+This section covers the plan for the client demo of the project and the results of that demo. The main plan was to show them the different subsystems on the sensor, how they work indivisually, and how they work together. Also, to do some acceptance testing with them. Overall, the demo went very well and they seemed happy with our progress so far.
 	
 ## 2. Alpha Prototype Description  
 	
