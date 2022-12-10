@@ -1,4 +1,4 @@
-## AGIcam Image Data Processing
+# AGIcam Image Data Processing
 
 Agricultural IOT camera system
 
@@ -18,16 +18,16 @@ Jordan Muehlbauer
 
 
 
-**Table of Contents**
+# Table of Contents
 
-I. **Introduction**									
-II. Team Members - Bios and Project Roles  
-III. Project Description and Clarification  
+**I. Introduction**  
+**II. Team Members - Bios and Project Roles**  
+**III. Project Description and Clarification**  
 	1. Introduction  
 	2. Background and Related Work  
 	3. Project Overview  
 	4. Client and Stakeholder Identification and Preferences  
-IV. Project Requirements and Specifications
+**IV. Project Requirements and Specifications**  
 	1. Introduction  
 	2. System Requirements Specification  
 		2.1. Use Cases  
@@ -37,7 +37,7 @@ IV. Project Requirements and Specifications
 			2.2.3. Database
 		2.3. Non-Functional Rquirements  
 	3. System Evolution  
-V. Project Solution Approach
+**V. Project Solution Approach**  
 	1. Introduction  
 	2. System Overview  
 	3. Architecture Design  
@@ -48,7 +48,7 @@ V. Project Solution Approach
 			3.2.3. User Interface  
 	4. Data design  
 	5. User Interface Design  
-VI. Testing and Acceptance Plan  
+**VI. Testing and Acceptance Plan**  
 	1. Introduction  
 	2. Testing Strategy  
 	3. Test Plans  
@@ -59,15 +59,15 @@ VI. Testing and Acceptance Plan
 			3.3.2. Performance Testing  
 			3.3.3. User Acceptance Testing  
 	4. Environment Requirements  
-VII. Alpha Prototype
+**VII. Alpha Prototype**  
 	1. Introduction  
 	2. Alpha Prototype Description  
 		2.1. **INCLUDE SUBSYSTEMS AND THEIR FUNCTIONS/INTERFACES IMPLEMENTED AND PRELIMINARY TESTS**  
 	3. Alpha Prototype Demonstration  
 	4. Future Work  
-VII. Glossary  
-IX. References  
-X. Appendices  
+**VII. Glossary**  
+**IX. References**  
+**X. Appendices**  
 
 # I. Introduction
 
