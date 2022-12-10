@@ -753,9 +753,10 @@ Local network - Collection of devices connected together in one physical locatio
 	
 # V. Appendices 
 
-![alt_text](Images/Image capture .png "Image Capture")
+![alt_text](Images/Image%20capture%20.png "Image Capture")
 
-![alt_text](Images/Images format.png "Image Format")
+![alt_text](Images/Images/Images%20format.png "Image Format")
+
 
 ![alt_text](Images/Remote%20Configuration.png "Remote Configuration")
 	
