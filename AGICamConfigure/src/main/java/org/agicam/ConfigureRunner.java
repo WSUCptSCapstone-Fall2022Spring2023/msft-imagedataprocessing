@@ -59,20 +59,24 @@ public class ConfigureRunner {
             configCollection.insertOne(config); // Write to remote the configuration for this device.
         }
 
-        // Update config locally
-        updateConfig(configLocation, config);
+        if(config.get("changed").equals(true))
+        {
+            // Update config locally
+            updateConfig(configLocation, config);
+        }
     }
 
     private static Document getDefaultConfig(int cameraNumber)
     {
         Document doc = new Document();
         doc.put("camID", cameraNumber); // Id of the camera
-        doc.put("interval", true); // Are we capturing on intervals?
+        doc.put("type", "interval"); // Are we capturing on intervals?
         doc.put("start", 600); // What time do we start? In minutes (600 = 10 a.m)
         doc.put("distance", 120); // How long between each capture in minutes
         doc.put("amount", 2); // Amount of captures in day
-        doc.put("duration", 30); //How long to leave sensor on
+        doc.put("duration", 5); //How long to leave sensor on
         doc.put("intervalBetweenPics", 360); //How long between pictures. MUST BE AT LEAST 30MINS
+        doc.put("changed", true); //Was the configuration updated? If so the wittyPi schedule needs to be updated
         return doc;
     }
 
@@ -84,7 +88,7 @@ public class ConfigureRunner {
         Date sDate = new Date();
         Date eDate = new Date();
 
-        if(doc.get("interval").equals(true))
+        if(doc.get("type").equals("interval"))
         {
             String B = "BEGIN";
             String E = "END";
