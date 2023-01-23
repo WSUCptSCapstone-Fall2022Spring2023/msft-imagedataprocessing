@@ -6,8 +6,3 @@
 # Raspberry Pi will not shutdown until all commands here are executed.
 #
 
-now = $(date)
-
-FILE = "/home/pi/Desktop/msft-imagedataprocessing/wittypi/wittypi_log.txt"
-
-printf "System powered OFF at %s\n" "$now" >> FILE
