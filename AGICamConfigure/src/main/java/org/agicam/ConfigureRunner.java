@@ -10,11 +10,10 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 
 import static com.mongodb.client.model.Filters.eq;
@@ -22,18 +21,18 @@ import static com.mongodb.client.model.Filters.eq;
 public class ConfigureRunner {
     public static void main(String[] args) throws IOException {
         // First argument should be the location of file to write configuration too.
-        // Second argument should be camera #
-        // Third argument should be connection string
-        if(args.length != 3)
+        // Second argument should be connection string
+        // Third argument
+        if(args.length != 2)
         {
-            System.out.println("Invalid arguments. Please supply (config location) (camera #) (mongo connection string)");
+            System.out.println("Invalid arguments. Please supply (config location) (mongo connection string)");
             return;
         }
 
         // Collect arguments
         String configLocation = args[0];
-        Integer cameraNumber = Integer.parseInt(args[1]);
-        String connection = args[2];
+        String connection = args[1];
+        Integer cameraNumber;
 
         // Connect to MongoDatabase
         ConnectionString connectionString = new ConnectionString(connection);
@@ -51,6 +50,8 @@ public class ConfigureRunner {
         // Get / Create collection
         MongoCollection<Document> configCollection = database.getCollection("configs");
 
+        cameraNumber = getCamNumber(configCollection);
+
         // Find the config for this camera
         Document config = configCollection.find(eq("camID", cameraNumber)).first();
         if(config == null)
@@ -59,11 +60,50 @@ public class ConfigureRunner {
             configCollection.insertOne(config); // Write to remote the configuration for this device.
         }
 
-        if(config.get("changed").equals(true))
-        {
+        //Test for time specific configurations
+
+
+        //if(config.get("changed").equals(true))
+       //{
             // Update config locally
             updateConfig(configLocation, config);
+        //}
+    }
+
+    private static int getCamNumber(MongoCollection<Document> configCollection) throws IOException {
+        File file = new File("./cameraNumber.txt");
+        long numConfigs;
+        int camNumber;
+
+        //Create file if it doesn't exist
+        if(!file.exists())
+        {
+            file.createNewFile();
+
+            //Count number of config documents
+            numConfigs = configCollection.countDocuments();
+
+            //write to file
+            while(configCollection.find(eq("_id", numConfigs)).first() != null)
+            {
+                numConfigs++;
+            }
+            camNumber = (int)numConfigs;
+
+            FileOutputStream fos = new FileOutputStream(file.getName());
+            BufferedWriter bs = new BufferedWriter(new OutputStreamWriter((fos)));
+            bs.write("" + numConfigs);
+            bs.close();
+
         }
+        else
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(file.getName()));
+            String line = reader.readLine();
+            reader.close();
+            camNumber = Integer.parseInt(line);
+        }
+        return camNumber;
     }
 
     private static Document getDefaultConfig(int cameraNumber)
@@ -79,6 +119,8 @@ public class ConfigureRunner {
         doc.put("changed", true); //Was the configuration updated? If so the wittyPi schedule needs to be updated
         return doc;
     }
+
+    //private static Document
 
     private static void updateConfig(String configLocation, Document doc) throws IOException {
         File localConfig = new File(configLocation); // find the local file
