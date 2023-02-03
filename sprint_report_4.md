@@ -1,62 +1,48 @@
-# Sprint x Report (8/26/21 - 9/24/2021)
+# Sprint x Report (1/8/23 - 2/3/23)
 
 ## What's New (User Facing)
- * Feature 1 or Bug Fix 1
- * Feature 2 or Bug Fix 2
- * Feature n or Bug Fix n
+ * Implemented Image Processing Engine 
+ * Implemented Auto Camera number generation
 
 ## Work Summary (Developer Facing)
-Provide a one paragraph synposis of what your team accomplished this sprint. Don't repeat the "What's New" list of features. Instead, help the instructor understand how you went about the work described there, any barriers you overcame, and any significant learnings for your team.
+During the sprint we split off and tried to divide and conquer. Abhi and Jordan worked on the image processing engine and the integration into the databse while Zach worked on generating camera numbers on first call of AGICamConfigure. Creating an image processor for the first time was a huge learning curve with lots of technical issues we never expected to encounter. At first when working on the processor we were getting wildly inaccurate readings that obviously were not properly using the color channels to determine the results. After a few days of attempting to get that to work Abhi and Jordan were able to use an algorithm provided by Worasit who is a grad student for the client to be able to effectively process the images. While this was going on Zach was able to make large improvements to AGICamConfigure, one of the main issues zach had to overcome with this was that our MongoDB was not configured correctly to allow connections from his computer. To overcome this we all got into call and problem solved together.
 
 ## Unfinished Work
-If applicable, explain the work you did not finish in this sprint. For issues/user stories in the current sprint that have not been closed, (a) any progress toward completion of the issues has been clearly tracked (by checking the checkboxes of  acceptance criteria), (b) a comment has been added to the issue to explain why the issue could not be completed (e.g., "we ran out of time" or "we did not anticipate it would be so much work"), and (c) the issue is added to a subsequent sprint, so that it can be addressed later.
+In this sprint we did not find time to add selection of time for image capture, however we will finish it next sprint.
 
 ## Completed Issues/User Stories
 Here are links to the issues that we completed in this sprint:
 
- * URL of issue 1
- * URL of issue 2
- * URL of issue n
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/55
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/79
 
- Reminders (Remove this section when you save the file):
-  * Each issue should be assigned to a milestone
-  * Each completed issue should be assigned to a pull request
-  * Each completed pull request should include a link to a "Before and After" video
-  * All team members who contributed to the issue should be assigned to it on GitHub
-  * Each issue should be assigned story points using a label
-  * Story points contribution of each team member should be indicated in a comment
- 
+
  ## Incomplete Issues/User Stories
  Here are links to issues we worked on but did not complete in this sprint:
  
- * URL of issue 1 <<One sentence explanation of why issue was not completed>>
- * URL of issue 2 <<One sentence explanation of why issue was not completed>>
- * URL of issue n <<One sentence explanation of why issue was not completed>>
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/77 - We ran out of time to get to this
+ * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/50 - We were not able to find a reason to do this fully yet.
  
- Examples of explanations (Remove this section when you save the file):
-  * "We ran into a complication we did not anticipate (explain briefly)." 
-  * "We decided that the feature did not add sufficient value for us to work on it in this sprint (explain briefly)."
-  * "We could not reproduce the bug" (explain briefly).
-  * "We did not get to this issue because..." (explain briefly)
-
 ## Code Files for Review
 Please review the following code files, which were actively developed during this sprint, for quality:
- * [Name of code file 1](https://github.com/your_repo/file_extension)
- * [Name of code file 2](https://github.com/your_repo/file_extension)
- * [Name of code file 3](https://github.com/your_repo/file_extension)
+ * [ConfigureRunner.java](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/044763b45705e60c009c9e65ee83d4d67cd1ef09/AGICamConfigure/src/main/java/org/agicam/ConfigureRunner.java)
+ * [NDVIProcessor.java](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/AGICamProcessor/src/main/java/org/agicam/processor/NDVIProcessor.java)
+ * [ProcessorRunner.java](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/AGICamProcessor/src/main/java/org/agicam/processor/ProcessorRunner.java)
+ * [Couple.java](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/AGICamProcessor/src/main/java/org/agicam/processor/util/Couple.java)
+ * [Plot.java](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/AGICamProcessor/src/main/java/org/agicam/processor/util/Plot.java)
  
 ## Retrospective Summary
 Here's what went well:
-  * Item 1
-  * Item 2
-  * Item x
+  * Our team worked together efficiently and provided great support to one another
+  * Our system has finally come full circle
+  * Our clients appear to be happy with the current progress.
  
 Here's what we'd like to improve:
-   * Item 1
-   * Item 2
-   * Item x
+   * Proactiveness, this sprint due to scheduling issues our team had a slow start. We would like to be proactive for the next sprint.
+   * Issue tracking, Our team could benefit from more detailed issue tracking.
+   * Inplace testing, Currently our project lacks testing inside of our code base. Doing this would be useful
   
 Here are changes we plan to implement in the next sprint:
-   * Item 1
-   * Item 2
-   * Item x
+   * Setting a plan from the start of the sprint on what need to be completed from an implementation standpoint.
+   * Define all issues at the start of the sprint and frequently update them
+   * Determine a testing route at the start of the sprint to ensure testing makes progress.
