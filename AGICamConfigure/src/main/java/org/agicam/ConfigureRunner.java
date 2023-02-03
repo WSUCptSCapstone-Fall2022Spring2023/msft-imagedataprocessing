@@ -54,6 +54,7 @@ public class ConfigureRunner {
 
         // Find the config for this camera
         Document config = configCollection.find(eq("camID", cameraNumber)).first();
+        //configCollection.deleteOne(eq("_id", config.getObjectId("_id")));
         if(config == null)
         {
             config = getDefaultConfig(cameraNumber);
@@ -63,11 +64,11 @@ public class ConfigureRunner {
         //Test for time specific configurations
 
 
-        //if(config.get("changed").equals(true))
-       //{
+        if(config.getBoolean("changed").equals(true))
+       {
             // Update config locally
             updateConfig(configLocation, config);
-        //}
+       }
     }
 
     private static int getCamNumber(MongoCollection<Document> configCollection) throws IOException {
@@ -84,7 +85,7 @@ public class ConfigureRunner {
             numConfigs = configCollection.countDocuments();
 
             //write to file
-            while(configCollection.find(eq("_id", numConfigs)).first() != null)
+            while(configCollection.find(eq("camID", numConfigs)).first() != null)
             {
                 numConfigs++;
             }
@@ -130,7 +131,7 @@ public class ConfigureRunner {
         Date sDate = new Date();
         Date eDate = new Date();
 
-        if(doc.get("type").equals("interval"))
+        if(doc.getString("type").equals("interval"))
         {
             String B = "BEGIN";
             String E = "END";
