@@ -1,4 +1,4 @@
-# Sprint x Report (1/8/23 - 2/3/23)
+# Sprint 4 Report (1/8/23 - 2/3/23)
 
 ## What's New (User Facing)
  * Implemented Image Processing Engine 
