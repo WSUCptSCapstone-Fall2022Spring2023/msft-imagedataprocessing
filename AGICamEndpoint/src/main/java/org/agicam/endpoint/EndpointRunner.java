@@ -4,8 +4,7 @@ import org.agicam.endpoint.collections.ConfigColl;
 import org.agicam.endpoint.collections.ImageColl;
 import org.agicam.endpoint.controllers.ConfigController;
 
-import static spark.Spark.get;
-import static spark.Spark.port;
+import static spark.Spark.*;
 
 public class EndpointRunner {
     public static void main(String[] args) {
@@ -29,5 +28,8 @@ public class EndpointRunner {
 
         // Configure paths
         get("/config", ConfigController.fetchConfig);
+        get("/plot-get", ConfigController.fetchPlots);
+        post("/plot-add", ConfigController.addPlot);
+        post("/plot-del", ConfigController.removePlot);
     }
 }
