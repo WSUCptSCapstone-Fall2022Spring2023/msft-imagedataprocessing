@@ -73,6 +73,8 @@ public class ConfigureRunner {
        }
     }
 
+    // This function either gets the cam number from the ./cameraNumber.txt file, or creates one based on
+    // how many config documents there are in the config collection.
     private static int getCamNumber(MongoCollection<Document> configCollection) throws IOException {
         File file = new File("./cameraNumber.txt");
         long numConfigs;
@@ -123,7 +125,8 @@ public class ConfigureRunner {
         return doc;
     }
 
-    //private static Document
+    //private static Document get
+    
 
     private static void updateConfig(String configLocation, Document doc) throws IOException {
         File localConfig = new File(configLocation); // find the local file
