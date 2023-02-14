@@ -64,7 +64,7 @@ public class ConfigureRunner {
        {
             // Update config locally
             updateConfig(configLocation, config);
-            config.replace("changed",false);
+            //config.replace("changed",false);
             configCollection.replaceOne(eq("_id", config.getObjectId("_id")), config);
        }
     }
@@ -108,6 +108,10 @@ public class ConfigureRunner {
     private static Document getDefaultConfig(int cameraNumber)
     {
         Document configDoc = new Document();
+        Date today = new Date();
+        Date eDate = new Date();
+        eDate.setYear(today.getYear() + 1);
+
         configDoc.put("camID", cameraNumber); // Id of the camera
         //configDoc.put("type", "select"); // "select" allows for selection of picture times (uneven intervals).
                                             // "interval" allows for pictures taken at even intervals.
@@ -117,8 +121,9 @@ public class ConfigureRunner {
         configDoc.put("duration", 1); //How long to leave sensor on. This should not change.
         //configDoc.put("intervalBetweenPics", 360); //How long between pictures. MUST BE AT LEAST 30MINS
         configDoc.put("changed", true); //Was the configuration updated? If so the wittyPi schedule needs to be updated
-
-        configDoc.put("times", Arrays.asList(600, 630, 720, 780)); // STORES AS TYPE ArrayList! Takes pictures at 10, 10:30, 12, and 1
+        configDoc.put("startDate", today);
+        configDoc.put("endDate", eDate);
+        configDoc.put("times", Arrays.asList(600, 630, 720, 780)); // STORES AS TYPE ArrayList! Takes picture at 10, 10:30, 12, and 1
 
         return configDoc;
     }
@@ -129,13 +134,27 @@ public class ConfigureRunner {
         FileWriter writer = new FileWriter(localConfig);
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Date sDate = new Date();
-        Date eDate = new Date();
+        Date sDate = doc.getDate("startDate");
+        Date eDate = doc.getDate("endDate");
         //List<Integer> times = null;
 
         ArrayList<Integer> times = new ArrayList<Integer>();
 
         times = doc.get("times", ArrayList.class);
+
+        sDate.setHours(times.get(0)/60);
+        sDate.setMinutes(times.get(0)%60);
+        sDate.setSeconds(0);
+        String sDateStr = formatter.format(sDate);
+
+        eDate.setHours(times.get(times.size()-1)/60);
+        eDate.setMinutes(times.get(times.size()-1)%60);
+        eDate.setSeconds(0);
+        String eDateStr = formatter.format(eDate);
+
+        writer.write("BEGIN\t" + sDateStr + System.lineSeparator());
+        writer.write("END\t" + eDateStr + System.lineSeparator());
+
 
 //        if(doc.getString("type").equals("interval"))
 //        {
