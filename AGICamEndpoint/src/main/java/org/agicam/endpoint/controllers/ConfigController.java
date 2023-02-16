@@ -76,6 +76,21 @@ public class ConfigController {
 
     private static boolean isValidPoint(String input)
     {
+        String split[] = input.split(",");
+
+        // Should be two integers seperated by a comma
+        if(split.length != 2)return false;
+
+        // Confirm parseable
+        try
+        {
+            Integer.parseInt(split[0]);
+            Integer.parseInt(split[1]);
+        }catch (NumberFormatException e)
+        {
+            return false;
+        }
+
         return true;
     }
 
@@ -91,7 +106,20 @@ public class ConfigController {
 
     private static void reOrderPoints(List<Point> points)
     {
+        int smallestX = points.stream().mapToInt(Point::getX).min().getAsInt();
+        int smallestY = points.stream().mapToInt(Point::getY).min().getAsInt();
+        int largestX = points.stream().mapToInt(Point::getX).max().getAsInt();;
+        int largestY = points.stream().mapToInt(Point::getY).max().getAsInt();;
 
+        points.clear();
+
+        // Store the smallest & largest
+        points.add(new Point(smallestX, smallestY));
+        points.add(new Point(largestX, largestY));
+
+        // Store left and right
+        points.add(new Point(smallestX, largestY));
+        points.add(new Point(largestX, smallestY));
     }
 
     public static Route addPlot = (Request request, Response response) -> {
@@ -164,11 +192,24 @@ public class ConfigController {
             int value = Integer.parseInt(cameraNumberString);
             int index = Integer.parseInt(plotIndex);
 
-            // TODO: Do some checking to confirm index is in range ?
+
             Document doc = ConfigColl.get().getCollection().find(eq("camID", value)).first();
 
             // Add plot into list of plots
             List<Document> plots = doc.getList("plots", Document.class, new ArrayList<>());
+
+
+            if(plots.size() == 0)
+            {
+                return new Document("error", "Camera " + value  + ": has no plots").toJson();
+            }
+
+            if(index < 0 || index >= plots.size())
+            {
+                return new Document("error", "Invalid index of plots"); // Should we return list of valid plots?
+            }
+
+            // Update the plots
             plots.remove(index);
 
             // Update document
@@ -181,8 +222,7 @@ public class ConfigController {
         }catch (NumberFormatException e)
         {
             // Have some pre-made json responses for error
+            return new Document("error","Invalid Camera Number").toJson();
         }
-
-        return new Document().toJson();
     };
 }
