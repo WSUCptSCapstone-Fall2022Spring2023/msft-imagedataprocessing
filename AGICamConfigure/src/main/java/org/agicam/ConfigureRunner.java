@@ -18,7 +18,6 @@ public class ConfigureRunner {
     public static void main(String[] args) throws IOException {
         // First argument should be the location of file to write configuration too.
         // Second argument should be connection string
-        // Third argument
         if(args.length != 2)
         {
             System.out.println("Invalid arguments. Please supply (config location) (mongo connection string)");
@@ -130,6 +129,16 @@ public class ConfigureRunner {
 
 
     private static void updateConfig(String configLocation, Document doc) throws IOException {
+        int onTimeInt = doc.getInteger("duration");
+        int offTimeInt = 0;
+        String onTimeText = new String();
+        String offTimeText = new String();
+        int totalTime;
+        ArrayList<Integer> times = new ArrayList<Integer>();
+
+        onTimeText = "ON\t" + TimeToString(onTimeInt) + System.lineSeparator();
+
+
         File localConfig = new File(configLocation); // find the local file
         FileWriter writer = new FileWriter(localConfig);
 
@@ -138,7 +147,7 @@ public class ConfigureRunner {
         Date eDate = doc.getDate("endDate");
         //List<Integer> times = null;
 
-        ArrayList<Integer> times = new ArrayList<Integer>();
+
 
         times = doc.get("times", ArrayList.class);
 
@@ -155,63 +164,51 @@ public class ConfigureRunner {
         writer.write("BEGIN\t" + sDateStr + System.lineSeparator());
         writer.write("END\t" + eDateStr + System.lineSeparator());
 
+        //totalTime = times.get(0);
+        for(int i = 1; i < times.size(); i++)
+        {
+            //Write if there's time for a pic to be taken and this picture isn't the last
+            if ((times.get(i) < ((60 * 24) - 10)) && (i != times.size() - 1))
+            {
+                offTimeInt = times.get(i) - times.get(i - 1) - onTimeInt;
 
-//        if(doc.getString("type").equals("interval"))
-//        {
-//            int offInterval = doc.getInteger("intervalBetweenPics") - doc.getInteger("duration");
-//
-//            sDate.setHours(doc.getInteger("start")/60);
-//            sDate.setMinutes(doc.getInteger("start")%60);
-//            sDate.setSeconds(0);
-//            String sDateStr = formatter.format(sDate);
-//
-//            eDate.setYear(sDate.getYear() + 5);
-//            eDate.setHours(doc.getInteger("start")/60);
-//            eDate.setMinutes(doc.getInteger("start")%60);
-//            eDate.setSeconds(0);
-//            String eDateStr = formatter.format(eDate);
-//
-//            writer.write("BEGIN " + sDateStr + System.lineSeparator());
-//            writer.write("END " + eDateStr + System.lineSeparator());
-//
-//            int totalTime = doc.getInteger("start");
-//
-//            for (int i = 0; i < doc.getInteger("amount") && totalTime < 60 * 24; i++)
-//            {
-//                int onHours = doc.getInteger("duration") / 60;
-//                int onMins = doc.getInteger("duration") % 60;
-//                int offHours = (doc.getInteger("intervalBetweenPics") - doc.getInteger("duration")) / 60;
-//                int offMins = (doc.getInteger("intervalBetweenPics") - doc.getInteger("duration")) % 60;
-//
-//                totalTime = totalTime + (onHours * 60) + onMins;
-//                totalTime = totalTime + (offHours * 60) + offMins;
-//
-//                if(totalTime < 60*24)
-//                {
-//                    //Write ON times
-//                    writer.write("ON ");
-//                    //if (onHours > 0)
-//                    //{
-//                    writer.write("H" + onHours + " ");
-//                    //}
-//                    //if (onMins > 0)
-//                    //{
-//                    writer.write("M" + onMins);
-//                    //}
-//                    writer.write(System.lineSeparator());
-//
-//
-//                    //Write OFF times
-//                    writer.write("OFF ");
-//                    writer.write("H " + offHours + " ");
-//                    writer.write("M " + offMins + System.lineSeparator());
-//                }
-//
-//
-//            }
-//
-//        }
+                offTimeText = "OFF\t" + TimeToString(offTimeInt) + System.lineSeparator();
+
+
+
+
+                writer.write(onTimeText);
+                writer.write(offTimeText);
+            }
+            // Write OFF until next pic needs to be taken
+            else
+            {
+                offTimeInt = (24 * 60) - times.get(i-1) - onTimeInt + times.get(0);
+                offTimeText = "OFF\t" + TimeToString(offTimeInt) + System.lineSeparator();
+
+                writer.write(onTimeText);
+                writer.write(offTimeText);
+            }
+        }
 
         writer.close();
+    }
+
+    private static String TimeToString(int duration)
+    {
+        int hours = duration / 60;
+        int mins = duration % 60;
+        String time = new String();
+
+        if (hours != 0)
+        {
+            time = "H" + Integer.toString(hours) + " ";
+        }
+        if (mins != 0)
+        {
+            time += "M" + Integer.toString((mins));
+        }
+
+        return time;
     }
 }
