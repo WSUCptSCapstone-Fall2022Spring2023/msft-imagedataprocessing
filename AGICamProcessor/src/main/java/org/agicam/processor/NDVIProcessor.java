@@ -6,9 +6,12 @@ import java.util.List;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.gui.PolygonRoi;
+import ij.gui.Roi;
 import ij.process.FloatProcessor;
 import ij.process.ImageProcessor;
 import ij.process.ImageStatistics;
+import org.agicam.processor.util.Couple;
 import org.agicam.processor.util.Plot;
 import org.bson.Document;
 
@@ -44,10 +47,11 @@ public class NDVIProcessor {
         // Calculate statistics for each plot
         for (int i = 0; i < plots.size(); i++) {
             Plot plot = plots.get(i);
-            int width = plot.getxPoints().getItemTwo() - plot.getxPoints().getItemOne();
-            int height = plot.getyPoints().getItemTwo() - plot.getyPoints().getItemOne();
+            int[] xPoints = plot.getPoints().stream().mapToInt(Couple::getItemOne).toArray();
+            int[] yPoints = plot.getPoints().stream().mapToInt(Couple::getItemTwo).toArray();
+            int length = xPoints.length;
 
-            ndviImp.setRoi(plot.getxPoints().getItemOne(), plot.getyPoints().getItemOne(), width, height );
+            ndviImp.setRoi(new PolygonRoi(xPoints, yPoints, length, Roi.POLYGON));
             ImageStatistics stats = ImageStatistics.getStatistics(ndviImp.getProcessor(), ImageStatistics.MEAN, null);
             double mean = stats.mean;
 
