@@ -133,7 +133,7 @@ public class Main {
         // Delete uploaded files
         for (File f : uploaded)
         {
-         //   f.delete();
+            f.delete();
         }
     }
 }
