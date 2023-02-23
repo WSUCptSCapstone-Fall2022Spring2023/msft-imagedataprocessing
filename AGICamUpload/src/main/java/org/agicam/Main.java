@@ -22,8 +22,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.stream.Stream;
 
 public class Main {
@@ -89,6 +93,29 @@ public class Main {
                             throw new RuntimeException(e);
                         }
                         document.put("_id", id);
+
+                        String info[] = id.split("-");
+
+                        // Capture camera #
+                        document.put("cam#", Integer.parseInt(info[0]));
+
+                        // Filter out camera number
+                        int start = id.indexOf("-");
+                        // Filter out take number
+                        int end = id.lastIndexOf("-");
+                        int takeNumber = Integer.parseInt(id.substring(end + 1));
+                        document.put("take", takeNumber);
+
+                        // Create date/time formatter
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-hh-mm");
+
+                        try {
+                            String parsedDateTime = id.substring(start + 1, end);
+                            Date parsedDate = formatter.parse(parsedDateTime);
+                            document.put("date", parsedDate);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
 
                         // Upload the document
                         InsertOneResult result = collection.insertOne(document);
