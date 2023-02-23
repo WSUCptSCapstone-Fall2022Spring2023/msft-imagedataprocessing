@@ -9,6 +9,7 @@ import com.mongodb.client.gridfs.GridFSBucket;
 import com.mongodb.client.gridfs.GridFSBuckets;
 import com.mongodb.client.gridfs.model.GridFSDownloadOptions;
 import com.mongodb.client.gridfs.model.GridFSFile;
+import org.agicam.processor.util.Couple;
 import org.agicam.processor.util.Plot;
 import org.bson.Document;
 
@@ -57,7 +58,23 @@ public class ProcessorRunner {
         // Get plots from configuration
         Document config = configs.find(eq("_id", camNumber)).first();
 
+        assert config != null;
+        List<Document> plotsDocs = config.getList("plots", Document.class, new ArrayList<>());
         List<Plot> plots = new ArrayList<>();
+
+        // Deserialize plots
+        for (Document pDoc : plotsDocs)
+        {
+            List<Document> points = pDoc.getList("points", Document.class, new ArrayList<>());
+            List<Couple<Integer, Integer>> realPoints = new ArrayList<>();
+            for (Document pointDoc : points)
+            {
+                realPoints.add(new Couple<>(pointDoc.getInteger("x"), pointDoc.getInteger("y")));
+            }
+
+            // Add to the plots list for plot construction
+            plots.add(new Plot(realPoints));
+        }
 
         // Get the file image now
         String fileName = doc.getString("_id");
