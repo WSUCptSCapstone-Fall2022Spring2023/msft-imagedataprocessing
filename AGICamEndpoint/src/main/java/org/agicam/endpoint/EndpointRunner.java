@@ -3,6 +3,7 @@ package org.agicam.endpoint;
 import org.agicam.endpoint.collections.ConfigColl;
 import org.agicam.endpoint.collections.ImageColl;
 import org.agicam.endpoint.controllers.ConfigController;
+import org.agicam.endpoint.controllers.ImageController;
 
 import static spark.Spark.*;
 
@@ -27,6 +28,8 @@ public class EndpointRunner {
         port(4567);
 
         // Configure paths
+        get("/image-get", ImageController.getImage);
+        after("/image-get", ((request, response) -> {response.type("image/jpeg");}));
         get("/config", ConfigController.fetchConfig);
         get("/plot-get", ConfigController.fetchPlots);
         post("/plot-add", ConfigController.addPlot);
