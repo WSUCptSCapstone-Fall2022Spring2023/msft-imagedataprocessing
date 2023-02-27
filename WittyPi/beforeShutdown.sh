@@ -6,9 +6,12 @@
 # Raspberry Pi will not shutdown until all commands here are executed.
 #
 
-NOW=`date +"%D %T"`
+#NOW=`date +"%D %T"`
 
-FILE=/home/pi/Desktop/msft-imagedataprocessing/WittyPi/WittyPi_log.txt
+#FILE=/home/pi/Desktop/msft-imagedataprocessing/WittyPi/WittyPi_log.txt
+
+#Cofigure Sensor
+
 
 #Capture picture
 /home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 1 5 &
@@ -22,4 +25,4 @@ java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamUpload/build/libs/AGIC
 #Wait until upload is done are taken
 wait
 
-printf "System powered off at %s\n" "$NOW" >> "$FILE"
+#printf "System powered off at %s\n" "$NOW" >> "$FILE"

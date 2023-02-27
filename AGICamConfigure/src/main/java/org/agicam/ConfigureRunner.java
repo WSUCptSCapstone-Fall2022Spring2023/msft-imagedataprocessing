@@ -63,7 +63,7 @@ public class ConfigureRunner {
        {
             // Update config locally
             updateConfig(configLocation, config);
-            //config.replace("changed",false);
+            config.replace("changed",false);
             configCollection.replaceOne(eq("_id", config.getObjectId("_id")), config);
        }
     }
