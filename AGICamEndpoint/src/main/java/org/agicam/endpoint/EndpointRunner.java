@@ -31,5 +31,7 @@ public class EndpointRunner {
         get("/plot-get", ConfigController.fetchPlots);
         post("/plot-add", ConfigController.addPlot);
         post("/plot-del", ConfigController.removePlot);
+        post("/time-add", ConfigController.addTime);
+        post("/time-del", ConfigController.removeTime);
     }
 }

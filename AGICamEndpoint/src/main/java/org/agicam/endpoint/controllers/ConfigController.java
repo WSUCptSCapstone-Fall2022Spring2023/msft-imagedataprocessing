@@ -10,6 +10,7 @@ import spark.Route;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.in;
@@ -225,4 +226,80 @@ public class ConfigController {
             return new Document("error","Invalid Camera Number").toJson();
         }
     };
+
+    public static Route addTime = (Request request, Response response) -> {
+        String cameraNumberString = request.queryParams("camNum");
+        // This should be in military time as minutes
+        String timeString = request.queryParams("time");
+
+        try{
+            int camNumber = Integer.parseInt(cameraNumberString);
+            int time = Integer.parseInt(timeString);
+
+            // Query the camera config and get times
+            Document doc = ConfigColl.get().getCollection().find(eq("camID", camNumber)).first();
+            List<Integer> times = doc.getList("times", Integer.class, new ArrayList<>());
+
+            // Validate that this time isn't already present
+            if(times.contains(time))
+            {
+                return new Document("error", "Camera #" + camNumber + " already contains the time " + time).toJson();
+            }
+
+            // Add time and resort
+            times.add(time);
+            times = times.stream().sorted().collect(Collectors.toList());
+
+            // Update locally
+            if(doc.containsKey("times"))doc.replace("times", times);
+            else doc.put("times", times);
+
+            // Update in database
+            ConfigColl.get().getCollection().replaceOne(eq("camID", camNumber), doc);
+
+            // Return success
+            return new Document("result", "success").toJson();
+        }catch (NumberFormatException e)
+        {
+            return new Document("error","Invalid camera number").toJson();
+        }
+    };
+
+    public static Route removeTime = (Request request, Response response) -> {
+        String cameraNumberString = request.queryParams("camNum");
+        // This should be in military time as minutes
+        String timeString = request.queryParams("time");
+
+        try{
+            int camNumber = Integer.parseInt(cameraNumberString);
+            int time = Integer.parseInt(timeString);
+
+            // Query the camera config and get times
+            Document doc = ConfigColl.get().getCollection().find(eq("camID", camNumber)).first();
+            List<Integer> times = doc.getList("times", Integer.class, new ArrayList<>());
+
+            // Validate that this time isn't already present
+            if(!times.contains(time))
+            {
+                return new Document("error", "Camera #" + camNumber + " does not contain the time " + time).toJson();
+            }
+
+            // Add time and resort
+            times.removeIf(integer -> integer == time);
+
+            // Update locally
+            if(doc.containsKey("times"))doc.replace("times", times);
+            else doc.put("times", times);
+
+            // Update in database
+            ConfigColl.get().getCollection().replaceOne(eq("camID", camNumber), doc);
+
+            // Return success
+            return new Document("result", "success").toJson();
+        }catch (NumberFormatException e)
+        {
+            return new Document("error","Invalid camera number").toJson();
+        }
+    };
+
 }
