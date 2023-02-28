@@ -1,19 +1,18 @@
 # AGIcam Image Data Processing
 
-Agricultural IOT camera system
+### Agricultural IOT Camera System
 
 
 ![alt_text](Images/microsoft-logo.png "Microsoft Logo")
 
+**Mentor:**
 
+Dr. Sindhuja Sankaran | Washington State University
 
-
-**AgroDevs**
+**Development Team:**
 
 Abhilash Ambati
-
 Zachary Hall
-
 Jordan Muehlbauer
 
 
