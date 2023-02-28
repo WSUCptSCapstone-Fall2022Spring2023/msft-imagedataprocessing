@@ -21,75 +21,45 @@ Jordan Muehlbauer
 
 **I. Introduction**  
 **II. Team Members - Bios and Project Roles**  
-**III. Project Description and Clarification**  
-	1. Introduction  
-	2. Background and Related Work  
-	3. Project Overview  
-	4. Client and Stakeholder Identification and Preferences  
-**IV. Project Requirements and Specifications**  
-	1. Introduction  
-	2. System Requirements Specification  
-		2.1. Use Cases  
-		2.2. Functional Requirements  
-			2.2.1. Sensor's Processor  
-			2.2.2.  Central hub/User Interface  
-			2.2.3. Database
-		2.3. Non-Functional Rquirements  
-	3. System Evolution  
-**V. Project Solution Approach**  
-	1. Introduction  
-	2. System Overview  
-	3. Architecture Design  
-		3.1. Overview  
-		3.2. Subsystem Decomposition  
-			3.2.1. Sensor Module  
-			3.2.2. Database  
-			3.2.3. User Interface  
-	4. Data design  
-	5. User Interface Design  
-**VI. Testing and Acceptance Plan**  
-	1. Introduction  
-	2. Testing Strategy  
-	3. Test Plans  
-		3.1. Unit Testing  
-		3.2. Integration Testing  
-		3.3. System Testing  
-			3.3.1. Functional Testing  
-			3.3.2. Performance Testing  
-			3.3.3. User Acceptance Testing  
-	4. Environment Requirements  
-**VII. Alpha Prototype**  
-	1. Introduction  
-	2. Alpha Prototype Description  
-		2.1. AGICamUpload  
-		2.2 AGICamCapture  
-		2.3 AGICamConfigure  
-	3. Alpha Prototype Demonstration  
-	4. Future Work  
-**VII. Glossary**  
-**IX. References**  
-**X. Appendices**  
+**III. Project Requirements Specification**  
+	1. Project Stakeholders  
+	2. Use Cases  
+	3. Functional Requirements  
+	4. Non-Functional Requirements  
+**IV. Software Design**  
+	1. Architecture Design  
+		1.1 Overview  
+		1.2 Subsystem Decomposition  
+	2. Data Design  
+	3. API Design  
+**V. Test Case Specifications and Results**  
+	1. Testing Overview  
+	2. Environment Requirements  
+	3. Test Results  
+**VI. Projects and Tools Used**  
+**VII. Description of Final Prototype**  
+**VIII. Product Delivery Status**  
+**IX. Conclusions and Future Work**  
+	1. Limitations and Recommendations  
+	2. Future Work  
+**X. Acknowledgements**  
+**XI. Glossary**  
+**XII. References**  
+**XIII. Appendix A - Team Information**  
+**XIV. Appendix B - Example Testing Strategy Reporting**  
+**XV. Appendix C - Project Management**  
 
 # I. Introduction
 
-Originating from Pullman WA, Washington State University Phenomics lab developed an Auridino-based IOT camera system 
-known as AGIcam. This camera is tasked with monitoring crop conditions in remote fields. AgroDevs is a team of 3 WSU 
-computer science students tasked with evaluating and improving data transfer and compression as well as evaluating edge 
-computing and minimal power consumption solutions. Improving these aspects will allow for AGIcam to provide a better 
-user experience and reduce overhead for farms using the sensor. Our team is working directly with Dr. Sankaran to meet 
-these goals and advance the prosperity of  AGIcam.
+Originating from Pullman, WA, Washington State University Phenomics lab developed an Raspberry Pi-based IOT camera system known as AGIcam. The goal of this was to allow for remote crop monitoring. While what they developed worked, they wanted to make it better. AgroDevs is a team of 3 WSU computer science students whose main tasks were improving power consumption on the sensor, improving data transfer from the sensor, and creating a convienent way to store and search information gathered by the sensor.  Through the completion of these tasks, ArgoDevs allowed for AGIcam to provide a better user experience and reduced time spent in the field by farmers/researchers. Our team worked directly with Dr. Sankaran to meet these goals and advance the prosperity of AGIcam.
 
-This project intends to allow farmers to remotely monitor their crops. It will achieve this by enabling the farmer to 
-record data at user-specified intervals from sensors scattered throughout their farm. The sensors will then send the 
-data to a central control hub. This hub then stores the data and allows the farmer to access the data. 
-The idea behind this is to save farm resources by minimizing time spent by the farmer in the field.
+The broader goal of this project was to allow farmers to remotely monitor their crops and minimize time thier time spent in the field. This was achieved by programing the sensor to be remotely configurable, sending these pictures to a database, and improving power consumption thereby reducing time needed to travel and recharge the sensor. Idealy, this will allow for better crop management and lower cost of crop production.
 
 # II. Team Members - Bios and Project Roles
 - Zachary Hall's roll in this project was team lead. The main responsiblity of this was communicatoin between the client and the development team. He is a computer science major at Washington State University. His prior experiences include building a linux file system, a flask based web application, and a Mandelbrot Set picture generator. He has helped throughout the project but mostly in programing the WittyPi module, remote configuration, and monitoring the sensor.
 
  - Jordan Muehlbauer is a computer science student attending Washington State University. His prior projects and experience include orchastrating large game servers, doing website development and contributing to embedded operating systems. He is well versed in system design, Java, C++ and Python. For this project he has been responsible for creating the database, creating the capture and upload executable and providing support for database interaction to other team members while working on their parts.
 - Abhilash Ambati is a computer science student attending Washington State University. His prior project and experiences include web development, sms spam filter and data minning. He is well versed in c++, python and HTML.For this project he has been responsible for convertinf the code from python to c++ and helped capturing multiple images and completed part of Remote Configuration.
-
 
 
 # III. Project Description and Clarification
