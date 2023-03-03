@@ -56,8 +56,6 @@ public class ConfigureRunner {
             configCollection.insertOne(config); // Write to remote the configuration for this device.
         }
 
-        config.replace("changed",true);
-
 
         if(config.getBoolean("changed").equals(true))
        {
