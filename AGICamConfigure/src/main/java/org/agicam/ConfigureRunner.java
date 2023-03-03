@@ -56,14 +56,12 @@ public class ConfigureRunner {
             configCollection.insertOne(config); // Write to remote the configuration for this device.
         }
 
-        //Test for time specific configurations
-
 
         if(config.getBoolean("changed").equals(true))
        {
             // Update config locally
             updateConfig(configLocation, config);
-            //config.replace("changed",false);
+            config.replace("changed",false);
             configCollection.replaceOne(eq("_id", config.getObjectId("_id")), config);
        }
     }
