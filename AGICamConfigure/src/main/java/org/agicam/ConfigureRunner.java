@@ -56,7 +56,7 @@ public class ConfigureRunner {
             configCollection.insertOne(config); // Write to remote the configuration for this device.
         }
 
-        //Test for time specific configurations
+        config.replace("changed",true);
 
 
         if(config.getBoolean("changed").equals(true))

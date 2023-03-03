@@ -6,23 +6,17 @@
 # Raspberry Pi will not shutdown until all commands here are executed.
 #
 
-#NOW=`date +"%D %T"`
-
-#FILE=/home/pi/Desktop/msft-imagedataprocessing/WittyPi/WittyPi_log.txt
-
 #Cofigure Sensor
+java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamConfigure/build/libs/AGICamConfigure-1.0-SNAPSHOT.jar /home/pi/wittypi/schedules/Capture_Schedule.wpi 'mongodb+srv://agicam:QCZgJ97ledg5cXbf@agicam-store.dsxer1a.mongodb.net/?retryWrites=true&w=majority'
 
+wait
 
 #Capture picture
-/home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 1 5 &
+/home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 5
 
-#Wait until pictures are taken
 wait
 
 #Upload to database
 java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamUpload/build/libs/AGICamUpload-1.0-SNAPSHOT.jar /home/pi/AGICamImages 'mongodb+srv://<username>:<password>@agicam-store.dsxer1a.mongodb.net/?retryWrites=true&w=majority' agicam QCZgJ97ledg5cXbf
 
-#Wait until upload is done are taken
 wait
-
-#printf "System powered off at %s\n" "$NOW" >> "$FILE"

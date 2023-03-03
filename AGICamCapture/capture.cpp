@@ -1,5 +1,5 @@
 #include <iostream>
-#include <ifstream>
+#include <fstream>
 #include <sstream>
 #include <chrono>
 #include <ctime>
@@ -54,12 +54,12 @@ int main(int argc, char**args) {
     // Collect argument strings
     char* directory = args[1];
     char* amount_pics_str = args[2];
-    char* camera_number_str = file.get();
+    int camera_number = file.get();
 
     file.close();
 
     // Convert arguments to their proper form
-    int camera_number = atoi(camera_number_str);
+    // int camera_number = atoi(camera_number_str);
     int amount_pics = atoi(amount_pics_str);
 
     // Take 5 pictures
