@@ -33,22 +33,32 @@ Here are links to the issues that we completed in this sprint:
  
 ## Code Files for Review
 Please review the following code files, which were actively developed during this sprint, for quality:
- * [Name of code file 1](https://github.com/your_repo/file_extension)
- * [Name of code file 2](https://github.com/your_repo/file_extension)
- * [Name of code file 3](https://github.com/your_repo/file_extension)
+ * [EndpointRunner.java](AGICamEndpoint/src/main/java/org/agicam/endpoint/EndpointRunner.java)
+ * [ConfigController.java](AGICamEndpoint/src/main/java/org/agicam/endpoint/controllers/ConfigController.java)
+ * [Main.java](AGICamUpload/src/main/java/org/agicam/Main.java)
+ * [ImageController.java](AGICamEndpoint/src/main/java/org/agicam/endpoint/controllers/ImageController.java)
+ * [Point.java](AGICamEndpoint/src/main/java/org/agicam/endpoint/util/Point.java)
+ * [MongoDB.java](AGICamEndpoint/src/main/java/org/agicam/endpoint/MongoDB.java)
+ * [ImageColl.java](AGICamEndpoint/src/main/java/org/agicam/endpoint/collections/ImageColl.java)
+ * [ConfigColl.java](AGICamEndpoint/src/main/java/org/agicam/endpoint/collections/ConfigColl.java)
+ * [NDVIProcessor.java](AGICamProcessor/src/main/java/org/agicam/processor/NDVIProcessor.java)
+ * [ProcessorRunner.java](AGICamProcessor/src/main/java/org/agicam/processor/ProcessorRunner.java)
+ * [Plot.java](AGICamProcessor/src/main/java/org/agicam/processor/util/Plot.java)
+ * [ConfigureRunner.java](AGICamConfigure/src/main/java/org/agicam/ConfigureRunner.java)
+ * [capture.cpp](AGICamCapture/capture.cpp)
  
 ## Retrospective Summary
 Here's what went well:
-  * Item 1
-  * Item 2
-  * Item x
+  * Planning, Our team did a great job of planning early and getting ahead.
+  * Coding, Our team managed to use different technologies we haven't used before effectively to ensure that the coding part of our project was completed efficiently.
+  * Teamwork, This sprint our team really bound together and did a good job making sure issues got solved.
  
 Here's what we'd like to improve:
-   * Item 1
-   * Item 2
-   * Item x
+   * Documentation, Our product is mainly done now we need to make sure we start documenting how everything works so future contributors can work on this project.
+   * Usability, We need to start testing and making sure that our product is usable and flexible to the clients needs.
+   * Consistency, We need to make sure we maintain this level of efficiency throughout next sprint.
   
 Here are changes we plan to implement in the next sprint:
-   * Item 1
-   * Item 2
-   * Item x
+   * Set a due date for issues internally so that we remain on task.
+   * Define the process for each issue we create so that any one can pick up an issue at anytime without the need for a team meeting.
+   * Determine what the client needs testing wise so that we can make sure we fufill their desires this sprint.
