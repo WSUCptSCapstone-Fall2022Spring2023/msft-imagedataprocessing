@@ -59,6 +59,7 @@ The broader goal of this project was to allow farmers to remotely monitor their 
 - Zachary Hall's roll in this project was team lead. The main responsiblity of this was communicatoin between the client and the development team. He is a computer science major at Washington State University. His prior experiences include building a linux file system, a flask based web application, and a Mandelbrot Set picture generator. He has helped throughout the project but mostly in programing the WittyPi module, remote configuration, and monitoring the sensor.
 
  - Jordan Muehlbauer is a computer science student attending Washington State University. His prior projects and experience include orchastrating large game servers, doing website development and contributing to embedded operating systems. He is well versed in system design, Java, C++ and Python. For this project he has been responsible for creating the database, creating the capture and upload executable and providing support for database interaction to other team members while working on their parts.
+
 - Abhilash Ambati is a computer science student attending Washington State University. His prior project and experiences include web development, sms spam filter and data minning. He is well versed in c++, python and HTML.For this project he has been responsible for convertinf the code from python to c++ and helped capturing multiple images and completed part of Remote Configuration.
 
 
@@ -66,9 +67,18 @@ The broader goal of this project was to allow farmers to remotely monitor their 
 
 ## 1. Project Stakeholders
 
+There are three main groups of stakeholders. Professors and graduate students of the Biological Systems Engineering department at Washington State University, farmers (wheat farmers), and the development team. The following is a breakdown of each stakholder's needs.
+
+* WSU Professors and Graduate Students
+	* In the scope of this project, professors and grad students share the same needs. For the sensor, they want it to be easy to set up, accurately capture a picture containing both NoIR and RGB images and report the NDVI of specified areas, be remotely configurable, have a long battery life, and work well in areas of low conection. For the API, they want something that is easy to understand and easy to build a website from. It should also be able to get important data from the database and be able to ajust the remote configuation of the sensor.
+* Farmers (mainly wheat farmers)
+	* Sensor accurancy and battery life are the most important things for the farmer. They want to be able to observe their crops remotely without spending time in the fields. This includes being able to remotely configure the sensor.
+* Development Team
+	* The main goal of the development team is meet the goals of the client while also meeting the goals of their capstone project. If the client is happy then we are happy. However, the team will have to manage client needs with what is doable with in the time allotted for the capstone project.
 
 ## 2. Use Cases
 
+![alt_text](Images/usecase.png "image_tooltip")
 
 ## 3. Functional Requirements
 
