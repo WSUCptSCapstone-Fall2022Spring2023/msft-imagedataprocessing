@@ -78,6 +78,8 @@ There are three main groups of stakeholders. Professors and graduate students of
 
 ## 2. Use Cases
 
+For the purposes of this project, WSU professors, grad students, farmers all shared the same use cases. Therefore, we combined them into one actor. Below is the project's use case diagram.
+
 ![alt_text](Images/Capstone_UseCaseDiagram.jpg "Use Cases")
 
 ## 3. Functional Requirements
