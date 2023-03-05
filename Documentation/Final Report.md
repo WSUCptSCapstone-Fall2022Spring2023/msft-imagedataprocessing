@@ -78,7 +78,7 @@ There are three main groups of stakeholders. Professors and graduate students of
 
 ## 2. Use Cases
 
-![alt_text](Images/usecase.png "image_tooltip")
+![alt_text](Images/Capstone_UseCaseDiagram.jpg "Use Cases")
 
 ## 3. Functional Requirements
 
