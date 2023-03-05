@@ -169,6 +169,13 @@ There are four main subsystems within this project: the sensor module, database,
 
 ## 2. Data Design
 
+Our product has two inputs that are collected during a snapshot. NOIR camera data and RGB camera data. AGICamera’s will be installed in an environment and will work within a network to provide overview of the current state of their farm to end-users. This is how our documents in our database will be formatted. It is important to note that the compressed data will be stored in binary form and will need to be decompressed when used on the front-end.
+
+AGICam Snapshot Design: Fields: Camera ID, Snapshot timestamp, Compressed NOIR data, Compressed RGB data Primary key: (Camera ID, Snapshot timestamp)
+
+Internally on the end-user side of things they will be querying our database on ranges of Camera ID and latest snapshot. It will be possible for users to view specific regions of their farm as well as viewing the entirety of snapshots across their farm at once.
+
+This data will be uploaded from our devices to our cloud SQL server where it can be queried by the end user through our interface. Currently our end-clients have their own interface to use this data with but in the case where we supply an end-user interface we will determine what local data structures will be needed to visually process this data.
 
 ## 3. API Design
 
@@ -178,6 +185,10 @@ There are four main subsystems within this project: the sensor module, database,
 ## 1. Testing Overview
 
 ## 2. Environment Requirements
+
+Ideally, we would be able to test code on the sensor module down to the scale of unit tests, however, we only have one sensor and we can’t all use it at the same time. To solve this, we will only be doing integration testing on the sensor. Unit testing will be done individually by team members on their own machines.
+
+When a team member pulls into the main branch, they will also pull main into the sensor’s test branch. This branch will then be pulled into the sensor. There, they will preform the required integration testing. They will document the tests done and results of the test in a test report. If there are issues, they will try to resolve them. The code and results will then be pushed back into the test branch which will merged back to main. This will ensure that code within main remains functional on the sensor.
 
 ## 3. Test Results
 
