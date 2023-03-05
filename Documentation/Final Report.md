@@ -162,6 +162,8 @@ The following subsections will detail the software design and the reasoning behi
 
 There are four main subsystems within this project: the sensor module, database, remote server, and API. One of the main focuses of this design was to minimize the use of the sensor thus extending the sensor's battery life. This design also allows for minimal time spent by the user in the field. The sensor module uses the cameras to take pictures, the database stores these pictures, the remote server calculates the NDVI for these pictures and returns these values back to the database, and finally the API gets information from the database to present to the user. The following diagram is a generalized representation of how the subsystems interact.
 
+![alt_text](Images/Generalized_Subsystem_Diagram.jpg "Use Cases")
+
 ### 1.2 Subsystem Decomposition
 
 
