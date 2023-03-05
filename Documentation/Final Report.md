@@ -128,6 +128,29 @@ The following are the functional requirements of each subsystem. In order to ext
 
 ##  4. Non-Functional Requirements 
 
+### Economically Extensible
+
+Our system needs to drain as little energy as possible to allow users to extend their network of cameras without having high energy overhead. We should aim to use components that provide the best value for their price.
+
+### Easy to Configure
+
+Our system needs to be able to be set up with little to none technical background or experience. Our device should be configurable to fit different scenarios where our out-of-the-box solution might not fit.
+
+### Reliability
+
+Our system needs to be able to transfer data reliably and detect when there is corruption as well as stay functional with minimal human interaction.
+
+### Maintainable
+
+This project needs to have a well-documented user guide making it easy to set up. Along with this our codebase for this project must be well documented so that changes are easy to produce. This is extremely important because the project will be passed on to students without a computer science background.
+
+### Accurate
+
+We need to provide accurate crop information to our users so they have an accurate idea of the state of their farms. If there are any drastic changes between readings we should be able to analyze this and ensure nothing inaccurate is being reported to users.
+
+### Data Extraction That Is Easy-to-Use
+
+Our system needs to be able to extract data without the need for human interaction. Data should flow to our control system automatically and should not require physical travel to each node for data to be collected.
 
 # IV. Software Design
 
