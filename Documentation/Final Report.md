@@ -84,6 +84,47 @@ For the purposes of this project, WSU professors, grad students, farmers all sha
 
 ## 3. Functional Requirements
 
+The following are the functional requirements of each subsystem. In order to extend battery life of the sensor, we minimalized the functional requirements of the sensor by moving the requirements to other subsystems.
+
+### 3.1. Sensor
+
+#### 3.1.1. Allow for Remote Configuration
+* In order for the farmer or researcher to spend minimal time in the field, the sensor must be remoltly configurable. This includes both the picture schedule and how many pictures to be taken.
+* Priority Level: 1
+
+#### 3.1.2. Take a Picture Containing Both NoIR and RGB Images
+* Capturing a picture containing both NoIR and RGB images is the main purpose of the sensor.
+* Priority Level: 0
+
+#### 3.1.3 Send Pictures to Database
+* The sensor should be able to conect to the database and send pictures taken to the database.
+* Priority Level: 0
+
+### 3.2. Database
+
+#### 3.2.1. Store Picture, NDVI, and Configuration Data
+* The main pupose of the database is to store the necessary picture and configuration data.
+* Priority Level: 0
+
+#### 3.2.2. Give Access to the Data to Other Subsystems
+* The database should allow for other subsystems to access the data stored.
+* Priority Level: 0
+
+### 3.3. Server
+
+#### 3.3.1. Calulate the NDVI for Each Picture
+* In order to save battery life on the server, we have decided to have a remote serve calculate the NDVI for each picture. This is the only requirement of the server.
+* Priority Level: 1
+
+### 3.4. API
+
+#### 3.4.1. Allow Users to Request Pictures and Corrisponding NDVI's from a Certain Camera Captured within a Certain Time Period
+* The API must allow the user to access data in the database in a simplified maner. 
+* Priority Level: 0
+
+#### 3.4.2. Prevent Bad Configuration Data from Being Stored
+* A database is only as good as the data stored in it. To prevent bad data from getting stored in the database, the API will be responsible for making sure configuration data is represented in a way the sensor can understand. 
+* Priority Level: 1
 
 ##  4. Non-Functional Requirements 
 
