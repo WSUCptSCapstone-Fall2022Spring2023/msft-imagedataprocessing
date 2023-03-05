@@ -224,7 +224,7 @@ optimization the code in.
 
 ### 2.1.  	Use Cases 
 
-![alt_text](Images/usecase.png "image_tooltip")
+![alt_text](Images/Capstone_UseCaseDiagram.jpg "Use Cases")
 
 ### 2.2. Functional Requirements
 
