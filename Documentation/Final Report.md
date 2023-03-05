@@ -154,12 +154,13 @@ Our system needs to be able to extract data without the need for human interacti
 
 # IV. Software Design
 
+The following subsections will detail the software design and the reasoning behind it. The software was designed keeping use cases, functional requirements, and non-functional requirements in minde. We hope the following best meets all requirements.
 
 ## 1. Architecture Design
 
-
 ### 1.1 Overview
 
+There are four main subsystems within this project: the sensor module, database, remote server, and API. One of the main focuses of this design was to minimize the use of the sensor thus extending the sensor's battery life. This design also allows for minimal time spent by the user in the field. The sensor module uses the cameras to take pictures, the database stores these pictures, the remote server calculates the NDVI for these pictures and returns these values back to the database, and finally the API gets information from the database to present to the user. The following diagram is a generalized representation of how the subsystems interact.
 
 ### 1.2 Subsystem Decomposition
 
