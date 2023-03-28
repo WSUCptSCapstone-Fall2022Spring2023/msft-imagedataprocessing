@@ -166,6 +166,9 @@ There are four main subsystems within this project: the sensor module, database,
 
 ### 1.2 Subsystem Decomposition
 
+The following is a further breakdown of the subsystem structure.
+
+![alt_text](Images/SubsystemDecompositionDesign.jpg)
 
 ## 2. Data Design
 
