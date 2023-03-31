@@ -126,6 +126,10 @@ The following are the functional requirements of each subsystem. In order to ext
 * A database is only as good as the data stored in it. To prevent bad data from getting stored in the database, the API will be responsible for making sure configuration data is represented in a way the sensor can understand. 
 * Priority Level: 1
 
+#### 3.4.3 Allow Users to Change Configuration Of a Cammera
+* The API must allow each configuration document to be updated by the user.
+* Priority Level: 1
+
 ##  4. Non-Functional Requirements 
 
 ### Economically Extensible
@@ -199,14 +203,31 @@ When a team member pulls into the main branch, they will also pull main into the
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| CaptureTest | 3.1.2. Sensor Take a Picture Containing Both NoIR and RGB Images | The correct number of images are in the specified folder, and each image contains RGB (on left) and NoIR (on right) pictures | The specified folder contained the correct number of images and the images where correct | PASS | (See 3.1 CaptureTest Requirements/Steps) |
+| Capture Test | 3.1.2. Sensor Take a Picture Containing Both NoIR and RGB Images | The correct number of images are in the specified folder, and each image contains RGB (on left) and NoIR (on right) pictures | The specified folder contained the correct number of images and the images where correct | PASS | (See 3.1 Capture Test Requirements/Steps) |
 
-#### 3.1.1 CaptureTest Requirements/Steps
+#### 3.1.1 Capture Test Requirements/Steps
 1. Follow AGICamCapture build steps.
-2. Follow AGICameInit build steps.
+2. Follow AGICamInit build steps.
 3. Use the command line to run AGICamCapture.exe with desired output and number of pictures arguments. For example: /home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 5
 4. Go to output location (for example /home/pi/AGICamImages) and view pictures making sure the number of pictures in correct and the pictures themselves contain both RGB and NoIR images.
 5. Manually delete pictures to return folder to inital state. 
+
+### 3.2 Integration Tests/Results
+
+| Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+
+### 3.3 System Tests/Results
+
+| Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Remote Configuration of WittyPi Test | 3.1.1. Allow for Remote Configuration, 3.2.2. Give Access to the Data to Other Subsystems, and 3.4.3 Allow Users to Change Configuration Of a Cammera | The .wpi file inputed into sensor configuration call should resemble what the user desires. | The previously mentioned file matched what we expected | PASS | (See 3.1 Remote Configuration of WittyPi Test Requirements/Steps) |
+
+#### 3.3.1 Remote Configuration of WittyPi Test Requirements/Steps
+1. **Follow the appropriate build steps **
+2. Use the following API call to change the desired cammera's configuration: 
+3. On the sensor, run the configuration file with desired inputs. For example: java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamCongifure/build/libs/AGICamConfigure-1.0-SNAPSHOT.jar /home/pi/wittypi/schedules/Capture_schedule.wpi 'mongodb+srv://agicam:QCZgJ97ledg5cXbf@agicam-store.dsxeria.mongodb.net/?retryWrites=true&w=majority'
+4. Check to see if file at the given location was changed
 
 # VI. Projects and Tools Used
 
