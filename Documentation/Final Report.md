@@ -193,7 +193,20 @@ Ideally, we would be able to test code on the sensor module down to the scale of
 
 When a team member pulls into the main branch, they will also pull main into the sensor’s test branch. This branch will then be pulled into the sensor. There, they will preform the required integration testing. They will document the tests done and results of the test in a test report. If there are issues, they will try to resolve them. The code and results will then be pushed back into the test branch which will merged back to main. This will ensure that code within main remains functional on the sensor.
 
-## 3. Test Results
+## 3. Tests/Results
+
+### 3.1 Unit Tests/Results
+
+| Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| CaptureTest | 3.1.2. Sensor Take a Picture Containing Both NoIR and RGB Images | The correct number of images are in the specified folder, and each image contains RGB (on left) and NoIR (on right) pictures | The specified folder contained the correct number of images and the images where correct | PASS | (See 3.1 CaptureTest Requirements/Steps) |
+
+#### 3.1 CaptureTest Requirements/Steps
+1. Follow AGICamCapture build steps.
+2. Follow AGICameInit build steps.
+3. Use the command line to run AGICamCapture.exe with desired output and number of pictures arguments. For example: /home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 5
+4. Go to output location (for example /home/pi/AGICamImages) and view pictures making sure the number of pictures in correct and the pictures themselves contain both RGB and NoIR images.
+5. Manually delete pictures to return folder to inital state. 
 
 # VI. Projects and Tools Used
 
