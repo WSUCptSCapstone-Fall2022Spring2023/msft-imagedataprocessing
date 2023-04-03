@@ -126,43 +126,42 @@ The following are the functional requirements of each subsystem. In order to ext
 
 ### 3.4. API
 
-#### 3.4.1. Allow Users to Request Pictures and Corrisponding NDVI's from a Certain Camera Captured within a Certain Time Period
-* The API must allow the user to access data in the database in a simplified maner. 
+#### 3.4.1. Configure capture time for specific sensors
+* The API must allow the user to configure what time the sensor will capture images throughout the day.
 * Priority Level: 0
 
-#### 3.4.2. Prevent Bad Configuration Data from Being Stored
-* A database is only as good as the data stored in it. To prevent bad data from getting stored in the database, the API will be responsible for making sure configuration data is represented in a way the sensor can understand. 
+#### 3.4.2. Query NDVI processed results by time for a sensors
+* The API must provide an endpoint for the user to query the processed NDVI values for an image based on the sensor# and range of time to query inbetween.
 * Priority Level: 1
 
-#### 3.4.3 Allow Users to Change Configuration Of a Cammera
-* The API must allow each configuration document to be updated by the user.
+#### 3.4.3 Query captured images
+* The API must provide an endpoint to query captured images.
+* Priority Level: 1
+
+#### 3.4.4 Configure NDVI process plots for specific sensors
+* The API must provide an endpoint to allow for the configuration of plots for each image. A plot is a quadrilateral region on an image where image-processing will be done.
+* Priority Level: 1
+
+#### 3.4.5 Query configuration for specific sensor
+* The API must provide an endpoint for querying the entire configuration on a sensor.
 * Priority Level: 1
 
 ##  4. Non-Functional Requirements 
 
-### Economically Extensible
+### Scaleable (Easy to add new sensors to a system)
+Our system should make it easy to add new sensors to a system of sensors. It should be as easy as running AGICamConfigure with the specified database information.
 
-Our system needs to drain as little energy as possible to allow users to extend their network of cameras without having high energy overhead. We should aim to use components that provide the best value for their price.
+### Economically Externsible (Compare battery life)
+Our system should have better battery life or improved battery life from the previous edition of AGICam so that it is cheaper to deploy sensors into the system.
 
-### Easy to Configure
+### Maintainable (Well documented)
+Our system should be well documented and design choices should be easily explained. This will make the project maintainable for future developers.
 
-Our system needs to be able to be set up with little to none technical background or experience. Our device should be configurable to fit different scenarios where our out-of-the-box solution might not fit.
+### Reliable (Lossless capture/upload)
+Our system should be resilient to data being lost based on poor connection. When working with sensors that will be in remote field which might not always have connection it is important to only remove images locally when it is confirmed that they have been stored remotely.
 
-### Reliability
-
-Our system needs to be able to transfer data reliably and detect when there is corruption as well as stay functional with minimal human interaction.
-
-### Maintainable
-
-This project needs to have a well-documented user guide making it easy to set up. Along with this our codebase for this project must be well documented so that changes are easy to produce. This is extremely important because the project will be passed on to students without a computer science background.
-
-### Accurate
-
-We need to provide accurate crop information to our users so they have an accurate idea of the state of their farms. If there are any drastic changes between readings we should be able to analyze this and ensure nothing inaccurate is being reported to users.
-
-### Data Extraction That Is Easy-to-Use
-
-Our system needs to be able to extract data without the need for human interaction. Data should flow to our control system automatically and should not require physical travel to each node for data to be collected.
+### Extendible (Project needs to be in a good state for future development)
+Our project should be well documented and in a good position so that future developers can contribute and expand upon it easily.
 
 # IV. Software Design
 
@@ -237,6 +236,11 @@ When a team member pulls into the main branch, they will also pull main into the
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- | 
 | Capture and Upload at Specified Times Test | 3.1.4 Take Pictures at Specified Times, and 3.2.2. Give Access to the Data to Other Subsystems | There will be pictures stored in the database that correspond to the desired capture times | PASS | (See 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps) |
+| Configure capture time for specific sensors | 3.4.1 Configure capture time for specific sensors | {result success}, {result success} | N/A | PASS | Follow steps |
+| Query NDVI processed results by time for a sensors | 3.4.2 Query NDVI processed results by time for a sensors| Map of times to double | N/A | PASS | Follow steps |
+| Query captured images | 3.4.3 Query captured images | Image from the database captured by a sensor | N/A | PASS | Follow steps |
+| Configure NDVI process plots for specific sensors | 3.4.4 Configure NDVI process plots for specific sensors | Plot with two quadrilateral's (0,10), (10,0), (10,10) , (0,0) and (5,5), (5,10), (10,5), (10,10) | N/A | PASS | Follow steps |
+| Query configuration for specific sensor | 3.4.5 Query configuration for specific sensor | Configuration JSON which contains time & plots for a specific sensor | N/A | PASS | Follow steps |
 
 #### 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps
 1. ** Follow the appropriate build steps **
@@ -244,7 +248,45 @@ When a team member pulls into the main branch, they will also pull main into the
 3. Make sure AGICamCapture.exe is being run in either afterStartup.sh or beforeShutdown.sh. For example: /home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 5
 4. Make sure AGICamUpload is being run after AGICamCapture.exe. For example: java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamUpload/build/libs/AGICamUpload-1.0-SNAPSHOT.jar /home/pi/AGICamImages 'mongodb+srv://<username>:<password>@agicam-store.dsxer1a.mongodb.net/?retryWrites=true&w=majority' agicam QCZgJ97ledg5cXbf
 5. Wait until the last specified time in the WittyPi schedule passes.
-6. Log into MongoDB and obsver in the pictures exist with the corisponding 
+6. Log into MongoDB and obsver in the pictures exist with the corisponding
+
+#### 3.2.2. Configure capture time for specific sensors
+1. Pick a camera # which has been initialized on our system
+2. Build AGICamEndpoint
+3. Run this application
+5. curl -X POST -d "camNum=3&time=890" http://localhost:4567/time-add
+6. Expect to see result success
+7. curl -X POST -d "camNum=3&time=890" http://localhost:4567/time-del
+8. Expect to see result success
+
+#### 3.2.3. Query NDVI processed results by time for a sensors
+1. Build AGICamEndpoint
+2. Pick a camera that has been initialized on our system and has been running for a period of time
+3. Pick two dates within the range that it has been running for
+4. Open browser and go to the following URL
+5. http://localhost:4567/ndvi?camNum=NUM&startDate=X&endDate=Y
+6. View data.
+
+#### 3.2.4 Query captured images
+1. Follow the QUERY NDVI test and pick out a specific time from the map queried
+2. Open browser and go to the following URL
+3. http://localhost:4567/image-get?camNum=X&time=Y
+4. View Image
+
+#### 3.2.5 Configure NDVI process plots for specific sensors
+1. Build AGICamEndpoint
+2. Pick a camera that has been initialized on our system
+3. curl -X POST -d "camNum=X&p1=10,0&p2=0,10&p3=10,10&p4=0,0" http://localhost:4567/plot-add
+4. curl -X POST -d "camNum=Y&p1=5,5&p2=10,5&p3=5,5&p4=10,10" http://localhost:4567/plot-add
+5. Open browser and go to
+6. http://localhost:4567/config?camNum=X - This will show you their plots
+
+#### 3.2.6 Query configuration for specific sensor
+1. Build AGICamEndpoint
+2. Pick a camera which has been initialized within the system
+3. Open browser
+4. Go to this url
+5. http://localhost:4567/config?camNum=X - This will show you their config.
 
 ### 3.3 System Tests/Results
 
