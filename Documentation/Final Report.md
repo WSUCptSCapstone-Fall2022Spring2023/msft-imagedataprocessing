@@ -96,13 +96,17 @@ The following are the functional requirements of each subsystem. In order to ext
 * Capturing a picture containing both NoIR and RGB images is the main purpose of the sensor.
 * Priority Level: 0
 
-#### 3.1.3 Send Pictures to Database
+#### 3.1.3. Send Pictures to Database
 * The sensor should be able to connect to the database and send pictures taken to the database.
 * Priority Level: 0
 
-#### 3.1.4 Take Pictures at Specified Times
+#### 3.1.4. Take Pictures at Specified Times
 * The sensor should take pictures at specified times as seen in the Witty Pi schedule.
 * Priority Level: 0
+
+#### 3.1.5. Support Lossess Uploading (Stored Uploads)
+* Durring the upload process, if connection is dropped then pictures should remain on the device until upload can continue.
+* Priority Level: 1
 
 ### 3.2. Database
 
@@ -207,14 +211,26 @@ When a team member pulls into the main branch, they will also pull main into the
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Capture Test | 3.1.2. Sensor Take a Picture Containing Both NoIR and RGB Images | The correct number of images are in the specified folder, and each image contains RGB (on left) and NoIR (on right) pictures | The specified folder contained the correct number of images and the images where correct | PASS | (See 3.1 Capture Test Requirements/Steps) |
+| Capture Test | 3.1.2. Sensor Take a Picture Containing Both NoIR and RGB Images | The correct number of images are in the specified folder, and each image contains RGB (on left) and NoIR (on right) pictures | The specified folder contained the correct number of images and the images where correct | PASS | (See 3.1.1. Capture Test Requirements/Steps) |
+| Lossless Uploading Test | 3.1.3. Send Pictures to Database, and 3.1.5. Support Lossess Uploading (Stored Uploads) | After first run of AGICamUpload, picture should still be in test directory. After second run, it should be in the database. | After first run the picture remained in the test folder, after second run it was not there but was in the database | PASS | (See 3.1.2. Lossless Uploading Test Requirements/Steps) |
 
-#### 3.1.1 Capture Test Requirements/Steps
+#### 3.1.1. Capture Test Requirements/Steps
 1. Follow AGICamCapture build steps.
 2. Follow AGICamInit build steps.
 3. Use the command line to run AGICamCapture.exe with desired output and number of pictures arguments. For example: /home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 5
 4. Go to output location (for example /home/pi/AGICamImages) and view pictures making sure the number of pictures in correct and the pictures themselves contain both RGB and NoIR images.
 5. Manually delete pictures to return folder to inital state. 
+
+#### 3.1.2. Lossless Uploading Test Requirements/Steps
+1. Follow AGICamUpload build steps.
+2. Create a directory named test.
+3. Place an image named "data-1.png" into the test directory.
+4. Switch off (or unplug) the sensor's internet connection.
+5. Run AGICamUpload with the following command java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamUpload/build/libs/AGICamUpload-1.0-SNAPSHOT.jar [location of test directory] 'mongodb+srv://<username>:<password>@agicam-store.dsxer1a.mongodb.net/?retryWrites=true&w=majority' agicam QCZgJ97ledg5cXbf .
+6. See that picture is still in test dicrectory.
+7. Switch on (or plug in) the sensor's internet connection.
+8. Re-run the command in step 5.
+9. Observe that the test directory is empty and the image is in database.
 
 ### 3.2 Integration Tests/Results
 
@@ -230,17 +246,11 @@ When a team member pulls into the main branch, they will also pull main into the
 5. Wait until the last specified time in the WittyPi schedule passes.
 6. Log into MongoDB and obsver in the pictures exist with the corisponding 
 
-#Wait until upload is done are taken
-wait
-
-printf "System powered off at %s\n" "$NOW" >> "$FILE"
-
-
 ### 3.3 System Tests/Results
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Remote Configuration of WittyPi Test | 3.1.1. Allow for Remote Configuration, 3.2.2. Give Access to the Data to Other Subsystems, and 3.4.3 Allow Users to Change Configuration Of a Cammera | The .wpi file inputed into sensor configuration call should resemble what the user desires. | The previously mentioned file matched what we expected | PASS | (See 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps) |
+| Remote Configuration of WittyPi Test | 3.1.1. Allow for Remote Configuration, 3.2.2. Give Access to the Data to Other Subsystems, and 3.4.3 Allow Users to Change Configuration Of a Cammera | The .wpi file inputed into sensor configuration call should resemble what the user desires. | The previously mentioned file matched what we expected | PASS | (See 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps) | 
 
 #### 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps
 1. **Follow the appropriate build steps **
