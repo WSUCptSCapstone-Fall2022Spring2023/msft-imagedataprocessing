@@ -97,7 +97,11 @@ The following are the functional requirements of each subsystem. In order to ext
 * Priority Level: 0
 
 #### 3.1.3 Send Pictures to Database
-* The sensor should be able to conect to the database and send pictures taken to the database.
+* The sensor should be able to connect to the database and send pictures taken to the database.
+* Priority Level: 0
+
+#### 3.1.4 Take Pictures at Specified Times
+* The sensor should take pictures at specified times as seen in the Witty Pi schedule.
 * Priority Level: 0
 
 ### 3.2. Database
@@ -215,15 +219,30 @@ When a team member pulls into the main branch, they will also pull main into the
 ### 3.2 Integration Tests/Results
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
-| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- | 
+| Capture and Upload at Specified Times Test | 3.1.4 Take Pictures at Specified Times, and 3.2.2. Give Access to the Data to Other Subsystems | There will be pictures stored in the database that correspond to the desired capture times | PASS | (See 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps) |
+
+#### 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps
+1. ** Follow the appropriate build steps **
+2. Set Witty Pi to run desired off/on schedule.
+3. Make sure AGICamCapture.exe is being run in either afterStartup.sh or beforeShutdown.sh. For example: /home/pi/Desktop/msft-imagedataprocessing/AGICamCapture/capture /home/pi/AGICamImages 5
+4. Make sure AGICamUpload is being run after AGICamCapture.exe. For example: java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamUpload/build/libs/AGICamUpload-1.0-SNAPSHOT.jar /home/pi/AGICamImages 'mongodb+srv://<username>:<password>@agicam-store.dsxer1a.mongodb.net/?retryWrites=true&w=majority' agicam QCZgJ97ledg5cXbf
+5. Wait until the last specified time in the WittyPi schedule passes.
+6. Log into MongoDB and obsver in the pictures exist with the corisponding 
+
+#Wait until upload is done are taken
+wait
+
+printf "System powered off at %s\n" "$NOW" >> "$FILE"
+
 
 ### 3.3 System Tests/Results
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Remote Configuration of WittyPi Test | 3.1.1. Allow for Remote Configuration, 3.2.2. Give Access to the Data to Other Subsystems, and 3.4.3 Allow Users to Change Configuration Of a Cammera | The .wpi file inputed into sensor configuration call should resemble what the user desires. | The previously mentioned file matched what we expected | PASS | (See 3.1 Remote Configuration of WittyPi Test Requirements/Steps) |
+| Remote Configuration of WittyPi Test | 3.1.1. Allow for Remote Configuration, 3.2.2. Give Access to the Data to Other Subsystems, and 3.4.3 Allow Users to Change Configuration Of a Cammera | The .wpi file inputed into sensor configuration call should resemble what the user desires. | The previously mentioned file matched what we expected | PASS | (See 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps) |
 
-#### 3.3.1 Remote Configuration of WittyPi Test Requirements/Steps
+#### 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps
 1. **Follow the appropriate build steps **
 2. Use the following API call to change the desired cammera's configuration: 
 3. On the sensor, run the configuration file with desired inputs. For example: java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamCongifure/build/libs/AGICamConfigure-1.0-SNAPSHOT.jar /home/pi/wittypi/schedules/Capture_schedule.wpi 'mongodb+srv://agicam:QCZgJ97ledg5cXbf@agicam-store.dsxeria.mongodb.net/?retryWrites=true&w=majority'
