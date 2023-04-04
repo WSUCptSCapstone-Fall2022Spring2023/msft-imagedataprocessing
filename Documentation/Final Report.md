@@ -159,7 +159,7 @@ The following are the functional requirements of each subsystem. In order to ext
 ### Scaleable (Easy to add new sensors to a system)
 Our system should make it easy to add new sensors to a system of sensors. It should be as easy as running AGICamConfigure with the specified database information.
 
-### Economically Externsible (Compare battery life)
+### Economically Extensible (Compare battery life)
 Our system should have better battery life or improved battery life from the previous edition of AGICam so that it is cheaper to deploy sensors into the system.
 
 ### Maintainable (Well documented)
@@ -313,7 +313,36 @@ When a team member pulls into the main branch, they will also pull main into the
 2. Use the following API call to change the desired cammera's configuration: 
 3. On the sensor, run the configuration file with desired inputs. For example: java -jar /home/pi/Desktop/msft-imagedataprocessing/AGICamCongifure/build/libs/AGICamConfigure-1.0-SNAPSHOT.jar /home/pi/wittypi/schedules/Capture_schedule.wpi 'mongodb+srv://agicam:QCZgJ97ledg5cXbf@agicam-store.dsxeria.mongodb.net/?retryWrites=true&w=majority'
 4. Check to see if file at the given location was changed
-
+	
+### 3.4 Non-Functional Test/Results 
+| Test Name | Aspect Tested (Non-Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
+| --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
+| Scalibility Test | Scalibility (Non-Functional) | Documented AGICamConfigure code directory(How to build and requirements), Provided release JAR for AGICamConfigure. | Nothing | FAIL | Follow Steps |
+| Battery Life Test | Economically Extensible (Non-Functional) | Current sensor should be within +/- 10% lifespan as the previous device. | N/A | N/A | Follow Steps |
+| Maintainability Test | Maintainable (Non-Functional) | All components are well documented and provide either release executables or build files. | N/A | FAIL | Follow Steps |
+| Future development test | Extendible (Non-Functional) | Report with short-comings and design choices, documentation on suggestions for future work | N/A | FAIL | Follow Steps |
+	
+# 3.4.1 Scalability Test
+1. View AGICamConfigure readme file
+2. Confirm there is a release available through GitHub
+	
+# 3.4.2 Battery Life Test
+1. Configure two sensors, one with previous system (Written By Worasit), one with our current system.
+2. Fully charge both sensors and remove power supply
+3. Enable both sensors and recored the life-span of each sensor.
+4. Compare results
+	
+# 3.4.3 Maintainability test
+1. Visit all component directories within Git Repository
+2. Confirm there is an accurate README file
+3. Confirm there is a release JAR or build file provided
+4. Record results.
+	
+# 3.4.4 Future development test
+1. View Report of short-comings and design choices
+2. View Document with suggestions for future work
+3. Confirm both are adequate.
+	
 # VI. Projects and Tools Used
 
 # VII. Description of Final Prototype
