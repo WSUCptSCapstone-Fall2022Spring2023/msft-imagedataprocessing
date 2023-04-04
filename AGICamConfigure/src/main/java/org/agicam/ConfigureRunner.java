@@ -67,7 +67,7 @@ public class ConfigureRunner {
     }
 
     private static int getCamNumber(MongoCollection<Document> configCollection) throws IOException {
-        File file = new File("./cameraNumber.txt");
+        File file = new File("cameraNumber.txt");
         long numConfigs;
         int camNumber;
 
@@ -75,6 +75,7 @@ public class ConfigureRunner {
         if(!file.exists())
         {
             file.createNewFile();
+            System.out.println("Can file write?" + file.canWrite());
 
             //Count number of config documents
             numConfigs = configCollection.countDocuments();
@@ -85,11 +86,14 @@ public class ConfigureRunner {
                 numConfigs++;
             }
             camNumber = (int)numConfigs;
+            System.out.println("CameraNumber: " + camNumber);
+            System.out.println("CamNumber string: " + String.valueOf(camNumber));
+            FileWriter writer = new FileWriter(file.getName());
+            
+            writer.write(String.valueOf(camNumber));
 
-            FileOutputStream fos = new FileOutputStream(file.getName());
-            BufferedWriter bs = new BufferedWriter(new OutputStreamWriter((fos)));
-            bs.write("" + numConfigs);
-            bs.close();
+            writer.flush();
+            writer.close();
 
         }
         else
@@ -132,7 +136,7 @@ public class ConfigureRunner {
         String onTimeText = new String();
         String offTimeText = new String();
         int totalTime;
-        ArrayList<Integer> times = new ArrayList<Integer>();
+        //ArrayList<Integer> times = new ArrayList<Integer>();
 
         onTimeText = "ON\t" + TimeToString(onTimeInt) + System.lineSeparator();
 
@@ -143,11 +147,8 @@ public class ConfigureRunner {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date sDate = doc.getDate("startDate");
         Date eDate = doc.getDate("endDate");
-        //List<Integer> times = null;
-
-
-
-        times = doc.get("times", ArrayList.class);
+        List<Integer> times = null;
+        times = doc.getList("times", Integer.class, new ArrayList<>());
 
         sDate.setHours(times.get(0)/60);
         sDate.setMinutes(times.get(0)%60);
