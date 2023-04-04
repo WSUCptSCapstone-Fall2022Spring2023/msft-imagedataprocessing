@@ -165,9 +165,6 @@ Our system should have better battery life or improved battery life from the pre
 ### Maintainable (Well documented)
 Our system should be well documented and design choices should be easily explained. This will make the project maintainable for future developers.
 
-### Reliable (Lossless capture/upload)
-Our system should be resilient to data being lost based on poor connection. When working with sensors that will be in remote field which might not always have connection it is important to only remove images locally when it is confirmed that they have been stored remotely.
-
 ### Extendible (Project needs to be in a good state for future development)
 Our project should be well documented and in a good position so that future developers can contribute and expand upon it easily.
 
