@@ -118,11 +118,19 @@ The following are the functional requirements of each subsystem. In order to ext
 * The database should allow for other subsystems to access the data stored.
 * Priority Level: 0
 
-### 3.3. Server
+### 3.3. AGICamProcessor
 
-#### 3.3.1. Calulate the NDVI for Each Picture
-* In order to save battery life on the server, we have decided to have a remote serve calculate the NDVI for each picture. This is the only requirement of the server.
+### 3.3.1 Download Images from the database
+* AGICamProcessor must be able to download images from the database so that it can process newly stored images.
 * Priority Level: 1
+
+### 3.3.2 Upload results to the database
+* AGICamProcessor must be able to upload its NDVI results to the database so that the user can view the results
+* Priority Level: 1
+
+### 3.3.3 Perform NDVI image analysis on specific quadrilateral plots
+* AGICamProcessor must be able to process the NDVI value for specific quarilateral plots on an image.
+* Priority Level: 2
 
 ### 3.4. API
 
@@ -241,6 +249,7 @@ When a team member pulls into the main branch, they will also pull main into the
 | Query captured images | 3.4.3 Query captured images | Image from the database captured by a sensor | N/A | PASS | Follow steps |
 | Configure NDVI process plots for specific sensors | 3.4.4 Configure NDVI process plots for specific sensors | Plot with two quadrilateral's (0,10), (10,0), (10,10) , (0,0) and (5,5), (5,10), (10,5), (10,10) | N/A | PASS | Follow steps |
 | Query configuration for specific sensor | 3.4.5 Query configuration for specific sensor | Configuration JSON which contains time & plots for a specific sensor | N/A | PASS | Follow steps |
+| Confirm functionality of AGICamProcessor | 3.3.1, 3.3.2, 3.3.3. All AGICamProcessor requirements | No results, Map of Time->NDVI values | N/A | PASS | Follow steps |
 
 #### 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps
 1. ** Follow the appropriate build steps **
@@ -287,6 +296,14 @@ When a team member pulls into the main branch, they will also pull main into the
 3. Open browser
 4. Go to this url
 5. http://localhost:4567/config?camNum=X - This will show you their config.
+	
+### 3.2.7 Confirm functionality of AGICamProcessor
+1. Build AGICamCapture, AGiCamUpload, AGICamEndpoint, and AGICamProcessor
+2. Run capture, then upload the images to the database
+3. Start AGICamEndpoint to access the API
+4. Query the previous day on the sensor which you ran capture for and expect to see no results
+5. Run AGICamProcessor
+6. Query the previous day on the sensor and now expect to see results of time->ndvi value.
 
 ### 3.3 System Tests/Results
 
