@@ -54,7 +54,9 @@ int main(int argc, char**args) {
     // Collect argument strings
     char* directory = args[1];
     char* amount_pics_str = args[2];
-    int camera_number = file.get();
+    int camera_number;
+
+    file >> camera_number;
 
     file.close();
 
