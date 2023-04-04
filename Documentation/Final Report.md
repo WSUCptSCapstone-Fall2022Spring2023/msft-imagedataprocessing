@@ -294,7 +294,7 @@ When a team member pulls into the main branch, they will also pull main into the
 4. Go to this url
 5. http://localhost:4567/config?camNum=X - This will show you their config.
 	
-### 3.2.7 Confirm functionality of AGICamProcessor
+#### 3.2.7 Confirm functionality of AGICamProcessor
 1. Build AGICamCapture, AGiCamUpload, AGICamEndpoint, and AGICamProcessor
 2. Run capture, then upload the images to the database
 3. Start AGICamEndpoint to access the API
@@ -322,23 +322,23 @@ When a team member pulls into the main branch, they will also pull main into the
 | Maintainability Test | Maintainable (Non-Functional) | All components are well documented and provide either release executables or build files. | N/A | FAIL | Follow Steps |
 | Future development test | Extendible (Non-Functional) | Report with short-comings and design choices, documentation on suggestions for future work | N/A | FAIL | Follow Steps |
 	
-# 3.4.1 Scalability Test
+#### 3.4.1 Scalability Test
 1. View AGICamConfigure readme file
 2. Confirm there is a release available through GitHub
 	
-# 3.4.2 Battery Life Test
+#### 3.4.2 Battery Life Test
 1. Configure two sensors, one with previous system (Written By Worasit), one with our current system.
 2. Fully charge both sensors and remove power supply
 3. Enable both sensors and recored the life-span of each sensor.
 4. Compare results
 	
-# 3.4.3 Maintainability test
+#### 3.4.3 Maintainability test
 1. Visit all component directories within Git Repository
 2. Confirm there is an accurate README file
 3. Confirm there is a release JAR or build file provided
 4. Record results.
 	
-# 3.4.4 Future development test
+#### 3.4.4 Future development test
 1. View Report of short-comings and design choices
 2. View Document with suggestions for future work
 3. Confirm both are adequate.
