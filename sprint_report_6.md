@@ -10,19 +10,22 @@ This sprint we spent our time creating documentation and processes for testing o
 We ran out of time to verify if our NDVI data endpoint works properly. This will be finished next sprint. We need to go through now and finish up the documentation and testing for our project. We did not have time to put a 100% complete sticker on our documentation.
 
 ## Completed Issues/User Stories
-Here are links to the issues that we completed in this sprint:
-
- * URL of issue 1
- * URL of issue 2
- * URL of issue n
-
- Reminders (Remove this section when you save the file):
-  * Each issue should be assigned to a milestone
-  * Each completed issue should be assigned to a pull request
-  * Each completed pull request should include a link to a "Before and After" video
-  * All team members who contributed to the issue should be assigned to it on GitHub
-  * Each issue should be assigned story points using a label
-  * Story points contribution of each team member should be indicated in a comment
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/121
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/122
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/123
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/124
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/125
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/126
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/127
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/128
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/129
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/130
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/131
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/132
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/133
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/134
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/135
+* 
  
  ## Incomplete Issues/User Stories
 * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/109 - We did not have time to review the current documentation present.
