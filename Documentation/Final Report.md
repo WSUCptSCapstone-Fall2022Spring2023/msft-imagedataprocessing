@@ -240,7 +240,7 @@ When a team member pulls into the main branch, they will also pull main into the
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- | 
-| Capture and Upload at Specified Times Test | 3.1.4 Take Pictures at Specified Times, and 3.2.2. Give Access to the Data to Other Subsystems | There will be pictures stored in the database that correspond to the desired capture times | PASS | (See 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps) |
+| Capture and Upload at Specified Times Test | 3.1.4 Take Pictures at Specified Times, and 3.2.2. Give Access to the Data to Other Subsystems | There will be pictures stored in the database that correspond to the desired capture times | Pictures were not in the database. | FAIL | (See 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps) |
 | Configure capture time for specific sensors | 3.4.1 Configure capture time for specific sensors | {result success}, {result success} | N/A | PASS | Follow steps |
 | Query NDVI processed results by time for a sensors | 3.4.2 Query NDVI processed results by time for a sensors| Map of times to double | N/A | PASS | Follow steps |
 | Query captured images | 3.4.3 Query captured images | Image from the database captured by a sensor | N/A | PASS | Follow steps |
@@ -306,7 +306,7 @@ When a team member pulls into the main branch, they will also pull main into the
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Remote Configuration of WittyPi Test | 3.1.1. Allow for Remote Configuration, 3.2.2. Give Access to the Data to Other Subsystems, and 3.4.3 Allow Users to Change Configuration Of a Cammera | The .wpi file inputed into sensor configuration call should resemble what the user desires. | The previously mentioned file matched what we expected | PASS | (See 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps) | 
+| Remote Configuration of WittyPi Test | 3.1.1. Allow for Remote Configuration, 3.2.2. Give Access to the Data to Other Subsystems, and 3.4.1. Allow Users to Change Configuration Of a Cammera | The .wpi file inputed into sensor configuration call should resemble what the user desires. | The previously mentioned file matched what we expected | PASS | (See 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps) | 
 
 #### 3.3.1. Remote Configuration of WittyPi Test Requirements/Steps
 1. **Follow the appropriate build steps **
