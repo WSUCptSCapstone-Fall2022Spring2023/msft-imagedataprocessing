@@ -7,7 +7,7 @@ Nothing
 This sprint we spent our time creating documentation and processes for testing our system. We were able to revamp all of our tests to match the updated requirements of our system. Outside of creating test steps, expected results and tables in our documentation we were able to get our sensor into a greenhouse and start testing our system in a production enviornment.
 
 ## Unfinished Work
-We ran out of time to verify if our NDVI data endpoint works properly. This will be finished next sprint.
+We ran out of time to verify if our NDVI data endpoint works properly. This will be finished next sprint. We need to go through now and finish up the documentation and testing for our project. We did not have time to put a 100% complete sticker on our documentation.
 
 ## Completed Issues/User Stories
 Here are links to the issues that we completed in this sprint:
