@@ -25,7 +25,17 @@ We ran out of time to verify if our NDVI data endpoint works properly. This will
 * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/133
 * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/134
 * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/135
-* 
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/136
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/137
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/138
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/139
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/140
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/141
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/142
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/142
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/143
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/145
+* https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/147
  
  ## Incomplete Issues/User Stories
 * https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/issues/109 - We did not have time to review the current documentation present.
