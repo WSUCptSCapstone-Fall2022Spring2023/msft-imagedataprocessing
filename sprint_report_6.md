@@ -45,16 +45,15 @@ Please review the following code files, which were actively developed during thi
  
 ## Retrospective Summary
 Here's what went well:
-  * Item 1
-  * Item 2
-  * Item x
+  * Execution of plans to design tests
+  * Client interaction
+  * Team communication
  
 Here's what we'd like to improve:
-   * Item 1
-   * Item 2
-   * Item x
+   * Sustained effort across sprint. We noticed that we saved most of the work for the end and were busy during most of the sprint
+   * Planning at start of sprint. This sprint we didn't layout clear goals and it clearly made it harder for us to be productive
   
 Here are changes we plan to implement in the next sprint:
-   * Item 1
-   * Item 2
-   * Item x
+   * Starting work at the very start of the sprint so that we do not fall behind
+   * Document early. We need to make sure that everything we do is heavily documented from here on out.
+   * Proactively meet and continue to interact with the clients.
