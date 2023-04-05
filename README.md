@@ -48,6 +48,8 @@ Originating from Pullman WA, Washington State University Phenomics Lab developed
 ## Additional Documentation
 
 - [Project Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/Documentation/Project%20documents%20combined%20.docx)
+- [Sprint 6 Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/sprint_report_6.md)
+- [Sprint 6 Video](https://www.youtube.com/watch?v=KFD3aBnFG88)
 - [Sprint 5 Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/sprint_report_5.md)
 - [Sprint 5 Video](https://www.youtube.com/watch?v=uEBVhe8OrQg)
 - [Sprint 4 Overview](https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/blob/main/sprint_report_4.md)
