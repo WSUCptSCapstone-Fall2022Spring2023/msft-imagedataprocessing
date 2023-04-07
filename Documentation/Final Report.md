@@ -352,8 +352,14 @@ When a team member pulls into the main branch, they will also pull main into the
 # IX. Conclusions and Future Work
 
 ## 1. Limitations and Recommendations
+There are two main restrictions that we have found to be very difficult for our workflow. The first constraint is a result of the camera modules we are utilizing. We are unsure of how long the camera modules will run. These modules are set to take pictures in a timely manner if they cannot last long then they cannot collect a lot of images which would add more time to the process this is why we must carefully manage their runtime..
+
+We cannot hard code the locations where the wheat is growing, which is the second significant limitation we face. It takes a lot of time and complicates our workflow to manually include these points each time we run the NDVI on the images. The locations of the wheat plants cannot be hard coded because the camera's position may change. Because of this, it is impossible to predict where the plants will be in each image because their placement in the frame may also change.
+
+We recommend fixing the cameras in a specific location and connecting them to electricity so they do not need to be moved to address these constraints. We can locate exactly where the wheat plants are growing and get NDVI data for these sites by placing the cameras in situ. This strategy would streamline our workflow and shorten the time needed to achieve reliable results by eliminating the requirement to manually identify the plant locations each time we run the NDVI.
 
 ## 2. Future Work
+The sensor package will be improved in the future to include temperature and humidity sensors, enabling a more thorough understanding of the environmental factors that influence plant growth. A user-friendly interface will also be created in order to make it simple to access and analyze the data produced by the system. Users will receive more useful insights thanks to this streamlined data analysis process, which will also increase system accessibility. The results will be more accurate and clear because the color filters used in the NDVI calculation will also be updated. These upgrades will make it possible for the system to pinpoint areas of plant growth and comprehend the health of the crops.
 
 # X. Acknowledgements
 
