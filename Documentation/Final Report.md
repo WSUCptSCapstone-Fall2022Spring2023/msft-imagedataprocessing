@@ -348,6 +348,8 @@ When a team member pulls into the main branch, they will also pull main into the
 # VII. Description of Final Prototype
 ![alt_text](Images/AGICamDiagram.png)
 	
+The two groups of componenets for our system is Sensor and Remote Server components. Components in the sensor group will be repeatedly used across different sensor devices which the components within the remote server group and designed to be used for a wide network of sensors at once. The remote server is where all of the data and processing will be done within our system and each component inside will play a crucial part in ensuring that it fufills this requirement. The sensor components are tasked with capturing images from the field and relaying them to the remote server where analysis can be completed. Both cannot work without the other. Within the scope of this project we did not find time to create an Application for easier use of our system however within the remote server group we have provided an interface which future developers can use to expand our system to an easy to use application.
+	
 ## Sensor Components
 	
 ### AGICamConfigure
