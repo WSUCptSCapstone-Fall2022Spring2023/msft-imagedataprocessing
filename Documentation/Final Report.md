@@ -351,7 +351,8 @@ When a team member pulls into the main branch, they will also pull main into the
 ## Sensor Components
 	
 ### AGICamConfigure
-
+AGICamConfigure is resposible with preparing the sensor for capture. This component interacts with the database to remotely acces the stored configuration for the sensor. The configuration received will have information pertaining too what times the sensor needs to be configured to capture images and what regions need to be processed on each image. Only the first set of information will be used to generate a WittyPI file which will handle the scheduling of itself in the future and for the rest of the components on the sensor. This component will also assign a unique camera ID number to itself on the first time being invoked. All future runs of this component will use the generated camera ID to locate the remote configuration. When a connection is weak and the sensor can not connect to the database it will use the latest schedule downloaded.
+	
 ### AGICamCapture
 
 ### AGICamUpload
