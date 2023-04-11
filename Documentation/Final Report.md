@@ -344,6 +344,28 @@ When a team member pulls into the main branch, they will also pull main into the
 3. Confirm both are adequate.
 	
 # VI. Projects and Tools Used
+	
+| Tool | Description |
+|------|-------------|
+| AWS | Demo MongoDB cluster ran ontop of AWS |
+| MongoAtlas | Accessing remote server controls for MongoDB Instance |
+| GitHub | Version control and Project Management |
+| MongoCompass | Desktop Application for viewing MongoDB instances |
+| SparkJava | Library which supports creating simple HTTP webservers with Java |
+| ImageJ | Image processing library for Java |
+| Sync MongoDB Java Driver | Used for integrating MongoDB with our Java applications |
+| WittyPI | Raspberry PI Component used for scheduling sleep mode to save battery life |
+| RaspiStill | Raspberry PI Library for interacting with sensors on a machine. This was used to capture images |
+| CLion | Writing C++ Code for AGICamCapture |
+| IntelliJ | Editing Java files |
+| AnyDesk | Remote connecting into sensor |
+
+Languages used
+| Language | Components used in |
+|----------|--------------------|
+| C++ | AGICamCapture |
+| Java | AGICamUpload, AGICamProcessor, AGICamEndpoint, AGICamConfigure |
+| Shell | WittyPI, All Java components for Gradle. |
 
 # VII. Description of Final Prototype
 
