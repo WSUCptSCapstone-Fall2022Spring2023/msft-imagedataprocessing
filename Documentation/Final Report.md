@@ -346,7 +346,9 @@ When a team member pulls into the main branch, they will also pull main into the
 # VI. Projects and Tools Used
 
 # VII. Description of Final Prototype
-
+![alt_text](Images/AGICamDiagram.png)
+	
+	
 # VIII. Product Delivery Status
 
 # IX. Conclusions and Future Work
