@@ -348,6 +348,24 @@ When a team member pulls into the main branch, they will also pull main into the
 # VII. Description of Final Prototype
 ![alt_text](Images/AGICamDiagram.png)
 	
+## Sensor Components
+	
+### AGICamConfigure
+
+### AGICamCapture
+
+### AGICamUpload
+
+### WittyPI
+
+## Remote Server Components
+	
+### AGICamProcessor
+	
+### AGICamEndpoint
+	
+### MongoDB
+	
 	
 # VIII. Product Delivery Status
 
