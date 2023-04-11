@@ -368,7 +368,38 @@ Languages used
 | Shell | WittyPI, All Java components for Gradle. |
 
 # VII. Description of Final Prototype
+![alt_text](Images/AGICamDiagram.png)
+	
+The two groups of componenets for our system is Sensor and Remote Server components. Components in the sensor group will be repeatedly used across different sensor devices which the components within the remote server group and designed to be used for a wide network of sensors at once. The remote server is where all of the data and processing will be done within our system and each component inside will play a crucial part in ensuring that it fufills this requirement. The sensor components are tasked with capturing images from the field and relaying them to the remote server where analysis can be completed. Both cannot work without the other. Within the scope of this project we did not find time to create an Application for easier use of our system however within the remote server group we have provided an interface which future developers can use to expand our system to an easy to use application.
+	
+## Sensor Components
+	
+### AGICamConfigure
+AGICamConfigure is resposible with preparing the sensor for capture. This component interacts with the database to remotely acces the stored configuration for the sensor. The configuration received will have information pertaining too what times the sensor needs to be configured to capture images and what regions need to be processed on each image. Only the first set of information will be used to generate a WittyPI file which will handle the scheduling of itself in the future and for the rest of the components on the sensor. This component will also assign a unique camera ID number to itself on the first time being invoked. All future runs of this component will use the generated camera ID to locate the remote configuration. When a connection is weak and the sensor can not connect to the database it will use the latest schedule downloaded.
+	
+### AGICamCapture
 
+AGICamCapture is a simple executable written in C++ which is resposibile with interfacing the requirements of the images we capture and RaspiStill (See Projects and Tools Used). This executable ensures that all images captured by our sensor are named in the format [Cam #]-[Date]-[Take]. This component is specifically responsible for capturing images and storing them in a directory for future uploading to the database. The requirements for this component to work properly are that the device this component is on has RaspiStill installed and that it has two sensors attatched to its device. AGICamConfigure also must be called once before running this executable as it is a requirement to know the camera id.
+
+### AGICamUpload
+
+AGICamUpload is our component which transfers images from sensor to database. This component is built to be resiliant to connectivity issues and will only delete files from the local device once they have been successfully uploaded. It requires a directory which has been populated with images from AGICamCapture, a camera ID provided by AGICamConfigure and connection to a MongoDB server. Runtimes of this component can vary as the amount of images may very based on when the last time the component was executed with a strong enough connection to the database.
+
+### WittyPI
+
+WittyPI is not a code component which we created however it plays a large part in our infrastructure and should be mentioned. WittyPI is a Realtime clock and power management board for Raspberry PI which allows for us to enter the device into sleep while we are waiting to start another capture/upload sequence. WittyPI is controlled by a WPI file on the device which provides this board with the schedule it must execute. AGICamConfigure is responsible with providing this file to our system and the rest of the Shell files used to execute the other components are provided by us to each sensor.  
+
+## Remote Server Components
+	
+### AGICamProcessor
+AGICamProcessor is a remote server component resposible with providing image processing to our system. This component interacts directly with the database and uses data collected by the sensor to provide NDVI values for plots of wheat. This component only requires access to a database which has been used by a AGiCamSensor and that the Camera writing to this database has a set of plots within its configure to perform image processing on. A plot within a configuration is a set of 4 points on a image that creates a quadrilateral. For each plot configured for a sensor AGICamProcessor will compute the NDVI value located inside the region and write the database back to the database image document. This creates a mapping of <cam# & time> to <NDVI value> allowing for us to provide analytics on the health of a plot over time.
+
+### AGICamEndpoint
+AGICamEndpoint is our API which will be ran on a remote server with AGICamProcessor. This API allows easy access to information from a set of AGICamSensors and allows for simple configuration. A User will be able to use this API to configure capture times on sensors, add and remote Plots for processing and update the amount of takes a sensor takes each capture sequence. The endpoint will also provide easy access to NDVI data over time for each sensor, access to captures images which are stored on the database, and configurations of all cameras. It is recommended that in the future other developers interface AGICamEndpoint into a User interface with a graphical UI. However while this product is in development AGICamEndpoint is very useable with a tool like Postman.
+
+### MongoDB
+MongoDB is not a component which we wrote but since it plays such an important role in our architecture it is mentioned here. MongoDB is NoSQL database which we chose to use for storing the data of our system. This database is the connection between our Remote server components and our sensor components. It is important to understand that MongoDB is used not only as a file store for us but also as a document store for configurations and NDVI data for cameras.
+	
 # VIII. Product Delivery Status
 
 # IX. Conclusions and Future Work
