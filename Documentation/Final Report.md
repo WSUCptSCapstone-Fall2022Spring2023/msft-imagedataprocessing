@@ -355,9 +355,15 @@ AGICamConfigure is resposible with preparing the sensor for capture. This compon
 	
 ### AGICamCapture
 
+AGICamCapture is a simple executable written in C++ which is resposibile with interfacing the requirements of the images we capture and RaspiStill (See Projects and Tools Used). This executable ensures that all images captured by our sensor are named in the format [Cam #]-[Date]-[Take]. This component is specifically responsible for capturing images and storing them in a directory for future uploading to the database. The requirements for this component to work properly are that the device this component is on has RaspiStill installed and that it has two sensors attatched to its device. AGICamConfigure also must be called once before running this executable as it is a requirement to know the camera id.
+
 ### AGICamUpload
 
+AGICamUpload is our component which transfers images from sensor to database. This component is built to be resiliant to connectivity issues and will only delete files from the local device once they have been successfully uploaded. It requires a directory which has been populated with images from AGICamCapture, a camera ID provided by AGICamConfigure and connection to a MongoDB server. Runtimes of this component can vary as the amount of images may very based on when the last time the component was executed with a strong enough connection to the database.
+
 ### WittyPI
+
+WittyPI is not a code component which we created however it plays a large part in our infrastructure and should be mentioned. WittyPI is a Realtime clock and power management board for Raspberry PI which allows for us to enter the device into sleep while we are waiting to start another capture/upload sequence. WittyPI is controlled by a WPI file on the device which provides this board with the schedule it must execute. AGICamConfigure is responsible with providing this file to our system and the rest of the Shell files used to execute the other components are provided by us to each sensor.  
 
 ## Remote Server Components
 	
