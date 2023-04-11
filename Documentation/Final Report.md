@@ -368,11 +368,13 @@ WittyPI is not a code component which we created however it plays a large part i
 ## Remote Server Components
 	
 ### AGICamProcessor
-	
+AGICamProcessor is a remote server component resposible with providing image processing to our system. This component interacts directly with the database and uses data collected by the sensor to provide NDVI values for plots of wheat. This component only requires access to a database which has been used by a AGiCamSensor and that the Camera writing to this database has a set of plots within its configure to perform image processing on. A plot within a configuration is a set of 4 points on a image that creates a quadrilateral. For each plot configured for a sensor AGICamProcessor will compute the NDVI value located inside the region and write the database back to the database image document. This creates a mapping of <cam# & time> to <NDVI value> allowing for us to provide analytics on the health of a plot over time.
+
 ### AGICamEndpoint
-	
+AGICamEndpoint is our API which will be ran on a remote server with AGICamProcessor. This API allows easy access to information from a set of AGICamSensors and allows for simple configuration. A User will be able to use this API to configure capture times on sensors, add and remote Plots for processing and update the amount of takes a sensor takes each capture sequence. The endpoint will also provide easy access to NDVI data over time for each sensor, access to captures images which are stored on the database, and configurations of all cameras. It is recommended that in the future other developers interface AGICamEndpoint into a User interface with a graphical UI. However while this product is in development AGICamEndpoint is very useable with a tool like Postman.
+
 ### MongoDB
-	
+MongoDB is not a component which we wrote but since it plays such an important role in our architecture it is mentioned here. MongoDB is NoSQL database which we chose to use for storing the data of our system. This database is the connection between our Remote server components and our sensor components. It is important to understand that MongoDB is used not only as a file store for us but also as a document store for configurations and NDVI data for cameras.
 	
 # VIII. Product Delivery Status
 
