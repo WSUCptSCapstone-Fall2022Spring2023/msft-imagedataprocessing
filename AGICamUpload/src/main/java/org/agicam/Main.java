@@ -58,10 +58,12 @@ public class Main {
         ConnectionString connectionString = new ConnectionString(argConnection);
         MongoClientSettings settings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
-                .applyToSocketSettings(build_time -> builder.connectTimeout(60000, TimeUnit.MILLISECONDS))
                 .serverApi(ServerApi.builder()
                         .version(ServerApiVersion.V1)
                         .build())
+                .applyToClusterSettings(builder ->
+                        builder.connectTimeout(60000) // 1 min connect timeout
+                )
                 .build();
         MongoClient mongoClient = MongoClients.create(settings);
         MongoDatabase database = mongoClient.getDatabase("test");
@@ -86,8 +88,7 @@ public class Main {
                         GridFSUploadOptions options = new GridFSUploadOptions()
                                 .chunkSizeBytes(1048576) // 1MB chunk size
                                 .metadata(new Document("type", "rgb noir sbs image"));
-                        GridFSUploadOptions uploadStream =  bucket.openUploadStream("sample.png", options)
-                                .withUploadTimeout(9000000, TimeUnit.MILLISECONDS)
+                                .uploadTimeout(15, TimeUnit.MINUTES); // 15 min timeout for file upload
 
                         try {
                             ObjectId fileId = bucket.uploadFromStream(id, new FileInputStream(file.toFile()), options);
