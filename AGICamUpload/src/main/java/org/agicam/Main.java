@@ -30,6 +30,8 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.stream.Stream;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+
 public class Main {
     public static void main(String[] args) {
         // First argument is going to be the location of uploaded images as an absolute path
@@ -61,9 +63,10 @@ public class Main {
                 .serverApi(ServerApi.builder()
                         .version(ServerApiVersion.V1)
                         .build())
-                .applyToClusterSettings(builder ->
-                        builder.connectTimeout(60000) // 1 min connect timeout
-                )
+                .applyToSocketSettings(builder -> {
+                        builder.connectTimeout(60000, MILLISECONDS);
+                        builder.readTimeout(600000, MILLISECONDS);}) // 1 min connect timeout
+                .applyToClusterSettings(builder -> builder.serverSelectionTimeout(60000, MILLISECONDS))
                 .build();
         MongoClient mongoClient = MongoClients.create(settings);
         MongoDatabase database = mongoClient.getDatabase("test");
@@ -88,7 +91,6 @@ public class Main {
                         GridFSUploadOptions options = new GridFSUploadOptions()
                                 .chunkSizeBytes(1048576) // 1MB chunk size
                                 .metadata(new Document("type", "rgb noir sbs image"));
-                                .uploadTimeout(15, TimeUnit.MINUTES); // 15 min timeout for file upload
 
                         try {
                             ObjectId fileId = bucket.uploadFromStream(id, new FileInputStream(file.toFile()), options);
