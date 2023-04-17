@@ -27,14 +27,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
+import java.util.concurrent.*;
 import java.util.stream.Stream;
+
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public class Main {
     public static void main(String[] args) {
         // First argument is going to be the location of uploaded images as an absolute path
-        if(args.length < 4)
-        {
+        if (args.length < 4) {
             System.out.println("Invalid Arguments for AGICamUpload. Please provide [images folder] [connection string] [username] [password]");
             return;
         }
@@ -42,8 +43,7 @@ public class Main {
         String location = args[0];
 
         // Validate that the location is real
-        if(location == null)
-        {
+        if (location == null) {
             throw new UnsupportedOperationException("We cannot upload data that is not stored");
         }
 
@@ -61,16 +61,16 @@ public class Main {
                 .serverApi(ServerApi.builder()
                         .version(ServerApiVersion.V1)
                         .build())
-                .applyToClusterSettings(builder ->
-                        builder.connectTimeout(60000) // 1 min connect timeout
-                )
+                .applyToSocketSettings(builder -> {
+                    builder.connectTimeout(60000, MILLISECONDS);
+                })
+                .applyToClusterSettings(builder -> builder.serverSelectionTimeout(60000, MILLISECONDS))
                 .build();
         MongoClient mongoClient = MongoClients.create(settings);
         MongoDatabase database = mongoClient.getDatabase("test");
         MongoCollection<Document> collection = database.getCollection("images");
 
         GridFSBucket bucket = GridFSBuckets.create(database);
-
         List<File> uploaded = new ArrayList<>();
 
         // Handle uploading all the files at this location if possible
@@ -84,24 +84,48 @@ public class Main {
                         // Store the file's name as its unique id
                         String id = file.getFileName().toString().split("\\.")[0];
 
+
+//
                         // Upload the file to grid fs
                         GridFSUploadOptions options = new GridFSUploadOptions()
                                 .chunkSizeBytes(1048576) // 1MB chunk size
                                 .metadata(new Document("type", "rgb noir sbs image"));
-                                .uploadTimeout(15, TimeUnit.MINUTES); // 15 min timeout for file upload
 
+
+                        ExecutorService executorService = Executors.newSingleThreadExecutor();
+                        Future<ObjectId> future = executorService.submit(() -> {
+                            try {
+                                ObjectId fileId = bucket.uploadFromStream(id, new FileInputStream(file.toFile()), options);
+
+                                return fileId;
+                            } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                        });
+
+                        ObjectId fileId = null;
                         try {
-                            ObjectId fileId = bucket.uploadFromStream(id, new FileInputStream(file.toFile()), options);
-                            document.put("file_id", fileId);
-                        } catch (FileNotFoundException e) {
+                            fileId = future.get(15, TimeUnit.MINUTES);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        } catch (ExecutionException e) {
+                            throw new RuntimeException(e);
+                        } catch (TimeoutException e) {
                             throw new RuntimeException(e);
                         }
+
+                        document.put("file_id", fileId);
+
                         document.put("_id", id);
 
                         String info[] = id.split("-");
 
                         // Capture camera #
-                        document.put("cam#", Integer.parseInt(info[0]));
+
+                        //changing the file parameters -- Abhilash
+//                        document.put("cam#", Integer.parseInt(info[0]));
+                        document.put("cam#", Integer.parseInt(info[1]));
 
                         // Filter out camera number
                         int start = id.indexOf("-");
@@ -120,13 +144,12 @@ public class Main {
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
-
                         // Upload the document
+
                         InsertOneResult result = collection.insertOne(document);
 
                         // Store files gito delete
-                        if(result.wasAcknowledged())
-                        {
+                        if (result.wasAcknowledged()) {
                             uploaded.add(file.toFile());
                         }
                     });
@@ -134,9 +157,9 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+
         // Delete uploaded files
-        for (File f : uploaded)
-        {
+        for (File f : uploaded) {
             f.delete();
         }
     }
