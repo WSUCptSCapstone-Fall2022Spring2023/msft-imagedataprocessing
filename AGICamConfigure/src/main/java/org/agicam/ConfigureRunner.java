@@ -56,12 +56,12 @@ public class ConfigureRunner {
             configCollection.insertOne(config); // Write to remote the configuration for this device.
         }
 
-
         if(config.getBoolean("changed").equals(true))
        {
             // Update config locally
             updateConfig(configLocation, config);
             config.replace("changed",false);
+            // Update config in mongo
             configCollection.replaceOne(eq("_id", config.getObjectId("_id")), config);
        }
     }
@@ -114,17 +114,12 @@ public class ConfigureRunner {
         eDate.setYear(today.getYear() + 1);
 
         configDoc.put("camID", cameraNumber); // Id of the camera
-        //configDoc.put("type", "select"); // "select" allows for selection of picture times (uneven intervals).
-                                            // "interval" allows for pictures taken at even intervals.
-        //configDoc.put("start", 600); // What time do we start? In minutes (600 = 10 a.m). Every config needs this.
-        //configDoc.put("distance", 120); // How long between each capture in minutes. For interval.
-        configDoc.put("amount", 2); // Amount of captures in day
+        configDoc.put("amount", 3); // Amount of captures in day
         configDoc.put("duration", 1); //How long to leave sensor on. This should not change.
-        //configDoc.put("intervalBetweenPics", 360); //How long between pictures. MUST BE AT LEAST 30MINS
         configDoc.put("changed", true); //Was the configuration updated? If so the wittyPi schedule needs to be updated
         configDoc.put("startDate", today);
         configDoc.put("endDate", eDate);
-        configDoc.put("times", Arrays.asList(600, 630, 720, 780)); // STORES AS TYPE ArrayList! Takes picture at 10, 10:30, 12, and 1
+        configDoc.put("times", Arrays.asList(600, 720, 840)); // STORES AS TYPE ArrayList! Takes picture at 10, 12, and 2
 
         return configDoc;
     }

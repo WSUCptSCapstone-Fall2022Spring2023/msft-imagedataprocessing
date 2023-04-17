@@ -67,7 +67,7 @@ int main(int argc, char**args) {
     // Take 5 pictures
     for (int i = 0; i < amount_pics; ++i) {
         std::ostringstream os;
-        os << "raspistill -o " // Handle output location
+        os << "raspistill -vf -hf -o " // Handle output location
         << directory << "/"
         << camera_number << "-"
         << currentDateTime() << "-"
