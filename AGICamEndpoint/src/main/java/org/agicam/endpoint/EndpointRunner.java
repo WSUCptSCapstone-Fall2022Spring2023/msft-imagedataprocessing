@@ -36,5 +36,8 @@ public class EndpointRunner {
         post("/plot-del", ConfigController.removePlot);
         post("/time-add", ConfigController.addTime);
         post("/time-del", ConfigController.removeTime);
+
+        //New endpoint for data retrieval
+        get("/imagedata-get", ImageController.getImageData);
     }
 }
