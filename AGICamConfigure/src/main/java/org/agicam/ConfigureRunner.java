@@ -110,6 +110,7 @@ public class ConfigureRunner {
     {
         Document configDoc = new Document();
         Date today = new Date();
+        Date tomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
         Date eDate = new Date();
         eDate.setYear(today.getYear() + 1);
 
@@ -117,9 +118,10 @@ public class ConfigureRunner {
         configDoc.put("amount", 3); // Amount of captures in day
         configDoc.put("duration", 1); //How long to leave sensor on. This should not change.
         configDoc.put("changed", true); //Was the configuration updated? If so the wittyPi schedule needs to be updated
-        configDoc.put("startDate", today);
+        configDoc.put("startDate", tomorrow);
         configDoc.put("endDate", eDate);
         configDoc.put("times", Arrays.asList(600, 720, 840)); // STORES AS TYPE ArrayList! Takes picture at 10, 12, and 2
+        configDoc.put("plots", Arrays.asList());
 
         return configDoc;
     }
@@ -139,7 +141,7 @@ public class ConfigureRunner {
         File localConfig = new File(configLocation); // find the local file
         FileWriter writer = new FileWriter(localConfig);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date sDate = doc.getDate("startDate");
         Date eDate = doc.getDate("endDate");
         List<Integer> times = null;
