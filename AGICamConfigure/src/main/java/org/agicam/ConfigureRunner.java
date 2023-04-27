@@ -120,7 +120,8 @@ public class ConfigureRunner {
         configDoc.put("startDate", today);
         configDoc.put("endDate", eDate);
         configDoc.put("times", Arrays.asList(600, 720, 840)); // STORES AS TYPE ArrayList! Takes picture at 10, 12, and 2
-
+        configDoc.put("plots", Arrays.asList());
+        
         return configDoc;
     }
 
