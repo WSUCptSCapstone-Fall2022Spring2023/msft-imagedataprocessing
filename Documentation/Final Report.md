@@ -401,6 +401,14 @@ AGICamEndpoint is our API which will be ran on a remote server with AGICamProces
 MongoDB is not a component which we wrote but since it plays such an important role in our architecture it is mentioned here. MongoDB is NoSQL database which we chose to use for storing the data of our system. This database is the connection between our Remote server components and our sensor components. It is important to understand that MongoDB is used not only as a file store for us but also as a document store for configurations and NDVI data for cameras.
 	
 # VIII. Product Delivery Status
+The final product will be delivered to our clients on Friday, May 5th. The delivery would include a complete Raspberry Pi-based IoT camera system that is capable of functioning remotely and providing data to the user. Our team will configure the Raspberry Pi with the necessary software and ensure it is fully functional upon delivery. In addition, we will setup and configure the database, a remote server, and endpoint API, to ensure the user can store, access, and analyze data remotely. 
+
+Project Location information:
+
+1. You can find the most recent version of the project by checking the "Releases" section on the team's GitHub page:
+https://github.com/WSUCptSCapstone-Fall2022Spring2023/msft-imagedataprocessing/releases/tag/v1.0.0 
+2. All the source code and documentation for the team will be available on the main branch of their GitHub.
+
 
 # IX. Conclusions and Future Work
 
