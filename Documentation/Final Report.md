@@ -203,6 +203,8 @@ This data will be uploaded from our devices to our cloud SQL server where it can
 
 ## 1. Testing Overview
 
+Our testing strategy involved unit, integration, and system tests. We used unit testing mainly to test the components of the sensor. Unit testing the API seemed less appropriate without data from the sensor in the database. Instead, we used integration and system tests for the API. Integration testing was our main form of testing, because having all the subsystems working togehter was critial for the project. 
+
 ## 2. Environment Requirements
 
 Ideally, we would be able to test code on the sensor module down to the scale of unit tests, however, we only have one sensor and we can’t all use it at the same time. To solve this, we will only be doing integration testing on the sensor. Unit testing will be done individually by team members on their own machines.
