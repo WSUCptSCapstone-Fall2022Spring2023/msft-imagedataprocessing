@@ -200,11 +200,11 @@ AGICamUpload uploads all captured images stored in /home/pi/AGICamImages. This w
 
 There are two collections that are stored in MongoDB: configs and images. Configs stores the WittyPi configurations and plot configurations, and images stores the captured images. The configurations are identified by the unique camera numbers. The images are identified by a unique ID created from the camera number, date and time the image was taken, and the image number. By creating the ID in this way, it allows for easy querying of images taken by a specific camera and in range of dates and times.
 
-## Remote Server Design
+## 4. Remote Server Design
 
 The remote server is designed to automatically calculate the NDVI for each plot of an image. Whenever a new image is uploaded, the corrisponding NDVI values are calculated.
 
-## 4. API Design
+## 5. API Design
 
 
 # V. Test Case Specifications and Results
