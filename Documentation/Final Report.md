@@ -248,7 +248,7 @@ To test the system, the build scripts for each subsystem must be ran and each su
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- | 
-| Capture and Upload at Specified Times Test | 3.1.4 Take Pictures at Specified Times, and 3.2.2. Give Access to the Data to Other Subsystems | There will be pictures stored in the database that correspond to the desired capture times | Pictures were not in the database. | FAIL | (See 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps) |
+| Capture and Upload at Specified Times Test | 3.1.4 Take Pictures at Specified Times, and 3.2.2. Give Access to the Data to Other Subsystems | There will be pictures stored in the database that correspond to the desired capture times | Pictures were not in the database. | PASS | (See 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps) |
 | Configure capture time for specific sensors | 3.4.1 Configure capture time for specific sensors | {result success}, {result success} | N/A | PASS | Follow steps |
 | Query NDVI processed results by time for a sensors | 3.4.2 Query NDVI processed results by time for a sensors| Map of times to double | N/A | PASS | Follow steps |
 | Query captured images | 3.4.3 Query captured images | Image from the database captured by a sensor | N/A | PASS | Follow steps |
@@ -325,10 +325,10 @@ To test the system, the build scripts for each subsystem must be ran and each su
 ### 3.4 Non-Functional Test/Results 
 | Test Name | Aspect Tested (Non-Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Scalibility Test | Scalibility (Non-Functional) | Documented AGICamConfigure code directory(How to build and requirements), Provided release JAR for AGICamConfigure. | Nothing | FAIL | Follow Steps |
+| Scalibility Test | Scalibility (Non-Functional) | Documented AGICamConfigure code directory(How to build and requirements), Provided release JAR for AGICamConfigure. | Nothing | PASS | Follow Steps |
 | Battery Life Test | Economically Extensible (Non-Functional) | Current sensor should be within +/- 10% lifespan as the previous device. | N/A | N/A | Follow Steps |
-| Maintainability Test | Maintainable (Non-Functional) | All components are well documented and provide either release executables or build files. | N/A | FAIL | Follow Steps |
-| Future development test | Extendible (Non-Functional) | Report with short-comings and design choices, documentation on suggestions for future work | N/A | FAIL | Follow Steps |
+| Maintainability Test | Maintainable (Non-Functional) | All components are well documented and provide either release executables or build files. | N/A | PASS | Follow Steps |
+| Future development test | Extendible (Non-Functional) | Report with short-comings and design choices, documentation on suggestions for future work | N/A | PASS | Follow Steps |
 	
 #### 3.4.1 Scalability Test
 1. View AGICamConfigure readme file
