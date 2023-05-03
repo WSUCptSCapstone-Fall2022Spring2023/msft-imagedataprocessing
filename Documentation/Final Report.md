@@ -535,6 +535,12 @@ Vegetation index (VI) – A calculated single value that is used to show the amo
 
 # XIII. Appendix A - Team Information 
 
+- Abhilash Ambati | Email: a.ambati@wsu.edu
+	
+- Jordan Muehlbauer | Email: jordan.muehlbauer@wsu.edu
+
+- Zachary Hall | Email: zachary.c.hall@wsu.edu
+
 # XIV. Appendix B - Example Testing Strategy Reporting
 
 # XV. Appendix C - Project Management
