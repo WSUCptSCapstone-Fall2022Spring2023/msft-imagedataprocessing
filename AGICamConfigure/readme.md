@@ -1,7 +1,7 @@
 # AGICamConfigure
 
 ## Component summary
-Exectuable which uploads images from sensor to remote server.
+Downloads remote configurations from database and schedules when the next capture sessions will occur. Also creats local global file for camera ID.
 
 ## Installation
 
@@ -19,8 +19,8 @@ Exectuable which uploads images from sensor to remote server.
 
 ## Functionality
 
-- Allows for uploading of captured images to remote database.
-- Uploads images from capture directory to database
+- Downloads remote configurations for re-scheduling WittyPI
+- On first execution creates a global file for identifiying specific sensor with.
 
 ## Known Problems
 
