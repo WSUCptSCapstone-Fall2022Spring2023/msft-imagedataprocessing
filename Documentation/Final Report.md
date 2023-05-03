@@ -207,9 +207,7 @@ Our testing strategy involved unit, integration, and system tests. We used unit 
 
 ## 2. Environment Requirements
 
-Ideally, we would be able to test code on the sensor module down to the scale of unit tests, however, we only have one sensor and we can’t all use it at the same time. To solve this, we will only be doing integration testing on the sensor. Unit testing will be done individually by team members on their own machines.
-
-When a team member pulls into the main branch, they will also pull main into the sensor’s test branch. This branch will then be pulled into the sensor. There, they will preform the required integration testing. They will document the tests done and results of the test in a test report. If there are issues, they will try to resolve them. The code and results will then be pushed back into the test branch which will merged back to main. This will ensure that code within main remains functional on the sensor.
+To test the system, the build scripts for each subsystem must be ran and each subsystem has unique test environment requirements. Some of the tests done on the sensor must be run on the sensor, it is not possible to test them locally (for example testing the capture program). Ideally, when testing the sensor should be pointed at a plant so the remote server can be tested. This allows for a NDVI to be calculated. For the API it is important to run the endpoint locally and use a web browser of your choice to do testing.
 
 ## 3. Tests/Results
 
