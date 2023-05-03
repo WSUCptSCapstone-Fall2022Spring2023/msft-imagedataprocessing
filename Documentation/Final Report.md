@@ -206,6 +206,7 @@ The remote server is designed to automatically calculate the NDVI for each plot 
 
 ## 5. API Design
 
+The API provides an interface for future contributors to access information easily in another application. All responses are provided in JSON to allow for easy parsing no matter how another application is designed. This API allows not only for reading information from the database but also allows for the ability to remotely configure our sensors in the field. Using our AGICamEndpoint applications can pull all the strings of the system from one endpoint.
 
 # V. Test Case Specifications and Results
 
