@@ -64,12 +64,11 @@ public class NDVIProcessor {
             double min = stats.min;
 
             Document plotDoc = new Document();
-            doc.put("Plot #", i);
-            doc.put("mean", mean);
-            doc.put("median", median);
-            doc.put("max", max);
-            doc.put("min", min);
-
+            plotDoc.put("Plot #", i);
+            plotDoc.put("mean", mean);
+            plotDoc.put("median", median);
+            plotDoc.put("max", max);
+            plotDoc.put("min", min);
             plotInfo.add(plotDoc);
         }
         doc.put("plots", plotInfo);
