@@ -186,17 +186,25 @@ The following is a further breakdown of the subsystem structure.
 
 ![alt_text](Images/SubsystemDecompositionDesign.jpg)
 
-## 2. Data Design
+## 2. Sensor Design
 
-Our product has two inputs that are collected during a snapshot. NOIR camera data and RGB camera data. AGICamera’s will be installed in an environment and will work within a network to provide overview of the current state of their farm to end-users. This is how our documents in our database will be formatted. It is important to note that the compressed data will be stored in binary form and will need to be decompressed when used on the front-end.
+The sensor has four smaller subsystems: WittyPi, AGICamCapture, AGICamConfigure, and AGICamUpload. WittyPi is used to schedule the wake and sleep cycles for the sensor. Upon waking, the sensor does nothing, however, before shutting down the sensor calls AGICamCapture, AGICamConfigure, and AGICamUpload. This was done to minimize the amount of time the sensor was on.
 
-AGICam Snapshot Design: Fields: Camera ID, Snapshot timestamp, Compressed NOIR data, Compressed RGB data Primary key: (Camera ID, Snapshot timestamp)
+AGICamConfigure configures wittypi and sets the camera number. If no configuration collection can be found, it will set up a default configuration and store it in the database. It will also generate a new camera number based on how many configurations are found in the database. If a cofiguration is found, it always updates the WittyPi schedule to match the database configuration.
 
-Internally on the end-user side of things they will be querying our database on ranges of Camera ID and latest snapshot. It will be possible for users to view specific regions of their farm as well as viewing the entirety of snapshots across their farm at once.
+AGICamCapture captures a joined RBG and NoIR image. It creates a unique image ID by combining the current date, time, and image number. It then stores the in image in /home/pi/AGICamImages.
 
-This data will be uploaded from our devices to our cloud SQL server where it can be queried by the end user through our interface. Currently our end-clients have their own interface to use this data with but in the case where we supply an end-user interface we will determine what local data structures will be needed to visually process this data.
+AGICamUpload uploads all captured images stored in /home/pi/AGICamImages. This way if any previous upload fails the pictures that failed to upload will still be added to the database. It takes the database credentials as a command line argument.
 
-## 3. API Design
+## 3. Data Design
+
+There are two collections that are stored in MongoDB: configs and images. Configs stores the WittyPi configurations and plot configurations, and images stores the captured images. The configurations are identified by the unique camera numbers. The images are identified by a unique ID created from the camera number, date and time the image was taken, and the image number. By creating the ID in this way, it allows for easy querying of images taken by a specific camera and in range of dates and times.
+
+## Remote Server Design
+
+The remote server is designed to automatically calculate the NDVI for each plot of an image. Whenever a new image is uploaded, the corrisponding NDVI values are calculated.
+
+## 4. API Design
 
 
 # V. Test Case Specifications and Results
@@ -215,7 +223,7 @@ To test the system, the build scripts for each subsystem must be ran and each su
 
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Capture Test | 3.1.2. Sensor Take a Picture Containing Both NoIR and RGB Images | The correct number of images are in the specified folder, and each image contains RGB (on left) and /oIR (on right) pictures | The specified folder contained the correct number of images and the images where correct | PASS | (See 3.1.1. Capture Test Requirements/Steps) |
+| Capture Test | 3.1.2. Sensor Take a Picture Containing Both NoIR and RGB Images | The correct number of images are in the specified folder, and each image contains RGB (on left) and NoIR (on right) pictures | The specified folder contained the correct number of images and the images where correct | PASS | (See 3.1.1. Capture Test Requirements/Steps) |
 | Lossless Uploading Test | 3.1.3. Send Pictures to Database, and 3.1.5. Support Lossess Uploading (Stored Uploads) | After first run of AGICamUpload, picture should still be in test directory. After second run, it should be in the database. | After first run the picture remained in the test folder, after second run it was not there but was in the database | PASS | (See 3.1.2. Lossless Uploading Test Requirements/Steps) |
 
 #### 3.1.1. Capture Test Requirements/Steps
@@ -241,12 +249,12 @@ To test the system, the build scripts for each subsystem must be ran and each su
 | Test Name | Aspect Tested (Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- | 
 | Capture and Upload at Specified Times Test | 3.1.4 Take Pictures at Specified Times, and 3.2.2. Give Access to the Data to Other Subsystems | There will be pictures stored in the database that correspond to the desired capture times | Pictures were not in the database. | FAIL | (See 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps) |
-| Configure capture time for specific sensors | 3.4.1 Configure capture time for specific sensors | {result success}, {result success} | {result success, {result success} | PASS | Follow steps |
-| Query NDVI processed results by time for a sensors | 3.4.2 Query NDVI processed results by time for a sensors| Map of times to double | Map of time to doubles / plot NDVI data | PASS | Follow steps |
-| Query captured images | 3.4.3 Query captured images | Image from the database captured by a sensor | Image from sensor. | PASS | Follow steps |
-| Configure NDVI process plots for specific sensors | 3.4.4 Configure NDVI process plots for specific sensors | Plot with two quadrilateral's (0,10), (10,0), (10,10) , (0,0) and (5,5), (5,10), (10,5), (10,10) | Plot with two quadrilateral's (0,10), (10,0), (10,10) , (0,0) and (5,5), (5,10), (10,5), (10,10) | PASS | Follow steps |
-| Query configuration for specific sensor | 3.4.5 Query configuration for specific sensor | Configuration JSON which contains time & plots for a specific sensor | Fully filled out configuration in JSON format. | PASS | Follow steps |
-| Confirm functionality of AGICamProcessor | 3.3.1, 3.3.2, 3.3.3. All AGICamProcessor requirements | No results, Map of Time->NDVI values | No result, then Map of time to doubles / plot NDVI data | PASS | Follow steps |
+| Configure capture time for specific sensors | 3.4.1 Configure capture time for specific sensors | {result success}, {result success} | N/A | PASS | Follow steps |
+| Query NDVI processed results by time for a sensors | 3.4.2 Query NDVI processed results by time for a sensors| Map of times to double | N/A | PASS | Follow steps |
+| Query captured images | 3.4.3 Query captured images | Image from the database captured by a sensor | N/A | PASS | Follow steps |
+| Configure NDVI process plots for specific sensors | 3.4.4 Configure NDVI process plots for specific sensors | Plot with two quadrilateral's (0,10), (10,0), (10,10) , (0,0) and (5,5), (5,10), (10,5), (10,10) | N/A | PASS | Follow steps |
+| Query configuration for specific sensor | 3.4.5 Query configuration for specific sensor | Configuration JSON which contains time & plots for a specific sensor | N/A | PASS | Follow steps |
+| Confirm functionality of AGICamProcessor | 3.3.1, 3.3.2, 3.3.3. All AGICamProcessor requirements | No results, Map of Time->NDVI values | N/A | PASS | Follow steps |
 
 #### 3.2.1 Cature and Upload at Specified Times Test Requirements/Steps
 1. ** Follow the appropriate build steps **
@@ -317,10 +325,10 @@ To test the system, the build scripts for each subsystem must be ran and each su
 ### 3.4 Non-Functional Test/Results 
 | Test Name | Aspect Tested (Non-Functional) | Expected Result | Observed Result | Test Result | Test Requirements |
 | --------- | ------------- | --------------- | --------------- | ----------- | ----------------- |
-| Scalibility Test | Scalibility (Non-Functional) | Documented AGICamConfigure code directory(How to build and requirements), Provided release JAR for AGICamConfigure. | Release provided | PASS | Follow Steps |
-| Battery Life Test | Economically Extensible (Non-Functional) | Current sensor should be within +/- 10% lifespan as the previous device. | Sensor draws ~ 2.3 % more power. | PASS | Follow Steps |
-| Maintainability Test | Maintainable (Non-Functional) | All components are well documented and provide either release executables or build files. | Files found | PASS | Follow Steps |
-| Future development test | Extendible (Non-Functional) | Report with short-comings and design choices, documentation on suggestions for future work | View future work section | PASS | Follow Steps |
+| Scalibility Test | Scalibility (Non-Functional) | Documented AGICamConfigure code directory(How to build and requirements), Provided release JAR for AGICamConfigure. | Nothing | FAIL | Follow Steps |
+| Battery Life Test | Economically Extensible (Non-Functional) | Current sensor should be within +/- 10% lifespan as the previous device. | N/A | N/A | Follow Steps |
+| Maintainability Test | Maintainable (Non-Functional) | All components are well documented and provide either release executables or build files. | N/A | FAIL | Follow Steps |
+| Future development test | Extendible (Non-Functional) | Report with short-comings and design choices, documentation on suggestions for future work | N/A | FAIL | Follow Steps |
 	
 #### 3.4.1 Scalability Test
 1. View AGICamConfigure readme file
