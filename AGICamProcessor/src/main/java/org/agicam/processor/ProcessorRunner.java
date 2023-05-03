@@ -56,7 +56,7 @@ public class ProcessorRunner {
         int camNumber = doc.getInteger("cam#");
 
         // Get plots from configuration
-        Document config = configs.find(eq("_id", camNumber)).first();
+        Document config = configs.find(eq("camID", camNumber)).first();
 
         assert config != null;
         List<Document> plotsDocs = config.getList("plots", Document.class, new ArrayList<>());
