@@ -551,4 +551,5 @@ A typical client meeting would consist of:
 - Questions we have for the client and their opinion.
 - Discuss about any deliverable from the client. 
 - Discussion about any key issues or blockers
+
 This plan worked well for us, we were able to inform out clients and was able to answer all their questions. the team only weekly meeting made sure that all the members in the group was able to share their ideas and made sure that their ideas were heard, discussed, and used to solve different issues. We used GitHub issues to keep track on the progress of a certain task.
