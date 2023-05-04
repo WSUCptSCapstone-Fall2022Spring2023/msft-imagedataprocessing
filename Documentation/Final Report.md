@@ -545,3 +545,9 @@ Vegetation index (VI) – A calculated single value that is used to show the amo
 # XIV. Appendix B - Example Testing Strategy Reporting
 
 # XV. Appendix C - Project Management
+Our team has two weekly meeting’s and one of the meetings is with the client and one with just our team. Our client meeting occurred every Tuesday from 1:30 PM – 2:00 PM. Our team meetings occurred every Monday at 6 PM. A typical client meeting would consist of:
+	- Report on the progress of work
+	- Questions we have for the client and their opinion.
+	- Discuss about any deliverable from the client. 
+	 Discussion about any key issues or blockers
+This plan worked well for us, we were able to inform out clients and was able to answer all their questions. the team only weekly meeting made sure that all the members in the group was able to share their ideas and made sure that their ideas were heard, discussed, and used to solve different issues. We used GitHub issues to keep track on the progress of a certain task.
