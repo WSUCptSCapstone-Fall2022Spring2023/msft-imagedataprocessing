@@ -433,6 +433,7 @@ A few recommendations we have are to fix the camera in a specific location and c
 We plan on updating the sensors by adding temperature and humidity sensors. This will help in understanding the environment that influences plant growth. To make it easier for the user a user-friendly interface will also be developed, by doing this users will have better access to the data that is being processed. The results will also get better in the future since we plan on upgrading the color filter that is being used in the NDVI calculation. These upgrades will help improve plant growth by making the system faster and more accurate.
 
 # X. Acknowledgements
+we would like to express our gratitude and appreciation towards Dr. Sindhuja Sankaran, Worasit Sangjan, and Kesevan Veloo for their exceptional guidance and support throughout our project. Their experience and understanding were crucial to our success. We are grateful for their contributions and dedication to the project.
 
 # XI. Glossary
 
@@ -550,8 +551,8 @@ We mainly used unit testing to test various sensor components and ensure that al
 We made a local server and tested the API, each API has a certain outcome, so we provided the API data and ran it to see if the APIs were performing as intended. During this process, we identified and addressed potential issues before they became a problem. This allowed us to create a high-quality, reliable, and efficient sensor that meets the user’s needs and expectations. 
 
 There are a total of five APIs: AGICamCapture, AGICamConfig, AGICamEndpoint, AGICamProcessor, and AGICamUpload, each API has a certain task. After they perform their respective tasks, the AGICamEndpoint collects all the data related to a camera and provided the user with NDVI values, the time the image was captured so that the user can access the data. 
+	
 
-![alt_text](Images/microsoft-logo.png "Microsoft Logo")
 # XV. Appendix C - Project Management
 Our team has two weekly meeting’s and one of the meetings is with the client and one with just our team. Our client meeting occurred every Tuesday from 1:30 PM – 2:00 PM. Our team meetings occurred every Monday at 6 PM. 
 A typical client meeting would consist of:
