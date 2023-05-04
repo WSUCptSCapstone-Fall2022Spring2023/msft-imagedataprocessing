@@ -212,7 +212,7 @@ The API provides an interface for future contributors to access information easi
 
 ## 1. Testing Overview
 
-Our testing strategy involved unit, integration, and system tests. We used unit testing mainly to test the components of the sensor. Unit testing the API seemed less appropriate without data from the sensor in the database. Instead, we used integration and system tests for the API. Integration testing was our main form of testing, because having all the subsystems working togehter was critial for the project. 
+Our testing strategy involved unit, integration, and system tests. We used unit testing mainly to test the components of the sensor. Unit testing the API seemed less appropriate without data from the sensor in the database. Instead, we used integration and system tests for the API. Integration testing was our main form of testing, because having all the subsystems working together was critical for the project.
 
 ## 2. Environment Requirements
 
@@ -550,8 +550,8 @@ We mainly used unit testing to test various sensor components and ensure that al
 
 We made a local server and tested the API, each API has a certain outcome, so we provided the API data and ran it to see if the APIs were performing as intended. During this process, we identified and addressed potential issues before they became a problem. This allowed us to create a high-quality, reliable, and efficient sensor that meets the user’s needs and expectations. 
 
-There are a total of five APIs: AGICamCapture, AGICamConfig, AGICamEndpoint, AGICamProcessor, and AGICamUpload, each API has a certain task. After they perform their respective tasks, the AGICamEndpoint collects all the data related to a camera and provided the user with NDVI values, the time the image was captured so that the user can access the data. 
-
+There are a total of five APIs: AGICamCapture, AGICamConfig, AGICamEndpoint, AGICamProcessor, and AGICamUpload, each API has a certain task.After they perform their respective tasks, the AGICamEndpoint collects all the data related to a camera and provided the user with NDVI values, the time the image was captured so that the user can access the data. 
+Demonstration of AGICamEndpoint presenting data: 
 ![alt_text](Images/APICamEndPoint.png "Endpoint Data")
 
 # XV. Appendix C - Project Management
